@@ -1,0 +1,27 @@
+h2.main-title {
+		    font-size: 40px;
+		    font-weight: 600;
+		    letter-spacing: 2px;
+		    color: #8e8d8d;
+		    margin-bottom: 0;
+		}
+		p.sub-title {
+		    font-size: 20px;
+		    margin-top: 0;
+		    padding-top: 0;
+		    color: #9c9898;
+		    font-weight: bold;
+		}
+		.sub-menu{
+			color: #a9a6a6;
+    		font-weight: bold;
+    		font-size: 17px;
+    		margin-bottom: 0;
+		}
+		.image-check{
+			display: inline-block;
+			margin-left: 15px;
+		    height: 65px;
+		    width: 65px;
+		    margin-bottom: 110px;
+		}

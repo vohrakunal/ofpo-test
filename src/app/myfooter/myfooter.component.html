@@ -1,0 +1,1930 @@
+<div class="container-fluid my-footer-main-div">
+
+	<div class="row my-footer-nav-div" >
+			<div class="col-md-12" style="padding:0;">
+				<nav class="navbar navbar-inverse">
+					<div class="container-fluid">
+						<div class="myaccount-nav-toggle hidden-md hidden-lg">
+							 <button type="button" class="myaccountToggleBtn">
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>                        
+								</button>
+							
+						</div>
+						<div class="" id="myNavbar">
+						<ul class="nav footer-nav" (click)="closeFooter()">
+                            
+                            <li class="black footer-cate-links" id="Tab14" *ngIf="category == '1'"><a>CUSTOMER CARE</a></li>
+                            
+                            <li [ngClass]="{'active': currentTab =='1'}"  id="1" (click)="setCurrentTab(1)" *ngIf="category == '1'"><a>FAQs</a></li>
+                            
+                            <li [ngClass]="{'active': currentTab =='2'}"  id="2" (click)="setCurrentTab(2)" *ngIf="category == '1'"><a>SHIPPING INFORMATION</a></li>
+                            
+                            <li [ngClass]="{'active': currentTab =='3'}"  id="3" (click)="setCurrentTab(3)" *ngIf="category == '1'"><a>SIZE GUIDE</a></li>
+                            
+                            <li [ngClass]="{'active': currentTab =='4'}"  id="4" (click)="setCurrentTab(4)" *ngIf="category == '1'"><a>TERMS OF USE</a></li> 
+                            
+                            <li [ngClass]="{'active': currentTab =='5'}"  id="5" (click)="setCurrentTab(5)" *ngIf="category == '1'"><a>PRIVACY POLICY</a></li>
+                            
+                            <li [ngClass]="{'active': currentTab =='6'}"  id="6" (click)="setCurrentTab(6)" *ngIf="category == '1'"><a>ABOUT COOKIES</a></li>
+
+                            <li class="black footer-cate-links" id="Tab15" *ngIf="category == '2'"><a>OFPOISON</a></li>
+                            
+                            <li  [ngClass]="{'active': currentTab =='7'}" id="1" (click)="setCurrentTab(7)" *ngIf="category == '2'"><a>BRAND DNA</a></li>
+                             <li [ngClass]="{'active': currentTab =='13'}" id="2" (click)="setCurrentTab(13)" *ngIf="category == '2'"><a>SELL WITH OFPOISON</a></li>
+                             <li [ngClass]="{'active': currentTab =='10'}" id="10" (click)="setCurrentTab(10)" *ngIf="category == '2'"><a>CONTACT US</a></li>
+                             <li [ngClass]="{'active': currentTab =='9'}" id="9" (click)="setCurrentTab(9)" *ngIf="category == '2'"><a>SITE NAVIGATION</a></li>
+
+                            <li [ngClass]="{'active': currentTab =='11'}" id="11" (click)="setCurrentTab(11)" *ngIf="category == '2'"><a>SITE MAP</a></li>
+
+                            <li class="black footer-cate-links" id="Tab16" *ngIf="category == '3'"><a>MAGAZINE</a></li>
+                            <li [ngClass]="{'active': currentTab =='8'}" id="8" (click)="setCurrentTab(8)" *ngIf="category == '3'"><a>MEDIA KIT</a></li>
+                            <li [ngClass]="{'active': currentTab =='14'}" id="14" (click)="setCurrentTab(14)" *ngIf="category == '3'"><a>Careers</a></li>
+                            <li [ngClass]="{'active': currentTab =='12'}" id="12" (click)="setCurrentTab(12)" *ngIf="category == '3'"><a>PRESS CLIPPINGS</a></li>
+
+                            
+
+						</ul>
+					 	</div>
+					</div>
+					</nav>
+			</div>
+    </div>
+	
+    <div class="row my-footer-inner-div">
+
+        <div class="col-md-12 shipping-polocy" *ngIf="currentTab == 2">
+            <div class="row">
+                <div class="col-md-6 ls-div-myfooter">
+                    <div class="row">
+                        
+                        <p class="black"> CUSTOMER CARE </p>  
+
+                        <h1 class="header-footer-right">SHIPPING <br> <span>POLICY</span></h1>
+
+                        <p>PLEASE REVIEW OUR SHIPPING POLICY,<br> AND INFORMATION ON TAX & DUTIES.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 rs-div-myfooter"> 
+                    <div class="row ">
+                        <h1>SHIPPING <br> <span>POLICY</span></h1>
+
+                        <p #shippingPolicy></p>
+
+                        <h1>TAX & <br> <span>DUTIES</span></h1>
+
+                        <p #taxAndDuties></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-12 faqs" *ngIf="currentTab == 1">
+            <div class="row">
+                <div class="col-md-6 ls-div-myfooter">
+                    <div class="row">
+                        
+                        <p class="black"> CUSTOMER CARE </p>  
+
+                        <h1>FAQs</h1>
+
+                        <p>HERE ARE THE MOST FREQUENTLY ASKED QUESTIONS <br> ABOUT OFPOISON AND OUR OPERATION.</p>
+
+                        <p>For further queries, please contact us at <a style="color: #fff;" href="mailto:info@ofpoison.com">info@ofpoison.com</a> </p>
+                    </div>
+                </div>
+                <div class="col-md-6 rs-div-myfooter"> 
+                    <div class="row accordian-faqs">
+                        <div class="first-head">
+
+                       <!--  <h1 class="header-footer-right">FREQUENTLY <br> <span>ASKED QUESTIONS</span></h1> -->
+                       
+                       
+                        <p #FAQs></p>
+                        <!-- <div class="faqs-question">
+
+                            <label>HOW TO SHOP PLACE AND ORDER</label>
+
+                            <div class="content">
+                                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                      <div class="panel panel-default">
+                                        <div class="panel-heading" id="headingOne" role="tab">
+                                          <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> Do i need an account to place an order? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                        </div>
+                                        <div class="panel-collapse collapse in" id="collapseOne" role="tabpanel" aria-labelledby="headingOne">
+                                          <div class="panel-body">
+                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="panel panel-default">
+                                        <div class="panel-heading" id="headingTwo" role="tab">
+                                          <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">I have forgotten my password: what should i do?<i class="pull-right fa fa-caret-right"></i></a></h4>
+                                        </div>
+                                        <div class="panel-collapse collapse" id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo">
+                                          <div class="panel-body">
+                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="panel panel-default">
+                                        <div class="panel-heading" id="headingThree" role="tab">
+                                          <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> What is the status of my order? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                        </div>
+                                        <div class="panel-collapse collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingThree">
+                                          <div class="panel-body">
+                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="panel panel-default">
+                                            <div class="panel-heading" id="headingFour" role="tab">
+                                              <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour"> What is the status of my order? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                            </div>
+                                            <div class="panel-collapse collapse" id="collapseFour" role="tabpanel" aria-labelledby="headingFour">
+                                              <div class="panel-body">
+                                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                              </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                            </div>
+                        </div> -->
+
+                        </div>  
+
+                        <!-- <div class="second-head">
+                                <div class="faqs-question">
+        
+                                    <label>PAYMENT</label>
+        
+                                    <div class="content">
+                                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                              <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingFive" role="tab">
+                                                  <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-controls="collapseFive"> Is it safe to use my credit card on your site? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseFive" role="tabpanel" aria-labelledby="headingFive">
+                                                  <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingSix" role="tab">
+                                                  <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix"> What forms of payment do you accept? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseSix" role="tabpanel" aria-labelledby="headingSix">
+                                                  <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingSeven" role="tab">
+                                                  <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">I paid through paypal, what shipping address will my order go to? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseSeven" role="tabpanel" aria-labelledby="headingSeven">
+                                                  <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+        
+                                              <div class="panel panel-default">
+                                                    <div class="panel-heading" id="headingEight" role="tab">
+                                                      <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">Which currencies can i shop in? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                    </div>
+                                                    <div class="panel-collapse collapse" id="collapseEight" role="tabpanel" aria-labelledby="headingEight">
+                                                      <div class="panel-body">
+                                                        <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                      </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingNine" role="tab">
+                                                          <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">When will my card be charged? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapseNine" role="tabpanel" aria-labelledby="headingNine">
+                                                          <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="panel panel-default">
+                                                            <div class="panel-heading" id="headingTen" role="tab">
+                                                              <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-expanded="false" aria-controls="collapseTen">How do i use in store credit/ promotional codes?
+                                                                <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                            </div>
+                                                            <div class="panel-collapse collapse" id="collapseTen" role="tabpanel" aria-labelledby="headingTen">
+                                                              <div class="panel-body">
+                                                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                              </div>
+                                                            </div>
+                                                        </div>
+        
+                                            </div>
+                                    </div>
+                                </div>
+                        </div>   -->
+                            
+                        <!-- <div class="third-head">
+                                <div class="faqs-question">
+        
+                                    <label>PRODUCT AVAILABILITY AND AUTHENTICITY</label>
+        
+                                    <div class="content">
+                                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                              <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingEleven" role="tab">
+                                                  <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven" aria-controls="collapseEleven"> Where can i find size, fit advice?<i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseEleven" role="tabpanel" aria-labelledby="headingEleven">
+                                                  <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingTwelve" role="tab">
+                                                  <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve"> Are you going to have my size again? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseTwelve" role="tabpanel" aria-labelledby="headingTwelve">
+                                                  <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingThirteen" role="tab">
+                                                  <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen"> Can i reserve an item to buy later? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseThirteen" role="tabpanel" aria-labelledby="headingThirteen">
+                                                  <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+        
+                                              <div class="panel panel-default">
+                                                    <div class="panel-heading" id="headingFourteen" role="tab">
+                                                      <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">Are OFPOISON™ items authentic?<i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                    </div>
+                                                    <div class="panel-collapse collapse" id="collapseFourteen" role="tabpanel" aria-labelledby="headingFourteen">
+                                                      <div class="panel-body">
+                                                        <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                      </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                    </div>
+                                </div>
+                        </div>  -->
+                        
+                       <!--  <div class="fourth-head">
+                                <div class="faqs-question">
+        
+                                    <label>SHIPPING, TAXES & DUTIES</label>
+        
+                                    <div class="content">
+                                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                              <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingSixteen" role="tab">
+                                                  <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSixteen" aria-controls="collapseSixteen"> Why does OFPOISON.com offer free global shipping? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseSixteen" role="tabpanel" aria-labelledby="headingSixteen">
+                                                  <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                            <div class="panel panel-default">
+                                            <div class="panel-heading" id="headingSeventeen" role="tab">
+                                                <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeventeen" aria-expanded="false" aria-controls="collapseSeventeen">  Can I pay to recieve my order faster?  <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                            </div>
+                                            <div class="panel-collapse collapse" id="collapseSeventeen" role="tabpanel" aria-labelledby="headingSeventeen">
+                                                <div class="panel-body">
+                                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                </div>
+                                            </div>
+                                            </div>
+
+                                            <div class="panel panel-default">
+                                            <div class="panel-heading" id="headingEighteen" role="tab">
+                                                <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEighteen" aria-expanded="false" aria-controls="collapseEighteen">How will my order be packaged? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                            </div>
+                                            <div class="panel-collapse collapse" id="collapseEighteen" role="tabpanel" aria-labelledby="headingEighteen">
+                                                <div class="panel-body">
+                                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                </div>
+                                            </div>
+                                            </div>
+        
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingNineteen" role="tab">
+                                                    <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNineteen" aria-expanded="false" aria-controls="collapseNineteen"> How can I track delivery ?<i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseNineteen" role="tabpanel" aria-labelledby="headingNineteen">
+                                                    <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingTwenty" role="tab">
+                                                    <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwenty" aria-expanded="false" aria-controls="collapseTwenty"> When will I receive my order ?<i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseTwenty" role="tabpanel" aria-labelledby="headingTwenty">
+                                                    <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingTwentyone" role="tab">
+                                                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwentyone" aria-expanded="false" aria-controls="collapseTwentyone"> Will I need to pay taxes and duties? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapseTwentyone" role="tabpanel" aria-labelledby="headingTwentyone">
+                                                            <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingTwentytwo" role="tab">
+                                                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwentytwo" aria-expanded="false" aria-controls="collapseTwentytwo"> For US customers, has sales tax been charged for any Item(s)?<i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapseTwentytwo" role="tabpanel" aria-labelledby="headingTwentytwo">
+                                                            <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingTwentyfour" role="tab">
+                                                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwentyfour" aria-expanded="false" aria-controls="collapseTwentyfour">Can you please mark my purchase as “gift” to avoid custom duties taxes?
+                                                                    <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapseTwentyfour" role="tabpanel" aria-labelledby="headingTwentyfour">
+                                                            <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingtwentyfive" role="tab">
+                                                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsetwentyfive" aria-expanded="false" aria-controls="collapsetwentyfive"> How can I track delivery ?<i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapsetwentyfive" role="tabpanel" aria-labelledby="headingtwentyfive">
+                                                            <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                            </div>
+                                    </div>
+                                </div>
+                        </div>  -->
+
+                        <!-- <div class="fifth-head">
+                                <div class="faqs-question">
+        
+                                    <label>RETURNS, REFUNDS & EXCHANGES</label>
+        
+                                    <div class="content">
+                                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                              <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingTwentysix" role="tab">
+                                                  <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwentysix" aria-controls="collapseTwentysix"> What is your returns policy and what is the first step? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseTwentysix" role="tabpanel" aria-labelledby="headingTwentysix">
+                                                  <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                            <div class="panel panel-default">
+                                            <div class="panel-heading" id="headingTwentyseven" role="tab">
+                                                <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseeTwentyseven" aria-expanded="false" aria-controls="collapseeTwentyseven"> What items are accepted for returns? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                            </div>
+                                            <div class="panel-collapse collapse" id="collapseeTwentyseven" role="tabpanel" aria-labelledby="headingTwentyseven">
+                                                <div class="panel-body">
+                                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                </div>
+                                            </div>
+                                            </div>
+
+                                            <div class="panel panel-default">
+                                            <div class="panel-heading" id="headingTwentyeight" role="tab">
+                                                <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseeTwentyeight" aria-expanded="false" aria-controls="collapseeTwentyeight"> What is the further documentation that may be applicable to complete the return process? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                            </div>
+                                            <div class="panel-collapse collapse" id="collapseeTwentyeight" role="tabpanel" aria-labelledby="headingTwentyeight">
+                                                <div class="panel-body">
+                                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                </div>
+                                            </div>
+                                            </div>
+        
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingTwentynine" role="tab">
+                                                    <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseeTwentynine" aria-expanded="false" aria-controls="collapseeTwentynine"> How do i package my item for return? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseeTwentynine" role="tabpanel" aria-labelledby="headingTwentynine">
+                                                    <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingTwentythirty" role="tab">
+                                                    <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseeTwentythirty" aria-expanded="false" aria-controls="collapseeTwentythirty">  When will i receive my refund? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseeTwentythirty" role="tabpanel" aria-labelledby="headingTwentythirty">
+                                                    <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingThirtyone" role="tab">
+                                                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseeThirtyone" aria-expanded="false" aria-controls="collapseeThirtyone">  Will shipping &amp; duties be refunded on return? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapseeThirtyone" role="tabpanel" aria-labelledby="headingThirtyone">
+                                                            <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingThirtytwo" role="tab">
+                                                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThirtytwo" aria-expanded="false" aria-controls="collapseThirtytwo"> Can I cancel or make a change to an order? When will I receive my refund?<i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapseThirtytwo" role="tabpanel" aria-labelledby="headingThirtytwo">
+                                                            <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingThirtythree" role="tab">
+                                                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThirtythree" aria-expanded="false" aria-controls="collapseThirtythree"> Can I get in store credit as a refund?
+                                                                    <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapseThirtythree" role="tabpanel" aria-labelledby="headingThirtythree">
+                                                            <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingThirtfour" role="tab">
+                                                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThirtfour" aria-expanded="false" aria-controls="collapseThirtfour">  I received a flawed or damaged item, what do i do? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapseThirtfour" role="tabpanel" aria-labelledby="headingThirtfour">
+                                                            <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingThirtyfive" role="tab">
+                                                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThirtyfive" aria-expanded="false" aria-controls="collapseThirtyfive">  How do you exchange an item?<i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapseThirtyfive" role="tabpanel" aria-labelledby="headingThirtyfive">
+                                                            <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingThirtyone" role="tab">
+                                                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThirtyone" aria-expanded="false" aria-controls="collapseThirtyone"> I still can’t find an answer to my question?
+                                                                    <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapseThirtyone" role="tabpanel" aria-labelledby="headingThirtyone">
+                                                            <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                            </div>
+                                    </div>
+                                </div>
+                        </div>  -->
+                    </div>
+                </div>
+            </div>
+        </div>  
+
+        <div class="col-md-12 terms-of-use" *ngIf="currentTab == 4">
+                <div class="row">
+                    <div class="col-md-6 ls-div-myfooter">
+                        <div class="row">
+                            
+                            <p class="black"> CUSTOMER CARE </p>  
+    
+                            <h1>TERMS OF USE</h1>
+    
+                        </div>
+                    </div>
+                    <div class="col-md-6 rs-div-myfooter"> 
+                        <div class="row ">
+                        
+                          <p #termsOfUse></p> 
+                        
+			     <!--  <h1 class="header-footer-right">TERMS OF <br> <span class="black">USE</span></h1>
+
+                            <label>PLEASE READ THESE TERMS AND CONDITIONS CAREFULLY BEFORE USING THIS SITE </label>
+    
+                            <p>These terms tell you the rules for using our website www.ofpoison.com (our site).
+                                </p>
+    
+                            <h3>WHO WE ARE AND HOW TO CONTACT US </h3>
+
+
+                            <p>
+                                <span><a style="color: #4d4d4d" href="www.ofpoison.com">www.ofpoison.com</a></span>  is a site operated by OFPOISON LLC (we or us). To contact us, please email <span><a style="color: #4d4d4d;" href="mailto:info@ofpoison.com">info@ofpoison.com.</a></span> 
+                            </p> 
+    
+                            <h3>BY USING OUR SITE YOU ACCEPT THESE TERMS </h3>
+
+                            <p>By using our site, you confirm that you accept these terms of use and that you agree to comply with them. If you do not agree to these terms, you must not use our site. 
+                            </p>
+    
+                            <h3>THERE ARE OTHER TERMS THAT MAY APPLY TO YOU</h3>
+    
+                            <p>These terms of use refer to the following additional terms, which also apply to your use of our site: </p>
+                                
+                                <ul>
+                                    <li>
+                                        
+                                            Our Privacy Policy <span><a style="color: #4d4d4d" href="www.ofpoison.com/privacypolicy"> www.ofpoison.com/privacypolicy</a></span> , which sets out the terms on which we process any personal data we collect from you, or that you provide to us. By using our site, you consent to such processing and you warrant that all data provided by you is accurate.
+                                        
+                                    </li>
+
+                                    <li>
+                                    
+                                            Our Cookie Policy <span><a style="color: #4d4d4d" href="www.ofpoison.com/cookiepolicy"> www.ofpoison.com/cookiepolicy</a></span>, which sets out information about the cookies on our site.
+                                        
+                                    </li>
+                                </ul>
+                           
+
+                            <p>
+                                If you purchase goods from our site, our Terms and conditions of supply <span><a style="color: #4d4d4d" href="www.ofpoison.com/termsandconditionsofsupply"> www.ofpoison.com/termsandconditionsofsupply </a></span>  will apply to the sales.
+                            </p>
+
+                            <h3>
+                                WE MAY MAKE CHANGES TO THESE TERMS 
+                            </h3>
+    
+                            <p>
+                                We amend these terms from time to time. Every time you wish to use our site, please check these terms to ensure you understand the terms that apply at that time. 
+                            </p>
+
+                            <h3>
+                                WE MAY MAKE CHANGES TO OUR SITE 
+                            </h3>
+
+                            <p>
+                                We may update and change our site from time to time to reflect changes to our products, our users’ needs and our business priorities. We will try to give you reasonable notice of any major changes.
+                            </p>
+
+                            <h3>
+                                WE MAY SUSPEND OR WITHDRAW OUR SITE
+                            </h3>
+
+                            <p>
+                                We do not guarantee that our site, or any content on it, will always be available or be uninterrupted. We may suspend or 
+                                <br>
+                                withdraw or restrict the availability of all or any part of our site for business and operational reasons. We will try to give you
+                                <br>
+                                reasonable notice of any suspension or withdrawal.
+                            </p>
+
+
+                            <label>HOW TO SHOP PLACE AND ORDER</label> -->
+
+                            <!-- <div class="content">
+                                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                      <div class="panel panel-default">
+                                        <div class="panel-heading" id="headingOne" role="tab">
+                                          <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> Do i need an account to place an order? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                        </div>
+                                        <div class="panel-collapse collapse in" id="collapseOne" role="tabpanel" aria-labelledby="headingOne">
+                                          <div class="panel-body">
+                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="panel panel-default">
+                                        <div class="panel-heading" id="headingTwo" role="tab">
+                                          <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">I have forgotten my password: what should i do?<i class="pull-right fa fa-caret-right"></i></a></h4>
+                                        </div>
+                                        <div class="panel-collapse collapse" id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo">
+                                          <div class="panel-body">
+                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="panel panel-default">
+                                        <div class="panel-heading" id="headingThree" role="tab">
+                                          <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> What is the status of my order? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                        </div>
+                                        <div class="panel-collapse collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingThree">
+                                          <div class="panel-body">
+                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="panel panel-default">
+                                            <div class="panel-heading" id="headingFour" role="tab">
+                                              <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour"> What is the status of my order? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                            </div>
+                                            <div class="panel-collapse collapse" id="collapseFour" role="tabpanel" aria-labelledby="headingFour">
+                                              <div class="panel-body">
+                                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                              </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                            </div>  -->
+                        </div>
+
+                        </div>  
+
+                        <!-- <div class="second-head">
+                                <div class="faqs-question">
+        
+                                    <label>PAYMENT</label>
+        
+                                    <div class="content">
+                                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                              <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingFive" role="tab">
+                                                  <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-controls="collapseFive"> Is it safe to use my credit card on your site? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseFive" role="tabpanel" aria-labelledby="headingFive">
+                                                  <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingSix" role="tab">
+                                                  <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix"> What forms of payment do you accept? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseSix" role="tabpanel" aria-labelledby="headingSix">
+                                                  <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingSeven" role="tab">
+                                                  <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">I paid through paypal, what shipping address will my order go to? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseSeven" role="tabpanel" aria-labelledby="headingSeven">
+                                                  <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+        
+                                              <div class="panel panel-default">
+                                                    <div class="panel-heading" id="headingEight" role="tab">
+                                                      <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">Which currencies can i shop in? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                    </div>
+                                                    <div class="panel-collapse collapse" id="collapseEight" role="tabpanel" aria-labelledby="headingEight">
+                                                      <div class="panel-body">
+                                                        <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                      </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingNine" role="tab">
+                                                          <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">When will my card be charged? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapseNine" role="tabpanel" aria-labelledby="headingNine">
+                                                          <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="panel panel-default">
+                                                            <div class="panel-heading" id="headingTen" role="tab">
+                                                              <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-expanded="false" aria-controls="collapseTen">How do i use in store credit/ promotional codes?
+                                                                <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                            </div>
+                                                            <div class="panel-collapse collapse" id="collapseTen" role="tabpanel" aria-labelledby="headingTen">
+                                                              <div class="panel-body">
+                                                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                              </div>
+                                                            </div>
+                                                        </div>
+        
+                                            </div>
+                                    </div>
+                                </div>
+                        </div>   -->
+                            
+                       <!--  <div class="third-head">
+                                <div class="faqs-question">
+        
+                                    <label>PRODUCT AVAILABILITY AND AUTHENTICITY</label>
+        
+                                    <div class="content">
+                                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                              <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingEleven" role="tab">
+                                                  <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven" aria-controls="collapseEleven"> Where can i find size, fit advice?<i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseEleven" role="tabpanel" aria-labelledby="headingEleven">
+                                                  <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingTwelve" role="tab">
+                                                  <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve"> Are you going to have my size again? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseTwelve" role="tabpanel" aria-labelledby="headingTwelve">
+                                                  <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingThirteen" role="tab">
+                                                  <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen"> Can i reserve an item to buy later? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseThirteen" role="tabpanel" aria-labelledby="headingThirteen">
+                                                  <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+        
+                                              <div class="panel panel-default">
+                                                    <div class="panel-heading" id="headingFourteen" role="tab">
+                                                      <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">Are OFPOISON™ items authentic?<i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                    </div>
+                                                    <div class="panel-collapse collapse" id="collapseFourteen" role="tabpanel" aria-labelledby="headingFourteen">
+                                                      <div class="panel-body">
+                                                        <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                      </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                    </div>
+                                </div>
+                        </div>  -->
+                        
+                        <!-- <div class="fourth-head">
+                                <div class="faqs-question">
+        
+                                    <label>SHIPPING, TAXES & DUTIES</label>
+        
+                                    <div class="content">
+                                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                              <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingSixteen" role="tab">
+                                                  <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSixteen" aria-controls="collapseSixteen"> Why does OFPOISON.com offer free global shipping? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseSixteen" role="tabpanel" aria-labelledby="headingSixteen">
+                                                  <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                            <div class="panel panel-default">
+                                            <div class="panel-heading" id="headingSeventeen" role="tab">
+                                                <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeventeen" aria-expanded="false" aria-controls="collapseSeventeen">  Can I pay to recieve my order faster?  <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                            </div>
+                                            <div class="panel-collapse collapse" id="collapseSeventeen" role="tabpanel" aria-labelledby="headingSeventeen">
+                                                <div class="panel-body">
+                                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                </div>
+                                            </div>
+                                            </div>
+
+                                            <div class="panel panel-default">
+                                            <div class="panel-heading" id="headingEighteen" role="tab">
+                                                <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEighteen" aria-expanded="false" aria-controls="collapseEighteen">How will my order be packaged? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                            </div>
+                                            <div class="panel-collapse collapse" id="collapseEighteen" role="tabpanel" aria-labelledby="headingEighteen">
+                                                <div class="panel-body">
+                                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                </div>
+                                            </div>
+                                            </div>
+        
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingNineteen" role="tab">
+                                                    <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNineteen" aria-expanded="false" aria-controls="collapseNineteen"> How can I track delivery ?<i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseNineteen" role="tabpanel" aria-labelledby="headingNineteen">
+                                                    <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingTwenty" role="tab">
+                                                    <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwenty" aria-expanded="false" aria-controls="collapseTwenty"> When will I receive my order ?<i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseTwenty" role="tabpanel" aria-labelledby="headingTwenty">
+                                                    <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingTwentyone" role="tab">
+                                                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwentyone" aria-expanded="false" aria-controls="collapseTwentyone"> Will I need to pay taxes and duties? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapseTwentyone" role="tabpanel" aria-labelledby="headingTwentyone">
+                                                            <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingTwentytwo" role="tab">
+                                                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwentytwo" aria-expanded="false" aria-controls="collapseTwentytwo"> For US customers, has sales tax been charged for any Item(s)?<i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapseTwentytwo" role="tabpanel" aria-labelledby="headingTwentytwo">
+                                                            <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingTwentyfour" role="tab">
+                                                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwentyfour" aria-expanded="false" aria-controls="collapseTwentyfour">Can you please mark my purchase as “gift” to avoid custom duties taxes?
+                                                                    <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapseTwentyfour" role="tabpanel" aria-labelledby="headingTwentyfour">
+                                                            <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingtwentyfive" role="tab">
+                                                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsetwentyfive" aria-expanded="false" aria-controls="collapsetwentyfive"> How can I track delivery ?<i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapsetwentyfive" role="tabpanel" aria-labelledby="headingtwentyfive">
+                                                            <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                            </div>
+                                    </div>
+                                </div>
+                        </div>  -->
+
+                        <!-- <div class="fifth-head">
+                                <div class="faqs-question">
+        
+                                    <label>RETURNS, REFUNDS & EXCHANGES</label>
+        
+                                    <div class="content">
+                                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                              <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingTwentysix" role="tab">
+                                                  <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwentysix" aria-controls="collapseTwentysix"> What is your returns policy and what is the first step? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseTwentysix" role="tabpanel" aria-labelledby="headingTwentysix">
+                                                  <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                            <div class="panel panel-default">
+                                            <div class="panel-heading" id="headingTwentyseven" role="tab">
+                                                <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseeTwentyseven" aria-expanded="false" aria-controls="collapseeTwentyseven"> What items are accepted for returns? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                            </div>
+                                            <div class="panel-collapse collapse" id="collapseeTwentyseven" role="tabpanel" aria-labelledby="headingTwentyseven">
+                                                <div class="panel-body">
+                                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                </div>
+                                            </div>
+                                            </div>
+
+                                            <div class="panel panel-default">
+                                            <div class="panel-heading" id="headingTwentyeight" role="tab">
+                                                <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseeTwentyeight" aria-expanded="false" aria-controls="collapseeTwentyeight"> What is the further documentation that may be applicable to complete the return process? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                            </div>
+                                            <div class="panel-collapse collapse" id="collapseeTwentyeight" role="tabpanel" aria-labelledby="headingTwentyeight">
+                                                <div class="panel-body">
+                                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                </div>
+                                            </div>
+                                            </div>
+        
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingTwentynine" role="tab">
+                                                    <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseeTwentynine" aria-expanded="false" aria-controls="collapseeTwentynine"> How do i package my item for return? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseeTwentynine" role="tabpanel" aria-labelledby="headingTwentynine">
+                                                    <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" id="headingTwentythirty" role="tab">
+                                                    <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseeTwentythirty" aria-expanded="false" aria-controls="collapseeTwentythirty">  When will i receive my refund? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="collapseeTwentythirty" role="tabpanel" aria-labelledby="headingTwentythirty">
+                                                    <div class="panel-body">
+                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingThirtyone" role="tab">
+                                                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseeThirtyone" aria-expanded="false" aria-controls="collapseeThirtyone">  Will shipping &amp; duties be refunded on return? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapseeThirtyone" role="tabpanel" aria-labelledby="headingThirtyone">
+                                                            <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingThirtytwo" role="tab">
+                                                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThirtytwo" aria-expanded="false" aria-controls="collapseThirtytwo"> Can I cancel or make a change to an order? When will I receive my refund?<i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapseThirtytwo" role="tabpanel" aria-labelledby="headingThirtytwo">
+                                                            <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingThirtythree" role="tab">
+                                                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThirtythree" aria-expanded="false" aria-controls="collapseThirtythree"> Can I get in store credit as a refund?
+                                                                    <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapseThirtythree" role="tabpanel" aria-labelledby="headingThirtythree">
+                                                            <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingThirtfour" role="tab">
+                                                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThirtfour" aria-expanded="false" aria-controls="collapseThirtfour">  I received a flawed or damaged item, what do i do? <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapseThirtfour" role="tabpanel" aria-labelledby="headingThirtfour">
+                                                            <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingThirtyfive" role="tab">
+                                                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThirtyfive" aria-expanded="false" aria-controls="collapseThirtyfive">  How do you exchange an item?<i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapseThirtyfive" role="tabpanel" aria-labelledby="headingThirtyfive">
+                                                            <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" id="headingThirtyone" role="tab">
+                                                            <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThirtyone" aria-expanded="false" aria-controls="collapseThirtyone"> I still can’t find an answer to my question?
+                                                                    <i class="pull-right fa fa-caret-right"></i></a></h4>
+                                                        </div>
+                                                        <div class="panel-collapse collapse" id="collapseThirtyone" role="tabpanel" aria-labelledby="headingThirtyone">
+                                                            <div class="panel-body">
+                                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                            </div>
+                                    </div>
+                                </div>
+                        </div>  -->
+                    </div>
+        </div>
+             
+        <!-- <div class="col-md-12 terms-of-use" *ngIf="currentTab == 4">
+            <div class="row">
+                <div class="col-md-6 ls-div-myfooter">
+                    <div class="row">
+                        
+                        <p class="black"> CUSTOMER CARE </p>  
+
+                        <h1>TERMS OF USE</h1>
+
+                    </div>
+                </div>
+                <div class="col-md-6 rs-div-myfooter"> 
+                    <div class="row ">
+                        <h1 class="header-footer-right">TERMS OF <br> <span class="black">USE</span></h1>
+
+                        <label>PLEASE READ THESE TERMS AND CONDITIONS CAREFULLY BEFORE USING THIS SITE </label>
+
+                        <p>These terms tell you the rules for using our website www.ofpoison.com (our site).
+                            </p>
+
+                        <h3>WHO WE ARE AND HOW TO CONTACT US </h3>
+
+
+                        <p>
+                            <span><a style="color: #4d4d4d" href="www.ofpoison.com">www.ofpoison.com</a></span>  is a site operated by OFPOISON LLC (we or us). To contact us, please email <span><a style="color: #4d4d4d;" href="mailto:info@ofpoison.com">info@ofpoison.com.</a></span> 
+                        </p> 
+
+                        <h3>BY USING OUR SITE YOU ACCEPT THESE TERMS </h3>
+
+                        <p>By using our site, you confirm that you accept these terms of use and that you agree to comply with them. If you do not agree to these terms, you must not use our site. 
+                        </p>
+
+                        <h3>THERE ARE OTHER TERMS THAT MAY APPLY TO YOU</h3>
+
+                        <p>These terms of use refer to the following additional terms, which also apply to your use of our site: </p>
+                            
+                            <ul>
+                                <li>
+                                    
+                                        Our Privacy Policy <span><a style="color: #4d4d4d" href="www.ofpoison.com/privacypolicy"> www.ofpoison.com/privacypolicy</a></span> , which sets out the terms on which we process any personal data we collect from you, or that you provide to us. By using our site, you consent to such processing and you warrant that all data provided by you is accurate.
+                                    
+                                </li>
+
+                                <li>
+                                
+                                        Our Cookie Policy <span><a style="color: #4d4d4d" href="www.ofpoison.com/cookiepolicy"> www.ofpoison.com/cookiepolicy</a></span>, which sets out information about the cookies on our site.
+                                    
+                                </li>
+                            </ul>
+                        
+
+                        <p>
+                            If you purchase goods from our site, our Terms and conditions of supply <span><a style="color: #4d4d4d" href="www.ofpoison.com/termsandconditionsofsupply"> www.ofpoison.com/termsandconditionsofsupply </a></span>  will apply to the sales.
+                        </p>
+
+                        <h3>
+                            WE MAY MAKE CHANGES TO THESE TERMS 
+                        </h3>
+
+                        <p>
+                            We amend these terms from time to time. Every time you wish to use our site, please check these terms to ensure you understand the terms that apply at that time. 
+                        </p>
+
+                        <h3>
+                            WE MAY MAKE CHANGES TO OUR SITE 
+                        </h3>
+
+                        <p>
+                            We may update and change our site from time to time to reflect changes to our products, our users’ needs and our business priorities. We will try to give you reasonable notice of any major changes.
+                        </p>
+
+                        <h3>
+                            WE MAY SUSPEND OR WITHDRAW OUR SITE
+                        </h3>
+
+                        <p>
+                            We do not guarantee that our site, or any content on it, will always be available or be uninterrupted. We may suspend or 
+                            <br>
+                            withdraw or restrict the availability of all or any part of our site for business and operational reasons. We will try to give you
+                            <br>
+                            reasonable notice of any suspension or withdrawal.
+                        </p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="col-md-12 size-guide" *ngIf="currentTab == 3">
+            <div class="row">
+                <div class="col-md-6 ls-div-myfooter">
+                    <div class="row">
+                        
+                        <p class="black"> CUSTOMER CARE </p>  
+
+                        <h1>SIZE <br> GUIDE </h1>
+
+                        <p>
+                            HERE IS AN EXTENSIVE SIZE GUIDE PER BRAND AND <br> INTERNATIONAL SIZE CONVERSIONS.
+                        </p>
+
+                    </div>
+                </div>
+                <div class="col-md-6 rs-div-myfooter"> 
+                    <div class="row ">
+
+                    <h1 class="header-footer-right">SIZE <br> <span class="black">GUIDE</span></h1>
+
+                    <p #sizeGuideMen></p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 privacy-policy" *ngIf="currentTab == 5">
+            <div class="row">
+                <div class="col-md-6 ls-div-myfooter">
+                    <div class="row">
+                        
+                        <p class="black"> CUSTOMER CARE </p>  
+
+                        <h1>PRIVACY POLICY</h1>
+
+                    </div>
+                </div>
+                <div class="col-md-6 rs-div-myfooter"> 
+                    <div class="row ">
+                     <h1 class="header-footer-right">PRIVACY<br> <span class="black">POLICY</span></h1>
+
+
+                        <p #privacyPolicy></p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 cookies" *ngIf="currentTab == 6">
+            <div class="row">
+                <div class="col-md-6 ls-div-myfooter">
+                    <div class="row">
+                        
+                        <p class="black"> CUSTOMER CARE </p>  
+
+                        <h1>ABOUT <br> COOKIES</h1>
+
+                    </div>
+                </div>
+                <div class="col-md-6 rs-div-myfooter"> 
+                    <div class="row ">
+                     <h1 class="header-footer-right">ABOUT<br> <span class="black">COOKIES</span></h1>
+
+                        <p #aboutCookies></p>
+
+                    </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="col-md-12 media-kit" *ngIf="currentTab == 8">
+                <div class="row">
+                    <div class="col-md-6 ls-div-myfooter">
+                        <div class="row">
+                            
+                            <p class="black"> MAGAZINE</p>  
+    
+                            <h1>MEDIA <br> KIT</h1>
+
+                            <p>DOWNLOAD OFPOISON'S MEDIA KIT</p>
+    
+                        </div>
+                    </div>
+                    <div class="col-md-6 rs-div-myfooter"> 
+                        <div class="row ">
+                         <h1 class="header-footer-right">MEDIA<br> <span class="black">KIT</span></h1>
+    
+                         <br>
+    
+                         <label class="black">2019 OFPOISON Media Kit.pdf</label> <br>
+
+                         <div class="download-btn-div">
+                                <a class="download-btn" href="/MediaKit.pdf" download>DOWNLOAD <i class="fa fa-arrow-down" aria-hidden="true"></i> </a>
+                         </div>
+
+                        <p>For press inquiries please <span> <a style="color: #4d4d4d" href="mailto:editor@ofpoison.com">email: editor@ofpoison.com</a> </span> </p>
+                            
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="col-md-12 contact-us-footer" *ngIf="currentTab == 10">
+                <div class="row">
+                    <div class="col-md-6 ls-div-myfooter">
+                        <div class="row">
+                            
+                            <p class="black">OFPOISON</p>  
+    
+                            <h1>CONTACT <br> US</h1>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 rs-div-myfooter"> 
+                        <div class="row">
+                        
+                         <p #contact></p>
+                         <!-- <h1 class="header-footer-right">CONTACT<br> <span class="black">US</span></h1>
+    
+                         <h3>Chief Executive Officer & Editor-in-Chief</h3>
+
+                         <p>Heba Dajani</p>
+
+                        <p><span> <a style="color: #4d4d4d" href="mailto:editor@ofpoison.com">editor@ofpoison.com</a> </span></p>
+
+                        <h3>Chief Technology Officer & Creative Director</h3>
+
+                        <p>Joseph Deepak</p>
+
+                        <p><span> <a style="color: #4d4d4d" href="mailto:support@ofpoison.com">support@ofpoison.com</a> </span></p>
+    
+                        <label class="black">For general enquires, please contact us on <span> <a style="color: #4d4d4d" href="mailto:info@ofpoison.com">info@ofpoison.com</a> </span></label> -->
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- press clippings  markup -->
+        <div class="col-md-12 press-clippings" *ngIf="currentTab == 12">
+        <div class="row">
+                <div class="col-md-6 ls-div-myfooter">
+                    <div class="row">
+                        
+                        <p class="black">MAGAZINE</p>  
+
+                        <h1>PRESS <br> CLIPPINGS</h1>
+
+                    </div>
+                </div>
+                <div class="col-md-6 rs-div-myfooter"> 
+                    <div class="row">
+
+                        <div #pressClippings></div>
+                        
+                    </div>
+            </div>
+            </div>
+        </div>
+            <!-- end of press clippings  markup -->
+
+        <div class="col-md-12 site-navigation" *ngIf="currentTab == 9">
+                <div class="row">
+                    <div class="col-md-6 ls-div-myfooter">
+                        <div class="row">
+                            
+                            <p class="black">OFPOISON</p>  
+    
+                            <h1>SITE <br> NAVIGATION</h1>
+
+                            <p>SHORT VIDEO TUTORIALS ON HOW TO NAVIGATE <br>
+                                <span> <a style="color: #fff" href="OFPOISON.com">OFPOISON.com</a> </span></p>
+    
+                        </div>
+                    </div>
+                    <div class="col-md-6 rs-div-myfooter"> 
+                        <div class="row">
+                                <div #siteNavigation></div>                            
+                        </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- Sitemap  markup -->
+         <div class="col-md-12 site-map" *ngIf="currentTab == 11">
+            <div class="row">
+                    <div class="col-md-6 ls-div-myfooter">
+                        <div class="row">
+                            
+                            <p class="black">OFPOISON</p>  
+
+                            <h1>SITE <br> MAP</h1>
+
+                            <p>DIRECT ACCESS TO CONTENT THAT MATTERS TO YOU.</p>
+
+                            <p>IF YOU'RE INTERESTED IN SELLING ON OFPOISON.com <span> <a style="color: #86754d" href="OFPOISON.com">CLICK HERE</a></span> </p>
+        
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 rs-div-myfooter"> 
+                        <div class="row site-map-inner-div" style="width: 100%;">
+
+                        <h1>SITE <span class="black">MAP</span></h1>
+
+                        <div class="col-md-6 col-xs-6">
+                            <div class="list-a">
+                                <label class="black">A</label>
+
+                                <ul class="list-unstyled">
+                                        <li *ngFor="let tag of tagMap['A']" ><a [routerLink]="['/home','A',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="list-b">
+                                    <label class="black">B</label>
+    
+                                    <ul class="list-unstyled">
+                                            <li *ngFor="let tag of tagMap['B']" ><a [routerLink]="['/home','B',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                    </ul>
+                                </div>
+    
+                                <div class="list-c">
+                                    <label class="black">C</label>
+    
+                                    <ul class="list-unstyled">
+                                            <li *ngFor="let tag of tagMap['C']" ><a [routerLink]="['/home','C',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                    </ul>
+                                </div>
+    
+                                <div class="list-d">
+                                    <label class="black">D</label>
+    
+                                    <ul class="list-unstyled">
+                                            <li *ngFor="let tag of tagMap['D']" ><a [routerLink]="['/home','D',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                    </ul>
+                                </div>
+    
+                                <div class="list-e">
+                                    <label class="black">E</label>
+    
+                                    <ul class="list-unstyled">
+                                            <li *ngFor="let tag of tagMap['E']" ><a [routerLink]="['/home','E',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                    </ul>
+                                </div>
+    
+                                <div class="list-f">
+                                    <label class="black">F</label>
+    
+                                    <ul class="list-unstyled">
+                                            <li *ngFor="let tag of tagMap['F']" ><a [routerLink]="['/home','F',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                    </ul>
+                                </div>
+    
+                                <div class="list-g">
+                                    <label class="black">G</label>
+    
+                                    <ul class="list-unstyled">
+                                            <li *ngFor="let tag of tagMap['G']" ><a [routerLink]="['/home','G',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                    </ul>
+                                </div>
+    
+                                <div class="list-h">
+                                    <label class="black">H</label>
+    
+                                    <ul class="list-unstyled">
+                                            <li *ngFor="let tag of tagMap['H']" ><a [routerLink]="['/home','H',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                    </ul>
+                                </div>
+    
+                                <div class="list-i">
+                                        <label class="black">I</label>
+        
+                                        <ul class="list-unstyled">
+                                                <li *ngFor="let tag of tagMap['I']" ><a [routerLink]="['/home','I',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                        </ul>
+                                </div>
+    
+                                <div class="list-j">
+                                    <label class="black">J</label>    
+                                   
+                                    <ul class="list-unstyled">
+                                            <li *ngFor="let tag of tagMap['J']" ><a [routerLink]="['/home','J',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                    </ul>
+                                </div>
+   
+                                <div class="list-k">
+                                    <label class="black">K</label>
+    
+                                    <ul class="list-unstyled">
+                                            <li *ngFor="let tag of tagMap['K']" ><a [routerLink]="['/home','K',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="list-l">
+                                    <label class="black">L</label>
+    
+                                    <ul class="list-unstyled">
+                                            <li *ngFor="let tag of tagMap['L']" ><a [routerLink]="['/home','L',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="list-m">
+                                        <label class="black">M</label>
+        
+                                        <ul class="list-unstyled">
+                                                <li *ngFor="let tag of tagMap['M']" ><a [routerLink]="['/home','M',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                        </ul>
+                                    </div>
+
+                        </div>
+                        <div class="col-md-6 col-xs-6">
+                                <div class="list-n">
+                                        <label class="black">N</label>
+                
+                                        <ul class="list-unstyled">
+                                                <li *ngFor="let tag of tagMap['N']" ><a [routerLink]="['/home','N',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                        </ul>
+                                    </div>
+                
+                                    <div class="list-o">
+                                        <label class="black">O</label>
+                
+                                        <ul class="list-unstyled">
+                                                <li *ngFor="let tag of tagMap['O']" ><a [routerLink]="['/home','O',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                        </ul>
+                                    </div>
+                
+                                    <div class="list-p">
+                                        <label class="black">P</label>
+                
+                                        <ul class="list-unstyled">
+                                                <li *ngFor="let tag of tagMap['P']" ><a [routerLink]="['/home','P',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                        </ul>
+                                    </div>
+                
+                                    <div class="list-q">
+                                        <label class="black">Q</label>
+                
+                                        <ul class="list-unstyled">
+                                                <li *ngFor="let tag of tagMap['Q']" ><a [routerLink]="['/home','Q',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                        </ul>
+                                    </div>
+                
+                                    <div class="list-r">
+                                        <label class="black">R</label>
+                
+                                        <ul class="list-unstyled">
+                                                <li *ngFor="let tag of tagMap['R']" ><a [routerLink]="['/home','R',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                        </ul>
+                                    </div>
+                
+                                    <div class="list-s">
+                                        <label class="black">S</label>
+                
+                                        <ul class="list-unstyled">
+                                                <li *ngFor="let tag of tagMap['S']" ><a [routerLink]="['/home','S',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                        </ul>
+                                    </div>
+                
+                                    <div class="list-t">
+                                        <label class="black">T</label>
+                
+                                        <ul class="list-unstyled">
+                                                <li *ngFor="let tag of tagMap['T']" ><a [routerLink]="['/home','T',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                        </ul>
+                                    </div> 
+                
+                                    <div class="list-u">
+                                        <label class="black">U</label>
+                
+                                        <ul class="list-unstyled">
+                                                <li *ngFor="let tag of tagMap['U']" ><a [routerLink]="['/home','U',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                        </ul>
+                                    </div>
+                
+                                    <div class="list-v">
+                                        <label class="black">V</label>
+                
+                                        <ul class="list-unstyled">
+                                                <li *ngFor="let tag of tagMap['V']" ><a [routerLink]="['/home','V',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                        </ul>
+                                </div>
+                
+                                <div class="list-w">
+                                    <label class="black">W</label>
+            
+                                    <ul class="list-unstyled">
+                                            <li *ngFor="let tag of tagMap['W']" ><a [routerLink]="['/home','W',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                    </ul>
+                                </div>
+            
+                                <div class="list-x">
+                                    <label class="black">X</label>
+            
+                                    <ul class="list-unstyled">
+                                            <li *ngFor="let tag of tagMap['X']" ><a [routerLink]="['/home','X',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="list-y">
+                                    <label class="black">Y</label>
+            
+                                    <ul class="list-unstyled">
+                                            <li *ngFor="let tag of tagMap['Y']" ><a [routerLink]="['/home','Y',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                    </ul>
+                                </div>
+            
+                                <div class="list-z">
+                                    <label class="black">Z</label>
+            
+                                    <ul class="list-unstyled">
+                                            <li *ngFor="let tag of tagMap['Z']" ><a [routerLink]="['/home','Z',tag.value , tag.stage]">{{tag.label}}</a></li>
+                                    </ul>
+                                </div>
+                    
+                        </div>
+                        
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <!-- end of site map markup -->
+
+
+        <!-- sell ofposion markup -->
+        <div class="col-md-12 sell-with-ofpoison" *ngIf="currentTab == 13">     
+        <div class="row">
+                <div class="col-md-6 ls-div-myfooter">
+                    <div class="row">
+                        
+                        <p class="black">OFPOISON</p>  
+
+                        <h1>SELL ON <br> OFPOISON</h1>
+
+                        <p>Interested to sell with us? Submit the form for consideration.</p>
+
+                    </div>
+                </div>
+                <div class="col-md-6 rs-div-myfooter"> 
+                    <div class="row">
+                    <h1 class="header-footer-right">SELL ON <br> OFPOISON<br> <span class="black">FORM</span></h1>
+        
+                    <div class="row">
+                        <form class="form-horizontal" [formGroup]="sellOnForm" (submit)="sellOn()" novalidate>
+
+                            <div class="form-group sell-on-ofp-form">
+                                <div class="col-md-4 label-div col-xs-12">
+                                    <label class="black" for="BrandName">Email<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                                </div>
+    
+                                <div class="col-md-8 input-div col-xs-12">
+                                    <input type="text" class="form-control" id="BrandName" placeholder="" name="brandName" formControlName="brandName" [(ngModel)]="sell.brandName" required>
+                                </div>
+                                <div *ngIf="sellOnForm.controls['brandName'].hasError('required') && Submitted == true" class="alert alert-danger">Brand Name is required</div>
+                            </div>
+
+                            <div class="form-group sell-on-ofp-form">
+                                <div class="col-md-4 label-div col-xs-12">
+                                    <label class="black" for="BrandName">Main Office Location <i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                                </div>
+    
+                                <div class="col-md-8 input-div col-xs-12">
+                                    <input type="text" class="form-control" id="BrandName" placeholder="City, Country" name="mainOfficeLocation" formControlName="mainOfficeLocation" [(ngModel)]="sell.mainOfficeLocation" required>
+                                </div>
+                                <div *ngIf="sellOnForm.controls['mainOfficeLocation'].hasError('required') && Submitted == true" class="alert alert-danger">Main office location is required</div>
+                            </div>
+
+                            <div class="form-group sell-on-ofp-form-wdf">
+                                <div class="col-md-4 label-div col-xs-12">
+                                    <label class="black" for="BrandName"> Price Point <i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                                </div>
+    
+                                <div class="col-md-8 input-div col-xs-12">
+                                    <small>Individual units are mostly</small>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox1" (click)="addIndividualUnits('Under $50')">
+                                        <label class="form-check-label" for="checkbox1" >Under $50</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox2" (click)="addIndividualUnits('$50 to 100')">
+                                        <label class="form-check-label" for="checkbox2" >$50 to 100</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox3" (click)="addIndividualUnits('$100 to 500')">
+                                        <label class="form-check-label" for="checkbox3" >$100 to 500</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox4" (click)="addIndividualUnits('Above $500')">
+                                        <label class="form-check-label" for="checkbox4" >Above $500</label>
+                                    </div>
+
+                                    <small>Are you a wholesaler?</small>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox5" (click)="addWholesaler('Yes')">
+                                        <label class="form-check-label" for="checkbox5" >Yes</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox6" (click)="addWholesaler('No')">
+                                        <label class="form-check-label" for="checkbox6" >No</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox7" (click)="addWholesaler('No, but interested to explore')">
+                                        <label class="form-check-label" for="checkbox7" >No, but interested to explore</label>
+                                    </div>
+
+                                    <small>Do you dropship?</small>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox8" (click)="addDropship('Yes')">
+                                        <label class="form-check-label" for="checkbox8" >Yes</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox9" (click)="addDropship('No')">
+                                        <label class="form-check-label" for="checkbox9" >No</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox10" (click)="addDropship('No, but interested to explore')">
+                                        <label class="form-check-label" for="checkbox10" >No, but interested to explore</label>
+                                    </div>
+
+                                    <small>Where are you currently stocked?</small>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox11">
+                                        <label class="form-check-label" for="checkbox11">Online</label>
+                                    </div>
+
+                                    <div class="text-area-ofp-form">
+                                        <textarea name="" id="" cols="30" placeholder="list Sites"></textarea>
+                                    </div>
+
+                                    <small>Where are you currently stocked?</small>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox12">
+                                        <label class="form-check-label" for="checkbox12">point od Sale</label>
+                                    </div>
+
+                                    <div class="text-area-ofp-form">
+                                        <textarea name="" id="" cols="30" placeholder="List locations including city "></textarea>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="form-group sell-on-ofp-form-wdf">
+                                <div class="col-md-4 label-div">
+                                    <label class="black" for="BrandName"> Brand Brief <i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                                </div>
+    
+                                <div class="col-md-8 input-div">
+
+                                    <!-- <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox12">
+                                        <label class="form-check-label" for="checkbox12">Online</label>
+                                    </div> -->
+
+                                    <div class="text-area-ofp-form">
+                                        <textarea name="" id="" cols="30" placeholder="Please describe your brand" name="brandBrief" formControlName="brandBrief" [(ngModel)]="sell.brandBrief" required></textarea>
+                                    </div>
+                                    <div *ngIf="sellOnForm.controls['mainOfficeLocation'].hasError('required') && Submitted == true" class="alert alert-danger">Brand Brief is required</div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="form-group sell-on-ofp-form-wdf">
+                                <div class="col-md-4 label-div">
+                                    <label class="black" for="BrandName">Product Category <i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                                </div>
+    
+                                <div class="col-md-8 input-div">
+                                        <small>Select all that apply</small>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="checkbox13" (click)="addProductCategory('Womenswear')">
+                                            <label class="form-check-label" for="checkbox13">Womenswear</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="checkbox14" (click)="addProductCategory('Menswear')">
+                                            <label class="form-check-label" for="checkbox14" >Menswear</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="checkbox16" (click)="addProductCategory('Footwear')">
+                                            <label class="form-check-label" for="checkbox16" >Footwear</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="checkbox17" (click)="addProductCategory('Accesories')">
+                                            <label class="form-check-label" for="checkbox17">Accesories</label>
+                                        </div>
+                                        <div *ngIf="productCategoryFlag" class="alert alert-danger">Product Category is required</div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group sell-on-ofp-form-wdf">
+                                    <div class="col-md-4 label-div">
+                                        <label class="black" for="BrandName">Documents<i class="fa fa-asterisk" aria-hidden="true"></i> </label>
+                                    </div>
+        
+                                    <div class="col-md-8 input-div">
+                                            <small>
+                                                Please upload the past two season's lookbooks and last year's sales.
+                                                PDF, Jpeg, xlsx, Doc MAX 25 Mb for all documents
+                                            </small>
+
+                                            <div class="add-btn-ofp-form">
+                                                <button class="add-btn-ofp"> Add <i class="fa fa-plus" aria-hidden="true"></i></button>
+                                            </div>
+                                            
+                                            <div class="choose--file--div">
+											<input type="file" ng2FileSelect [uploader]="uploader" multiple /><br />
+											<p>Image length: {{ uploader?.queue?.length }}</p>
+											<table class="table">
+												<tbody>
+													<tr *ngFor="let item of uploader.queue">
+														<td><strong>{{ item?.file?.name }}</strong></td>
+														<td *ngIf="uploader.isHTML5" nowrap>{{item?.file?.size/1024/1024/1024/1024/1024/1024/1024/1024/1024/1024/1024/1024/1024/1024/1024/1024/1024/1024/1024/1024/1024/1024/1024/1024/1024| number:'.25' }} MB</td>
+														<td nowrap>
+															<button type="button" class="btn btn-danger btn-xs" (click)="item.remove()"> <span class="glyphicon glyphicon-trash"></span> Remove</button>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										    </div> 
+
+                                            <hr class="hr-line-ofp">
+                                    </div>
+
+                                
+
+                                    <div class="submit-button-ofp-div pull-right">
+
+                                        <span><i class="fa fa-asterisk" aria-hidden="true"></i> Required Fields</span>
+                                            
+                                        <button class="submit-btn-ofp" type="submit" (click)="Submitted=true">SUBMIT</button>
+                                    </div>
+
+                                </div>
+                            
+                        </form>
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- end of sell markup -->
+
+
+        <div class="col-md-12 ofp-aboutus" *ngIf="currentTab == 7"> 
+             <div class="row">
+                    <div class="col-md-6 ls-div-myfooter">
+                        <div class="row">
+                            
+                            <p class="black">OFPOISON</p>  
+    
+                            <h1>ABOUT <br> OFPOISON</h1>
+
+                            <p>IF YOU'RE INTERESTED IN SELLING ON OFPOISON.com <span> <a style="color: #86754d" href="OFPOISON.com">CLICK HERE</a></span> </p>
+    
+                        </div>
+                    </div>
+                    <div class="col-md-6 rs-div-myfooter"> 
+                        <div class="row">
+                         <p #aboutOfPoison></p>
+                            
+                    </div>
+                </div>
+            </div>
+        <!-- career  markup -->
+            <!-- <div class="row">
+                <div class="col-md-6 ls-div-myfooter">
+                    <div class="row">
+                        
+                        <p class="black">MAGAZINE</p>  
+
+                        <h1>CAREERS</h1>
+
+                        <p>INTERESTED IN WORKING WITH US? <br>
+                                CHECKOUT THE CURRENT POSITIONS AVAILABLE.</p>
+
+                    </div>
+                </div>
+                <div class="col-md-6 rs-div-myfooter"> 
+                    <div class="row site-map-inner-div" style="width: 100%;">
+
+                        <div class="size-nav-head">
+                            <h1 class="header-footer-right">CAREERS</h1>
+                            
+                            <p>
+                                OFPOISON is always looking for talented creatives and business people to join our
+                                entrepreneurial environment. We have a highly coveted company culture where our ambitious
+                                employees thrive and learn every day. If you’re goal-driven and looking for a workplace that sets
+                                the benchmark for innovation in digital, you’re in the right place.
+                            </p>
+
+                            <p>Please see below for positions that are currently being recruited.</p>
+
+                            <div class="content career-acordian">
+                                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" id="headingcareer1" role="tab">
+                                        <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsecareer1" aria-expanded="true" aria-controls="collapsecareer1">HEAD OF TECHNOLOGY<i class="pull-right fa fa-caret-right"></i></a></h4>
+                                        </div>
+                                        <div class="panel-collapse collapse in" id="collapsecareer1" role="tabpanel" aria-labelledby="headingcareer1">
+                                        <div class="panel-body">
+                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" id="headingcareer2" role="tab">
+                                        <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsecareer2" aria-expanded="false" aria-controls="collapsecareer2">SOCIAL MEDIA MANAGER<i class="pull-right fa fa-caret-right"></i></a></h4>
+                                        </div>
+                                        <div class="panel-collapse collapse" id="collapsecareer2" role="tabpanel" aria-labelledby="headingcareer2">
+                                        <div class="panel-body">
+                                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                            </div>
+                            
+                        </div>
+                        
+                </div>
+            </div>
+            </div> -->
+        <!-- end of Career markup -->
+
+
+        </div>
+        
+        <div class="col-md-12 ofp-aboutus" *ngIf="currentTab == 14"> 
+            <div class="row">
+                <div class="col-md-6 ls-div-myfooter">
+                    <div class="row">
+                        <p class="black">MAGAZINE</p>  
+
+                        <h1>CAREERS</h1>
+
+                        <p>INTERESTED IN WORKING WITH US? <br>
+                                CHECKOUT THE CURRENT POSITIONS AVAILABLE.</p>
+
+                    </div>
+                </div>
+                <div class="col-md-6 rs-div-myfooter"> 
+                    <div class="row site-map-inner-div" style="width: 100%;">
+                       
+                        <p #career></p>
+                	
+                	</div>
+            </div>
+            </div>
+        </div> 
+        
+        
+
+    </div>
+</div> 
+

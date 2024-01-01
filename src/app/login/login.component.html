@@ -1,0 +1,154 @@
+
+		<div class="container langdingComponent">
+			<div class="">
+				<div class="row">
+					
+					
+					<div class="her">
+						<div class="animateleft"style="display:none;">
+							<img class="himtext" (click)="him()" src="./assets/images/GOLDHIM.png">
+						</div>
+						
+						<div class="women_right animate1" style="display:none;">
+					
+							<div class="form1 mensForm">
+								<ul class="forlUl">
+									<li class="her-header-txt" style="margin-bottom: 30px;">
+										<img src="./assets/images/GOLDHeader.png">
+									</li>
+									<form class="form-horizontal" [formGroup]="loginForm" (submit)="login()" novalidate  >
+										<li style="margin-bottom:10px;">
+											<input class="dt" type="text" placeholder="Enter you email id" name="username"   [(ngModel)]="loginData.username"  formControlName="username"  id="username" name="username" maxlength="50" pattern="[a-zA-Z]+[a-zA-Z0-9._]+@[a-z]+\.[a-z.]{2,5}" required>
+										    <div *ngIf="loginForm.controls['username'].hasError('required') && submitted == true" class="alert alert-danger">Email is required</div>
+										    <div *ngIf="loginForm.controls['username'].hasError('pattern') && loginForm.controls['username'].touched" class="alert alert-danger">Enter correct emailId.</div>
+										</li>
+										<li style="margin-bottom:10px;">
+											<input type="password" placeholder="Enter your password"  [(ngModel)]="loginData.password" formControlName="password" name="password" id="password" required>
+										    <div *ngIf="loginForm.controls['password'].hasError('required') && submitted == true" class="alert alert-danger">Password is required</div>
+										</li>
+
+										<li class="login-button-maindiv" style="margin-bottom:15px;">
+												<div class="login-btn-div">
+														<button type="submit" (click)="submitted=true" class="finBtn">LOGIN</button>
+												</div>
+                                                Remember me
+                                                <input type="checkbox" style="width:30px;"  [(ngModel)]="remember" id="remember" (click)="rememberMe()" formControlName="remember" name="remember" >  
+                                                <div class="login-btn-div">
+														<p class="dont-account-txt"><span class="register-txt" (click)="forgotPassword()">&nbsp;Forgot password?</span></p>
+												</div> 
+												
+											</li>
+											
+											 
+
+										<!-- <li style="margin-bottom:15px;"><div  class="finBtn" (click)="register()">REGISTER</div></li>
+										<li style="margin-bottom:30px;"><button type="submit" (click)="submitted=true" class="finBtn">LOGIN</button></li> -->
+									</form>
+									
+									   <li style="margin-bottom:0px;">
+									    <div  class="row login-withsocial-div">
+									      <div class="col-md-5 male" (click)="signIn('google')">
+												<img src="./assets/images/Google.png" (click)="signIn('google')">	Sign in with Gmail
+										  </div>
+										  <div class="col-md-6 male" (click)="signIn('facebook')">
+												<img src="./assets/images/Facebook.png" (click)="signIn('facebook')"> Login with Facebook
+										  </div>
+										  </div>
+										</li>
+										<li>
+											<div class="login-btn-div">
+														<p class="dont-account-txt">Dont't have an account?<span class="register-txt" (click)="register()">&nbsp;REGISTER</span></p>
+												</div>
+											</li>
+										<!-- <li class="seprate">OR <span style="color:#997C3F;float:none;">---------------------------------------------------------</span></li> -->
+										<!-- <li style=""><div class="guestbtn"  (click)="guestUser()" >Continue as guest</div></li> -->
+										 <!-- [routerLink]="['/home', '13']" -->
+								</ul>
+
+							</div>
+							
+					
+							</div>
+							<img src="./assets/images/himgold.png" class="himtrigger" style="width: 20px;position: absolute;top: 45%;left: 3px;display:none;" >
+					</div>
+					<div class="him" style="padding-left:0;overflow:visible;">
+						
+							<!-- <div class="animateright">
+								<img class="hertext "  (click)="her()" src="./assets/images/GOLDHER.png" >
+
+							</div>
+							 -->
+							
+							<div class="men_left animate"  style="display:block;width:100%;">
+									<div class="form1 mensForm">
+										<ul class="forlUl">
+											<li class="her-header-txt" style="margin-bottom: 30px;">
+										<img src="./assets/images/GOLDHeader.png">
+									</li>
+											<form class="form-horizontal" [formGroup]="loginForm" (submit)="login()" novalidate  >
+											<li style="margin-bottom:10px;">
+												<input class="dt" type="text" placeholder="Enter you email id" [(ngModel)]="loginData.username"  formControlName="username"  id="username" name="username" maxlength="30" pattern="[a-zA-Z]+[a-zA-Z0-9._]+@[a-z]+\.[a-z.]{2,5}" required>
+											    <div *ngIf="loginForm.controls['username'].hasError('required') && submittedher == true" class="alert alert-danger">Email is required</div>
+										        <div *ngIf="loginForm.controls['username'].hasError('pattern') && loginForm.controls['username'].touched" class="alert alert-danger">Enter correct emailId.</div>
+											</li>
+											<li style="margin-bottom:10px;">
+												<input type="password" placeholder="Enter your password"  [(ngModel)]="loginData.password" formControlName="password" name="password" id="password" required>
+											    <div *ngIf="loginForm.controls['password'].hasError('required') && submittedher == true" class="alert alert-danger">Password is required</div>
+											</li>
+
+											<li class="login-button-maindiv" style="margin-bottom:15px;">
+												<div class="login-btn-div">
+														<button type="submit" (click)="submittedher=true" class="finBtn">LOGIN</button>
+												</div>
+                                                
+												 <div class="login-btn-div">
+												  <p class="dont-account-txt"><span class="register-txt" (click)="forgotPassword()">&nbsp;Forgot password?</span></p>
+										     </div>
+											</li>
+											<li class="login-button-maindiv" style="margin-bottom:15px;">
+											<div>
+												<input type="checkbox" style="width: 20px;height: 18px;vertical-align: text-bottom;"  [(ngModel)]="remember" id="remember" (click)="rememberMe()" formControlName="remember" name="remember" >
+                                                 Remember me
+                                             </div>
+                                                
+                                            </li>
+											
+
+											</form>
+											<li class="login-withsocial-div" style="margin-bottom:0px;"><div  class="row">
+												     <div class="col-md-5 female" (click)="signIn('google')">
+														<img src="./assets/images/Google.png" (click)="signIn('google')">Sign in with Gmail
+														</div>
+														<div class="col-md-6 female" (click)="signIn('facebook')">
+															<img src="./assets/images/Facebook.png" (click)="signIn('facebook')"> Login with Facebook
+														</div>
+													</div>
+												</li>
+												<li>
+													<div class="login-btn-div">
+														<p class="dont-account-txt">Dont't have an account?<span class="register-txt" (click)="register()">&nbsp;REGISTER</span></p>
+												</div>
+												</li>
+												<!-- <li class="seprate">OR <span style="color:#997C3F;float:none;">----------------------------------------------------------</span></li> -->
+												<!-- <li><div class="guestbtn"  (click)="guestUser()" >Continue as guest</div></li> -->
+												<!-- [routerLink]="['/home', '14']" -->
+										</ul>
+
+									</div>
+							
+									
+							
+								</div>
+								<img src="./assets/images/hergold.png" class="hertrigger" style="width: 20px;position: absolute;top: 45%;left: 3px;display:none;" >
+
+					</div>
+				</div>
+			</div>
+			
+			
+			
+
+			<!-- Related demos -->
+		</div><!-- /container -->
+		
+		

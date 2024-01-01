@@ -1,0 +1,19 @@
+image-zoom {
+      z-index: 2;
+      border: 2px solid gray;
+      display: block;
+      position: absolute;
+      left: 50%;
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+     
+}
+
+ .zoomImage {
+        
+        width: 90%;
+        height: 90%;
+        background-position: 50% 50%;
+        transform: scale(1.5);
+  }

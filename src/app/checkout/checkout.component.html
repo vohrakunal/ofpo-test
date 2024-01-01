@@ -1,0 +1,824 @@
+<div class="container-fluid" (click)="fadeOut()" style="background:#fff;">
+		<div class="row quick_check">
+			<div class="col-md-10">
+			<h3 class="black" style="color:#fff;">QUICK CHECKOUT</h3>
+		</div>
+		<div class="col-md-2">
+			<img src="assets/images/stripe.png" class="img img-responsive" style="width:136px;margin-top: 10px;">
+		</div>
+		</div>
+		<div class="row" >
+			<div class="col-md-4 col-xs-12 mobile-padding pull-right" style="padding-bottom:50px;">
+				<h3 class="order_summary cart-txt black checkout-cart-page" style="margin-top:0;color:#87764e">CART</h3>
+			<div class="cartsection" style="border:1px dotted;overflow: hidden;">
+				<div class="table-responsive">
+					<table style="width: 100%;">
+						<thead>
+							<tr class="table-row">
+								<th class="table-hd">{{cartItems.length}} ITEMS IN CART</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<div class="table-responsive">
+					<table style="width: 100%;">
+	                	<thead style="width: 100%;">
+		                  <tr class="table-rw">
+		                  <th class="table-head" style="width: 5.9%;"></th>	
+		                  <th class="" style="width: 82%;color: #818082;">PRODUCT NAME</th>
+		                  <th class="" style="width: 15%;color: #818082;">PRICE</th>
+		                  </tr>
+	                	</thead>
+	                </table>
+				</div>
+
+			
+
+			<div style="background:#f2f2f3;">
+			<div class="table-responsive added-checkout-products" style="overflow-y: auto;max-height: 500px; position: relative;">		
+			<table style="width: 100%;">
+							<tbody>
+								<!--First row-->
+								<tr class="table-back" *ngFor="let cartItem of cartItems;let ind = index">
+									<td class="sr_no">{{ind + 1}}</td>
+									<td>
+										<div class="image_left">
+										<img src="{{cartItem.imageValue}}" alt="cart image" /></div>
+										<div class="info_right">
+									<h4 style="margin:0; margin-top: 5px;" class="header-cont gold">{{cartItem.brand}}</h4>
+									<p class="gold" style="padding: 0;margin: 0; border-bottom: 1px dotted #cccccc; padding: 2px 0 6px;">{{cartItem.name}}</p>
+									<table class="details">
+											<tr>
+												<td>
+													<!-- <p style="border-bottom: 1px solid; margin: 0;"><span>Details</span><span style="margin-left: 38px;">Edit</span><i class="fa fa-pencil" aria-hidden="true"></i></p> -->
+
+													<p *ngIf="cartItem.type_id == 'configurable'" style="margin: 0;"><span>COLOR: <label style="padding: 10px;vertical-align: middle;" [style.background]="cartItem.color"></label> <!-- {{cartItem.color}} --></span></p> 
+													<p *ngIf="cartItem.type_id == 'configurable'" style="margin: 0;"><span>SIZE: {{cartItem.size}}</span></p>
+													<p><span>QTY:{{cartItem.quantity}}</span></p>
+											</td>
+											</tr>
+										</table>  
+										</div>
+									</td>
+									<td style="text-align: center;vertical-align: top;padding-top: 10px;position:relative;min-width:60px; font-weight: bold;color: #424242; font-size: 22px;">$ {{cartItem.price}} <a data-toggle="modal" data-target="#editDetails" (click)="getProductDetails(cartItem.sku,cartItem.itemId,false,cartItem)"><span class="checkedit">EDIT <i class="fa fa-pencil"></i></span></a></td>
+								</tr>
+							
+						</tbody>    
+						</table>
+			</div>
+			</div>
+			<div class="col-md-12 col-xs-12 border-mobile">
+			<div class="row" style="border:1px dotted; border-top:0">	
+			<div class="col-md-12 col-xs-12 user-details-checkout" style="border-bottom: 1px solid; padding-top: 10px;">
+			<p class="person_name">{{checkoutInfo.firstname}} {{checkoutInfo.lastname}}</p>
+			<p>{{checkoutInfo.street1}}</p>
+			<p *ngIf="checkoutInfo.street1.length">{{checkoutInfo.street2}}, {{this.checkoutInfo.region}} {{checkoutInfo.region_code}} {{checkoutInfo.city}}</p>
+			<p>{{checkoutInfo.postcode}}</p>
+			<p>{{checkoutInfo.country_id}}  </p>
+			<p>{{checkoutInfo.telephone}}</p>
+			<p>{{checkoutInfo.email}}</p> 
+			</div>
+			<div class="col-md-12 col-xs-12" style="padding-top: 15px;">
+			<div class="col-md-9 col-xs-9">
+				<div class="row">
+					<p class="black checkout-cart-page">SUBTOTAL</p>
+				</div>	
+			</div>
+			<div class="col-md-3 col-xs-3 text-right">
+				<div class="row black">
+					<p>$ {{subTotal}}</p>
+				</div>
+			</div>
+			</div>
+			<div class="col-md-12 col-xs-12">
+			<p style="margin:0;" class="black checkout-cart-page">SHIPPING</p>
+			
+			 <!--  <form [formGroup]="shippingForm">  -->
+			<div class="shipping-info hide-desk-view-im" *ngIf="shippingEstimate.length">
+					<p>Please select which brands you would like standard or expedited</p>
+					<div *ngFor="let meth of shippingEstimate;let i = index">
+					<div class="form-group" >
+						<div class="shipping-checkbox">
+							<!-- <input type="checkbox" class="form-check-input"  (change)="addShiipingMethod(i,shippingEstimate[i].shippingSelected,shippingEstimate[i])"  [(ngModel)]="shippingEstimate[i].shippingSelected"> -->
+								<label class="form-check-label" for="exampleCheck1">{{meth.carrier_code}}
+							</label>
+						</div>
+						<div class="price-shiping">
+							<span>{{meth.shippingMethodTotal | currency}}</span>
+						</div>
+					</div>
+					   <div class="form-group" *ngFor="let item of meth.vendor_code;let j = index">
+						<div class="shipping-checkbox" style="margin-left: 20px; margin-top: -10px;">
+								<!-- <input type="checkbox" class="form-check-input"  [disabled]=item.disabled (change)="addBrandInMethod(meth.shippingSelected,meth.shippingTempArray[j].brandSelected,meth.carrier_code,item.brandName,i,j,item.shippingRate)" id="{{item.brandName}}_{{i}}" [(ngModel)]="meth.shippingTempArray[j].brandSelected"  /> -->  
+							 <input type="checkbox" class="form-check-input"  [disabled]="isSelectionEnabled(meth.method_title,item)"  (change)="disabledOtherOptionForVendor(meth.method_title,item)" [(ngModel)]="getProductString(item,meth.method_title).selected"  id="{{item}}_{{j}}"  />  
+							 <label class="form-check-label" for="exampleCheck2"><span>{{getProductString(item,meth.method_title).productString}}</span>
+						</label>
+						</div>
+						<div class="price-shiping">
+							 <span>{{meth.price_incl_tax | currency}}</span>
+						</div>
+					    </div>  
+                    </div>
+                </div>
+			<!-- </form>   -->
+
+			</div> 
+			<div class="col-md-12 col-xs-12" style="border-bottom: 1px solid;">
+			<div class="col-md-9 col-xs-9">
+				<div class="row">
+					<p class="black checkout-cart-page">SALES TAX</p>
+				</div>	
+			</div>
+			<div class="col-md-3 col-xs-3 text-right">
+				<div class="row black">
+					<p>$ {{salesTax}}</p>
+				</div>
+			</div>
+			</div>
+			
+			<div class="col-md-12 col-xs-12" style="border-bottom: 1px solid;" *ngIf="storeCredit > 0 && useStoreCredit">
+			<div class="col-md-9 col-xs-9">
+				<div class="row">
+					<p class="black checkout-cart-page">STORE CREDIT</p>
+				</div>	
+			</div>
+			<div class="col-md-3 col-xs-3 text-right">
+				<div class="row black">
+					<p> - {{spentStoreCredit | currency}}</p>
+				</div>
+			</div>
+			</div>
+
+			<!-- <div class="col-md-12 col-xs-12" style="border-bottom: 1px solid;">
+			<div class="col-md-9 col-xs-9">
+				<div class="row">
+					<p>Discount</p>
+				</div>	
+			</div>
+			<div class="col-md-3 col-xs-3 text-right">
+				<div class="row">
+					<p>{{discount | currency}}</p>
+				</div>
+			</div>
+			</div> -->
+
+
+			<div class="col-md-12 col-xs-12">
+			<div class="col-md-8 col-xs-8">
+				<div class="row">
+					<p class="grand_total">GRAND TOTAL</p>
+				</div>	
+			</div>
+			<div class="col-md-4 col-xs-4 text-right">
+				<div class="row" *ngIf="!useStoreCredit">  <!-- - discount -->
+					<p class="grand_value black">{{subTotal + allshippingMethodTotal + salesTax  |currency}}</p>
+				</div>
+				<div class="row" *ngIf="useStoreCredit  && !shippingFree">
+					<p class="grand_value black">{{grandTotal  |currency}}</p>
+				</div>
+				
+				<div class="row" *ngIf="shippingFree && useStoreCredit">
+					<p class="grand_value black">{{grandTotal  |currency}}</p>
+				</div>
+			</div>
+			</div>
+			</div>
+			</div>  	
+			</div>	
+
+			</div>
+			<div class="col-md-8 col-xs-12"  style="padding-bottom:50px;">
+				<div class="panel-group panel-width-mob panel-width-desk" id="accordion">
+				    <div class="panel panel-default" id="ShippingProgress1">
+				        <div class="panel-heading">
+				        	<div class="number" id="addressDiv1">1</div>
+				            <h2 class="panel-title">
+				                <a class="accordion-toggle gold" style="display: block;" id="addressDiv" #addressDiv data-toggle="collapse" data-parent="#accordion" href="#collapseOne" >
+				                INFORMATON & SHIPPING ADDRESS<small id="emailHelp" class="form-text text-muted gold">STEP 1 0F 3</small><i  id="addressDivicon" class="indicator glyphicon glyphicon-chevron-down pull-right"></i> 
+				                </a>
+				            </h2>
+				        </div>
+				        <div id="collapseOne" class="panel-collapse collapse">
+				            <div class="panel-body">
+				               <div class="col-md-12 panel-1 checkout-info-panel">
+				               		<div class="row">
+				               			<h3 class="dotted_border black"><span class="gold black">1a.</span> CHECKOUT METHOD</h3>
+				               			<div class="main_border" style="width: 69%;"></div>
+				               			<div class="col-md-12">
+				               			    <form class="form-horizontal" [formGroup]="signUpForm" (submit)="shippingAddress()" novalidate  >
+						               			<div class="radio radio_bottom">
+												      <label *ngIf="redioButtonhide"><input type="radio" [(ngModel)]="checkoutMethod" (click)="checkOutMethodType('guest')" value="guest"  id="checkOutMethod" name="checkOutMethod"  >GUEST</label>
+											    </div>
+												<div class="form-group" *ngIf="guesttShow == true">
+												      <label class="control-label col-md-3" for="firstname">Email <span class="required">*</span></label>
+												      <div class="col-md-9">
+												        <input type="text" class="form-control form_field" [(ngModel)]="checkoutInfo.email"  formControlName="email"  id="email" name="email" maxlength="50" pattern="[a-zA-Z]+[a-zA-Z0-9._]+@[a-z]+\.[a-z.]{2,5}"  required>
+												        <small id="emailHelp"  class="form-text text-muted">You can register after the checkout!</small>
+												            <div *ngIf="signUpForm.controls['email'].hasError('required') && submitted == true" class="alert alert-danger">Email is required</div>
+													        <div *ngIf="signUpForm.controls['email'].hasError('maxlength') && signUpForm.controls['email'].touched" class="alert alert-danger">Your enter more then 50 characters long.</div> 
+													        <div *ngIf="signUpForm.controls['email'].hasError('pattern') && signUpForm.controls['email'].touched" class="alert alert-danger">Enter correct emailId.</div>
+												      </div>
+												</div>
+												
+												<form class="form-horizontal" [formGroup]="registerForm" *ngIf="redioButtonhide">
+													<div class="form-group" *ngIf="guesttShow == true">
+													      <label class="control-label col-md-3" for="password">Password <span class="required">*</span></label>
+													      <div class="col-md-9">
+													        <input type="password" class="form-control form_field" [(ngModel)]="register.password"  formControlName="password" name="password" id="password" pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!#$%&'(*+),-./:;<=>?@[\]^_`{|}~\s]).{8,}" maxlength="30" required>
+													             <div *ngIf="registerForm.controls['password'].hasError('required') && submitted == true" class="alert alert-danger">Password is required</div>
+														        <div *ngIf="registerForm.controls['password'].hasError('maxlength') && registerForm.controls['password'].touched" class="alert alert-danger">Your enter more then 30 characters long.</div> 
+														        <div *ngIf="registerForm.controls['password'].hasError('pattern') && registerForm.controls['password'].touched" class="alert alert-danger">Password must be at least 8 characters and must contain atleast an uppercase & lowercase letters, a number and a special character.</div> 
+													      </div>
+													</div>
+													
+													<div class="form-group" *ngIf="guesttShow == true">
+													      <label class="control-label col-md-3" for="password">Confirm Password <span class="required">*</span></label>
+													      <div class="col-md-9">
+													        <input type="password" class="form-control form_field" [(ngModel)]="register.confirmpassword"  formControlName="confirmpassword" name="confirmpassword" id="confirmpassword" pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!#$%&'(*+),-./:;<=>?@[\]^_`{|}~\s]).{8,}" maxlength="30" required>
+													            <div *ngIf="registerForm.controls['confirmpassword'].hasError('required') && submitted == true" class="alert alert-danger">Confirm password is required</div>
+														        <div *ngIf="registerForm.controls['confirmpassword'].hasError('maxlength') && registerForm.controls['confirmpassword'].touched" class="alert alert-danger">Your enter more then 30 characters long.</div> 
+														        <div *ngIf="registerForm.controls['confirmpassword'].hasError('confirmpassword') && registerForm.controls['confirmpassword'].touched" class="alert alert-danger">Confirmpassword Password must be at least 8 characters and must contain atleast an uppercase & lowercase letters, a number and a special character.</div> 
+													            <div *ngIf="passwordNotMatch.length" class="alert alert-danger">Confirm password not match with password.</div>
+													      </div>
+													</div>
+												</form>
+												
+												
+												<div class="radio radio_bottom">
+												      <label *ngIf="redioButtonhide"><input type="radio"  [(ngModel)]="checkoutMethod" (click)="checkOutMethodType('customer')" value="customer" name="checkOutMethod">RETURNING CUSTOMER</label>
+											    </div>
+											    <form class="form-horizontal" [formGroup]="loginForm" (submit)="login()" novalidate  >
+											    <div class="form-group" *ngIf="customerShow == true">
+												      <label class="control-label col-md-3" for="firstname">Email <span class="required">*</span></label>
+												      <div class="col-md-9">
+												        <input type="text" [(ngModel)]="loginData.username"  formControlName="username"  id="username" name="username" maxlength="30" pattern="[a-zA-Z]+[a-zA-Z0-9._]+@[a-z]+\.[a-z.]{2,5}"  class="form-control form_field" required>
+												      </div>
+												</div>
+												 <div class="form-group" *ngIf="customerShow == true">
+												      <label class="control-label col-md-3" for="password">Password <span class="required">*</span></label>
+												      <div class="col-md-9">
+												        <input type="password"  class="form-control form_field" [(ngModel)]="loginData.password" formControlName="password" name="password" id="password" required>
+												        <button type="submit" class="btn btn_login check_btn"  >LOGIN</button>
+												      </div>
+												</div> 
+												<div class="form-group" *ngIf="customerShow == true">
+												<p class="dont-account-txt"><span class="register-txt" (click)="forgotPassword()">&nbsp;Forgot password?</span></p>
+												</div>
+												<div class="form-group" *ngIf="customerShow == true">
+												  <label class="control-label col-md-3" for="password">Remember me <span class="required">*</span></label>
+												   
+                                                <input type="checkbox"  [(ngModel)]="remember" id="remember" (click)="rememberMe()" formControlName="remember" name="remember" >  
+                                                </div> 
+												</form> 
+												
+												
+												<div class="row">
+													<h3 class="dotted_border black"><span class="gold black">1b.</span> PERSONAL INFORMATION</h3>
+													<div class="main_border" style="width: 62%;"></div>
+													<div class="col-md-12">
+														<div class="form-group" [ngClass]="{'has-error':!signUpForm.controls['firstname'].valid && signUpForm.controls['firstname'].touched}">
+													      <label class="control-label col-md-3" for="firstname">First Name <span class="required">*</span></label>
+													      <div class="col-md-9">
+													        <input type="text" [(ngModel)]="checkoutInfo.firstname" class="form-control form_field" formControlName="firstname" id="firstname"  maxlength="30" pattern="[a-zA-Z ]*" required>
+													        <div *ngIf="signUpForm.controls['firstname'].hasError('required') && submitted == true" class="alert alert-danger">First name is required</div>
+													        <!-- <div *ngIf="signUpForm.controls['firstname'].hasError('minlength') && signUpForm.controls['firstname'].touched" class="alert alert-danger">Your first name must be at least 4 characters long.</div> -->
+													        <div *ngIf="signUpForm.controls['firstname'].hasError('maxlength') && signUpForm.controls['firstname'].touched" class="alert alert-danger">Your enter more then 30 characters long.</div> 
+													        <div *ngIf="signUpForm.controls['firstname'].hasError('pattern') && signUpForm.controls['firstname'].touched" class="alert alert-danger">Only alphabets allowed.</div>
+													      </div>
+														</div>
+														  <div class="form-group" [ngClass]="{'has-error':!signUpForm.controls['lastname'].valid && signUpForm.controls['lastname'].touched}">
+													      <label class="control-label col-md-3" for="firstname">Last Name <span class="required">*</span></label>
+													      <div class="col-md-9">
+													        <input type="text"  [(ngModel)]="checkoutInfo.lastname" class="form-control form_field" id="lastname" formControlName="lastname" name="lastname"  maxlength="30" pattern="[a-zA-Z ]*" required>
+													        <div *ngIf="signUpForm.controls['lastname'].hasError('required') && submitted == true" class="alert alert-danger">Last name is required</div>
+													        <!-- <div *ngIf="signUpForm.controls['lastname'].hasError('minlength') && signUpForm.controls['lastname'].touched" class="alert alert-danger">Your last name must be at least 4 characters long.</div> -->
+													        <div *ngIf="signUpForm.controls['lastname'].hasError('maxlength') && signUpForm.controls['lastname'].touched" class="alert alert-danger">Your enter more then 30 characters long.</div> 
+													        <div *ngIf="signUpForm.controls['lastname'].hasError('pattern') && signUpForm.controls['lastname'].touched" class="alert alert-danger">Only alphabets allowed.</div>
+														  </div>  
+													      </div>
+													      
+													     
+														 <div class="form-group" [ngClass]="{'has-error':!signUpForm.controls['telephone'].valid && signUpForm.controls['telephone'].touched}">
+													      <label class="control-label col-md-3" for="firstname">Telephone <span class="required">*</span></label>
+													      <div class="col-md-9">
+													        <input type="text" class="form-control form_field" [(ngModel)]="checkoutInfo.telephone" id="telephone" name="telephone" formControlName="telephone" maxlength="16"   pattern="[+ 0-9]*">
+													        <div *ngIf="signUpForm.controls['telephone'].hasError('required') && submitted == true" class="alert alert-danger">Telephone is required</div>
+													        <div *ngIf="signUpForm.controls['telephone'].hasError('maxlength') && signUpForm.controls['telephone'].touched" class="alert alert-danger">Your enter phone number more then 16 digit</div>
+													        <!--minlength="10" <div *ngIf="signUpForm.controls['telephone'].hasError('minlength') && signUpForm.controls['telephone'].touched" class="alert alert-danger">Phone should be 10 digit.</div> -->
+													        <div *ngIf="signUpForm.controls['telephone'].hasError('pattern')" class="alert alert-danger">Enter correct phone number.</div>
+													      </div>
+														</div> 
+														<h3 class="dotted_border black" style="padding-right: 10px;margin-top:30px"><span class="gold">1c.</span> SHIPPING INFORMATION
+														</h3>
+															<div class="main_border" style="width: 68%;"></div>
+															<h5 id="emailHelp" class="form-text">DELIVERY ADDRESS</h5>
+														
+														<div class="form-group" [ngClass]="{'has-error':!signUpForm.controls['street1'].valid && signUpForm.controls['street1'].touched}">
+													      <label class="control-label col-md-3" for="firstname">Delivery Line 1 <span class="required">*</span></label>
+													      <div class="col-md-9">
+													        <input type="text" [(ngModel)]="checkoutInfo.street1" name="street1" id="street1" formControlName="street1" class="form-control form_field"  id="delivery_line1" name="delivery_line1" required>
+													        <div *ngIf="signUpForm.controls['street1'].hasError('required') && submitted == true" class="alert alert-danger">Delivery line is required</div>
+													        <div *ngIf="signUpForm.controls['street1'].hasError('minlength') && signUpForm.controls['street1'].touched" class="alert alert-danger">Your delivery line 1 must be at least 4 characters long.</div>
+													        <!--<div *ngIf="signUpForm.controls['region'].hasError('maxlength') && signUpForm.controls['region'].touched" class="alert alert-danger">Your enter more then 30 characters long.</div>  -->
+													      </div>
+														</div>
+														<div class="form-group">
+													      <label class="control-label col-md-3" for="firstname">Delivery Line 2</label>
+													      <div class="col-md-9">
+													        <input type="text" class="form-control form_field" [(ngModel)]="checkoutInfo.street2" name="street2" id="street2" formControlName="street2">
+													      </div>
+														</div> 
+														 <div class="form-group" [ngClass]="{'has-error':!signUpForm.controls['city'].valid && signUpForm.controls['city'].touched}">
+													      <label class="control-label col-md-3" for="firstname">City <span class="required">*</span></label>
+													      <div class="col-md-9">
+													        <input type="text" class="form-control form_field" [(ngModel)]="checkoutInfo.city" formControlName="city" id="city" name="city"  pattern="[a-zA-Z ]*" required>
+													         <div *ngIf="signUpForm.controls['city'].hasError('required') && submitted == true" class="alert alert-danger">City is required</div>
+													         <div *ngIf="signUpForm.controls['city'].hasError('pattern') && signUpForm.controls['city'].touched" class="alert alert-danger">Only alphabets allowed.</div>
+													      </div>
+														</div> 
+														  <div class="form-group" [ngClass]="{'has-error':!signUpForm.controls['country_id'].valid && signUpForm.controls['country_id'].touched}">
+													      <label class="control-label col-md-3" for="firstname">Country <span class="required">*</span></label>
+													      <div class="col-md-9">
+													        <select class="form-control form_field"  [(ngModel)]="checkoutInfo.country_id" formControlName="country_id" name="country_id" (change)="fetchRegions($event.target.value)" required>
+															    <option *ngFor="let country of countries" value="{{country.id}}">{{country.full_name_english}}</option>
+															</select>
+															 <div *ngIf="signUpForm.controls['country_id'].hasError('required') && submitted == true" class="alert alert-danger">Select country is required</div>
+													      </div>
+														</div> 
+														<div class="form-group" [ngClass]="{'has-error':!signUpForm.controls['region'].valid && signUpForm.controls['region'].touched}">
+													      <label class="control-label col-md-3" for="firstname">Region <span class="required">*</span></label>
+													      <div class="col-md-9" *ngIf="!regionError">
+													          <select class="form-control form_field" name="region" formControlName="region" [(ngModel)]="checkoutInfo.region" required>
+															    <option *ngFor="let region of avl_regions" value="{{region.name}}">{{region.name}}</option>
+															  </select>
+															  <div *ngIf="signUpForm.controls['region'].hasError('required') && submitted == true" class="alert alert-danger">Select region is required</div>
+															  <!-- <div *ngIf="regionError" class="alert alert-danger">Region not available</div> -->
+													      </div>
+													      <div class="col-md-9" *ngIf="regionError">
+													        <input type="text" class="form-control form_field" [(ngModel)]="checkoutInfo.region" name="region" id="region" formControlName="region" required>
+													        <div *ngIf="signUpForm.controls['region'].hasError('required') && submitted == true" class="alert alert-danger">Region is required</div>
+													      </div>
+													      
+													      
+														</div> 
+														 <div class="form-group" [ngClass]="{'has-error':!signUpForm.controls['postcode'].valid && signUpForm.controls['postcode'].touched}">
+													      <label class="control-label col-md-3" for="firstname">ZIP Code <span class="required">*</span></label>
+													      <div class="col-md-9">
+													        <input type="text" class="form-control form_field"  [(ngModel)]="checkoutInfo.postcode" id="postcode" name="postcode" formControlName="postcode"  maxlength="30" pattern="[a-zA-Z0-9]*"  required>
+													        <div *ngIf="signUpForm.controls['postcode'].hasError('required') && submitted == true" class="alert alert-danger">Zip code is required.</div>
+													         <!-- <div *ngIf="signUpForm.controls['postcode'].hasError('minlength')" class="alert alert-danger">Enter 5 digit number.</div>  -->
+													         <!-- <div *ngIf="signUpForm.controls['postcode'].hasError('pattern') && ! signUpForm.controls['postcode'].hasError('minlength')" class="alert alert-danger">Zip code should be only numbers.</div> -->
+													         <div *ngIf="signUpForm.controls['postcode'].hasError('pattern')" class="alert alert-danger">Enter correct zip code.</div>
+													      </div>
+														</div> 
+														
+														 
+														<!-- <div class="row" style="padding-left: 15px;margin-top:60px;">
+														<h3 class="dotted_border black"><span class="gold black">1d.</span>SHIPPING METHOD</h3>
+														<div class="main_border" style="width: 74%;"></div>
+														</div>
+														<div class="col-md-3 col-xs-8 radio" style="padding-top: 0px !important;">
+														      <label><input type="radio" [(ngModel)]="shippingMethod" id="shippingMethod" name="shippingMethod" formControlName="shippingMethod"  value="freeshipping" (click)="freeShipping()"  required="!shippingMethod = ''">FREE SHIPPING</label>
+													    </div>
+													    
+													    
+													    <div class="col-md-9 col-xs-4">$ 0.0</div>
+													    <div class="col-md-12">
+														    <div class="radio radio_bottom">
+															      <label><input type="radio"  [(ngModel)]="shippingMethod" id="shippingMethod" name="shippingMethod" formControlName="shippingMethod" value="flatrate" (click)="expeShiiping()"  required="!shippingMethod = ''">EXPEDITED SHIPPING</label>
+														    </div>
+														   <div *ngIf="signUpForm.controls['shippingMethod'].hasError('required') && submitted == true" class="alert alert-danger">Shipping method is required</div>
+													    </div> -->
+													    
+													    
+													     <button type="submit"  (click)="submitted=true" class="btn btn_login" >NEXT</button>
+													     
+													</div>
+												</div>
+											</form>    
+										</div>    
+				               		</div>	
+				               </div>
+				            </div>
+				        </div>
+				    </div>
+				    <div class="panel panel-default" id="ShippingProgress2">
+				        <div class="panel-heading review-head">
+				        	<div class="number" id="reviewCartDiv2">2</div>
+				            <h2 class="panel-title checkout-cart-page">
+				                <a class="accordion-toggle" style="display: block;" #reviewCartDiv id="reviewCartDiv" (click)="reviewCartValidateStep()"> 
+				                REVIEW CART <small id="emailHelp" class="form-text text-muted gold">STEP 2 0F 3</small><i (click)="reviewCartValidateStep()" id="reviewCartDivIcon" class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+				                </a>
+				            </h2>
+				        </div>
+				        <div id="collapseTwo" class="panel-collapse collapse">
+				            <div class="panel-body">
+				                <div class="col-md-12">
+				                   <form class="form-horizontal" [formGroup]="reviewCartForm" (submit)="reviewCartInformation()" novalidate  >
+				                	<div class="row">
+				                		<h3 class="dotted_border black"><span class="name_abc gold black">2a.</span>INFORMATION & SHIPPING ADDRESS <span class="font_edit" (click)="editShippingAddress()">EDIT <i  class="fa fa-edit"></i></span></h3>
+				                		<div class="solid_border" style="width: 50%;"></div>
+				                		<div style="padding:10px;">
+					                		<p class="person_name">{{checkoutInfo.firstname}} {{checkoutInfo.lastname}}</p>
+						            		<p>{{checkoutInfo.street1}}</p>
+						            		<p *ngIf="checkoutInfo.street1.length">{{checkoutInfo.street2}}, {{this.checkoutInfo.region}} {{checkoutInfo.region_code}} {{checkoutInfo.city}}</p>
+						            		<p>{{checkoutInfo.postcode}}</p>
+						            		<p>{{checkoutInfo.country_id}}  </p>
+						            		<p>{{checkoutInfo.telephone}}</p>
+						            		<p>{{checkoutInfo.email}}</p>
+									</div>
+					                <!-- <div class="row" style="margin-top:30px;">
+					                	<div class="col-md-12">	
+						                	<h3 class="dotted_border black"><span class="name_abc gold black"> 2b.</span>SHIPPING <span class="font_edit">EDIT <i class="fa fa-edit"></i></span><br><small id="emailHelp" class="form-text col-md-12">FREE SHIIPING</small>
+						                	</h3>
+						                	<div class="solid_border" style="width: 78%;"></div>
+					                    </div>
+					                </div> -->
+					                <div class="row" style="margin-top:30px;">
+					                    <div class="col-md-12">	
+						                	<h3 class="dotted_border black"><span class="name_abc gold black"> 2b.</span>PROMO CODE</h3>
+						                	<div class="col-md-12">
+						                	<div class="input-group cart_wrapper col-md-5 ">
+					    						<input type="text" class="form-control btn_search_text form_field" placeholder="Enter Promotional Code">
+					      						<span class="input-group-btn">
+					       						 <button type="button" class="btn btn-default btn_search form_field">APPLY COUPON</button>
+					      						</span>
+											</div>
+											</div>
+										</div>
+									</div>
+										<div class="row" style="margin-top:30px;">
+											<div class="col-md-12">	
+						                		<h3 class="dotted_border black" style="padding-top: 10px;"><span class="name_abc gold black policies-txt"> 2c.</span>OFPOISON POLICIES</h3>
+						                		<div class="solid_border" style="width: 73%;"></div>
+											</div>
+										</div>
+										<!-- Accordian 2a start -->
+										
+					                	<!-- <div class="col-md-12 padding-mobile" style="padding-bottom: 10px;">
+					                		<div class="inner inner-border">
+					                		<div class="panel-group panel_main" id="accordion2">
+				    							<div class="panel panel-default">
+							        				<div class="panel-heading panel_title">
+											            <h4 class="panel-title" style="font-size: 15px;">
+											                <a class="accordion-toggle" style="display: block;" data-toggle="collapse" data-parent="#accordion2" href="#collapse2">
+											                SHIPPING INFORMATION<br><small id="emailHelp" class="form-text text-muted">(Items will be shipped seperately by Brand)</small><i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i> 
+											                </a>
+											            </h4>
+											        </div>
+												        <div id="collapse2" class="panel-collapse collapse" style="border-left: none;">
+					            							<div class="panel-body" style="padding-left: 0px;">
+					            							<div class="col-md-12">	
+					            							<div class="row" style="padding-top: 15px;">	
+																<textarea class="text_area_shipping">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+																</textarea>
+															</div>
+															</div>
+					            							</div>
+					            						</div>		
+							                	</div>
+							                </div>
+							            </div>
+							        </div> -->
+							
+							            <!--End Accordian 2a  -->
+							            <!--Accordian 2b start -->
+							            <div class="col-md-12" style="padding-bottom: 15px;">
+							            	<div class="inner inner-border">
+					                		<div class="panel-group panel_main" id="accordion2b">
+				    							<div class="panel panel-default">
+							        				<div class="panel-heading panel_title">
+											            <h4 class="panel-title" style="font-size: 15px;">
+											                <a class="accordion-toggle" style="display: block;" data-toggle="collapse" data-parent="#accordion2b" href="#collapse2b">
+											                RETURN POLICY<br><small id="emailHelp" class="form-text text-muted">(Customer has 7 days after the package has been delivered to fill and fullfill an online form fo Exchange or Refunds)</small><i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i> 
+											                </a>
+											            </h4>
+											        </div>
+												        <div id="collapse2b" class="panel-collapse collapse" style="border-left: none;">
+					            							<div class="panel-body">
+
+					            							</div>
+					            						</div>		
+							                	</div>
+							                </div>
+							            </div>
+							        </div>
+							            <!--End Accordian 2b  -->
+							            <!--Accordian 2c start -->
+							            <div class="col-md-12" style="padding-bottom: 10px;">
+							            	<div class="inner inner-border">
+					                		<div class="panel-group panel_main" id="accordion2c">
+				    							<div class="panel panel-default">
+							        				<div class="panel-heading panel_title">
+											            <h4 class="panel-title" style="font-size: 15px;">
+											                <a class="accordion-toggle" style="display: block;" data-toggle="collapse" data-parent="#accordion2c" href="#collapse2c">
+											                TAX & VAT<br><small id="emailHelp" class="form-text text-muted">(Customer may be expected to pay Import Duties or VAT to the Carrier to release your order from customs.)</small><i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i> 
+											                </a>
+											            </h4>
+											        </div>
+												        <div id="collapse2c" class="panel-collapse collapse" style="border-left: none;">
+					            							<div class="panel-body">
+
+					            							</div>
+					            						</div>		
+							                	</div>
+							                </div>
+							                </div>
+							                <div class="checkbox">
+											  <label style="padding-top: 20px;"><input type="checkbox" value="true"  [(ngModel)]="termCondtion1" id="termCondtion1" name="termCondtion1" formControlName="termCondtion1" required>I have read and hereby agree to the Shipping Information, Return Policy and Tax & Vat custom duties.</label>
+											</div>
+											<div *ngIf="reviewCartForm.controls['termCondtion1'].hasError('required') && submittedReview == true" class="alert alert-danger">Please select term and condition</div>
+											<div class="checkbox">
+											  <label><input type="checkbox" value="true"  [(ngModel)]="termCondtion2" id="termCondtion2" name="termCondtion2"  formControlName="termCondtion2" required>I have reviewed the items in the cart in terms of size, quantity and price.</label>
+											</div>
+											<div *ngIf="reviewCartForm.controls['termCondtion2'].hasError('required') && submittedReview == true" class="alert alert-danger">Please select terms condition</div>
+											
+											<!-- <div class="checkbox">
+											<label for="card-element" *ngIf="storeCredit > 0">
+									          <input type="checkbox" [(ngModel)]="useStoreCredit" formControlName="useStoreCredit" name="useStoreCredit" value="true" (change)="deductInGrandTotal(useStoreCredit)" >Use store credit to checkout ({{storeCredit | currency}} available)
+									        </label>
+									        </div> -->
+										    
+							        </div>
+							            <!--End Accordian 2c  -->
+							           <!--  <h3 class="dotted_border black" style="padding-top: 30px;"><span class="name_abc gold black"> 2d.</span>NOTES</h3> -->
+							            <div class="col-md-12">
+							            	<!-- <textarea class="text_area notes-text-area">Do you have anything to tell us regarding your order?
+											</textarea> -->
+											 <button type="submit" (click)="submittedReview=true" class="btn btn_login">NEXT</button>
+							            </div>	
+				                	</div>
+				                	</form>
+								</div>
+								
+								<!-- <p style="margin:0;" class="black checkout-cart-page">SHIPPING</p> -->
+			
+			 <!--  <form [formGroup]="shippingForm">  -->
+			<div class="shipping-info hide-mob-view-id" *ngIf="shippingEstimate.length">
+					<p>Please select which brands you would like standard or expedited</p>
+					<div *ngFor="let meth of shippingEstimate;let i = index">
+					<div class="form-group" >
+						<div class="shipping-checkbox">
+								<label class="form-check-label" for="exampleCheck1">{{meth.carrier_code}}
+							</label>
+						</div>
+						<div class="price-shiping">
+							<span>{{meth.shippingMethodTotal | currency}}</span>
+						</div>
+					</div>
+					   <div class="form-group" *ngFor="let item of meth.vendor_code;let j = index">
+						<div class="shipping-checkbox" style="margin-left: 20px; margin-top: -10px;">
+							<input type="checkbox" class="form-check-input"  [disabled]="isSelectionEnabled(meth.method_title,item)"  (change)="disabledOtherOptionForVendor(meth.method_title,item)" [(ngModel)]="getProductString(item,meth.method_title).selected"  id="{{item}}_{{j}}"  />  
+							<label class="form-check-label" for="exampleCheck2"><span>{{getProductString(item,meth.method_title).productString}}</span>
+						</label>
+						</div>
+						<div class="price-shiping">
+							 <span>{{meth.price_incl_tax | currency}}</span>
+						</div>
+					    </div>  
+                    </div>
+                    
+                </div>
+			<!-- </form>   -->
+								
+				            </div>
+				        </div>
+				    </div>
+				     <div class="panel panel-default" id="ShippingProgress3">
+				        <div class="panel-heading" style="border-left:0;">
+				        	<div class="number">3</div>
+				            <h2 class="panel-title checkout-cart-page">
+				                <a class="accordion-toggle" #paymentDiv id="paymentDiv" style="display: block;" (click)="paymentValidateStep()">
+				                PAYMENT<small id="emailHelp" class="form-text text-muted gold">STEP 3 0F 3</small><i (click)="paymentValidateStep()" class="indicator glyphicon glyphicon-chevron-down pull-right"></i>
+				                </a>
+				            </h2>
+				        </div>
+				        <div id="collapseThree" class="panel-collapse collapse">
+				            <div class="panel-body">
+				              <!--   <div class="col-md-12">
+				                	<div class="radio radio_bottom radio_border">
+								        <label><input type="radio" name="optradio"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png"></label>
+									</div>
+									<div class="radio radio_bottom radio_border">
+								        <label><input type="radio" name="optradio"><img src="./assets/images/apple-pay.jpg" width="40px" ></label>
+									</div>
+									<div class="radio radio_bottom radio_border">
+								        <label><input type="radio" name="optradio">Credit Card <img class="img_greyscale" src="http://www.credit-card-logos.com/images/american_express_credit-card-logos/american_express_logo_5.gif"><img class="img_greyscale" src="http://www.credit-card-logos.com/images/multiple_credit-card-logos-2/credit_card_logos_43.gif"><img class="img_greyscale" src="http://www.credit-card-logos.com/images/mastercard_credit-card-logos/mastercard_logo_2.gif">
+								        <div class='form-group' style="margin-top: 10px;">
+								        	<div class="row">
+							                <label class='control-label' style="padding-left: 15px;">Credit Card Number <span class="required">*</span></label>
+							            	</div>
+							                <input class='form-control credit_card_form' type='text' placeholder="xxxx - xxxx - xxxx - xxxx">
+							            </div>
+							            <div class="row">
+							            	 <label class='control-label' style="padding-left: 15px;">Expiration Date <span class="required">*</span></label> 	 
+							            </div>
+							            <div class="col-md-2 col-xs-3">
+							            	<div class="row">
+							            	<input class='form-control credit_card_form' type='text' style="width: 40px; padding: 5px;height: 20px;font-size: 12px;" placeholder="MM">
+							            	</div>
+							            </div> 	
+							             <div class="col-md-2 col-xs-3">
+							            	<div class="row">
+							            	<input class='form-control credit_card_form' type='text' style="display: inline-block; width: 40px; padding: 5px;height: 20px; font-size: 12px;" placeholder="YY">
+							            	</div>
+							            </div>
+							           <div class="col-md-12" style="padding-left: 0; margin-top: 10px;">
+							           	<div class="row">
+							           		<label class='control-label' style="padding-left: 15px;">Card Verification Number <span class="required">*</span></label>
+							           	</div>	
+							           	<div class="col-md-2 col-xs-3">
+							            	<div class="row">
+							            	<input class='form-control credit_card_form' type='text' style="width: 40px; padding: 5px;height: 20px;font-size: 12px;">
+							            	</div>
+							            </div>
+							            <div class="row"><i class="fas fa-question"></i>
+							            </div> 	
+							           </div>
+							           <div class="checkbox">
+											  <label style="padding-top: 20px;"><input type="checkbox" value="">My shipping address and billing address are the same.</label>
+										</div>
+										<button type="button" class="btn btn-default button_pay" (click)="payPayment()" >PAY</button>
+									   </label>
+									   
+									   
+									  
+
+
+
+									</div>
+									<div class="radio radio_bottom">
+								        <label><input type="radio" name="optradio">eWallets
+								        <div class="col-md-12 col-xs-12" style="padding-top: 10px;">
+								        	<img class="image-gpay" src="assets/images/gpay.jpg">
+											<img class="image-bitpay" src="assets/images/bitpay.png">
+											<img class="image-alipay" src="assets/images/alipay.png">
+											<img class="image-sepa" src="assets/images/sepa.png">
+											<img class="image-ideal" src="assets/images/ideal.gif">
+										</div>	
+								        </label>
+								        
+									</div>
+										
+				                </div> -->
+
+				                <div class='col-md-12'>
+				                	<form #checkout="ngForm" (ngSubmit)="onSubmit(checkout)" id="payment-form">
+									  <div class="form-row">
+									     <!-- <label for="card-element" *ngIf="storeCredit > 0">
+									     <input type="checkbox" [(ngModel)]="useStoreCredit" name="useStoreCredit" value="true" (change)="deductInGrandTotal(useStoreCredit)" >Use store credit to checkout ({{storeCredit | currency}} available)
+									    </label> --> 
+									    
+									    <div class="col-md-12 payment-btn-checkout" *ngIf="storeCredit > 0 && availableCredit">
+									    <label class="black"> Available : {{storeCredit | currency}} </label>
+										
+										<button type="button"  (click)="deductInGrandTotal(true)" class="btn btn_login use-store-credit-btn">USE STORE CREDIT</button>
+
+										</div>
+										
+										<div class="col-md-12 remove-credit-btn" *ngIf="storeCredit > 0 && appliedCredit">
+										<label class="black" for="card-element" >Applied: - {{spentStoreCredit | currency}}</label> 
+									      <button type="button" (click)="deductInGrandTotal(false)" class="btn btn_login use-store-credit-btn">REMOVE STORE CREDIT</button>
+									    </div>
+
+										<label for="card-element" *ngIf="!shippingFree">
+									      Credit or debit card
+									    </label>
+									    <div id="card-info" #cardInfo *ngIf="!shippingFree">
+									      <!-- A Stripe Element will be inserted here. -->
+									    </div>
+
+									    <!-- Used to display form errors. -->
+									     <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
+									  </div>
+
+									  <button class="btn btn_login pay-credit-btn" type="submit">Pay</button>
+
+									  <!-- <button type="button" class="btn btn-default button_pay" (click)="payPayment()" >PAY</button> -->
+									</form>
+									<br /><br /><br /><br />
+									<div class="form-row" *ngIf="!shippingFree">
+										 <label for="card-element">
+									      Google Pay
+									    </label>
+									<div id="payment-request-button" *ngIf="!shippingFree">
+									  <!-- A Stripe Element will be inserted here. -->
+									</div>
+									</div>
+									
+
+				                	<!-- <form #checkout="ngForm" (ngSubmit)="onSubmit(checkout)" class="checkout">
+										<div class="form-row">
+										  <label for="card-info">Card Info</label>
+										  <div id="card-info" #cardInfo></div>
+									  
+										  <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
+										</div>
+									  
+										<button type="submit">Pay $777</button>
+									</form> -->
+
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+			</div>
+			<!--column 8 ends -->
+			
+		</div>
+	</div>
+	
+	
+	
+	<div class="modal fade" id="editDetails" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog" style="width:700px;" >
+        
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" id="quickview_close1" class="close"    (click)="closeModal()" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="demo">
+                  <div class="container" style="width: 100%;">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="row">
+                       
+                        <div class="col-md-10">
+                            <div id="owl-demo" class="product_modal owl-carousel owl-theme" #owl1>
+                              <div *ngFor="let entry of singleProduct.mediaEntries; let ind = index">
+                              <div class="item">
+                                  <img [src]="entry.imageValue" alt="" class="slider_img">
+                              </div> 
+                            </div>
+                              
+                            </div>
+                        
+                          </div>
+                          <div class="col-md-2 product_modal_thumbnail" style="width: 14%;">
+                            <div *ngFor="let entry of singleProduct.mediaEntries" class="row">
+                              <img [src]="entry.imageValue" alt=""  class="img-thumbnail"/>             
+                            </div>
+                       
+                        </div>
+                  
+                      <div class="col-md-7">
+                        <div class="row">
+                          <h2 style="color: #87764e;font-weight:700;margin-top: 5px;margin-bottom: 0;">{{singleProduct.name}}</h2>
+                          <p style="margin-bottom: 0px;font-size: 12px;font-weight: 600;color: #87764e;    text-transform: uppercase;">{{singleProduct.brand}}</p>
+                          <p style="font-size:20px;margin-bottom: 15px; color: grey">${{singleProduct.price}}</p>
+                          <h5 style="text-transform:uppercase;color:#87764e;"><strong>Product Details</strong></h5>
+                          <p style="color: #7d7070" #prdDesc></p>
+                        </div>
+                      </div>
+                      <div class="col-md-5">
+                        <div class="">
+                          <div class="" style="text-align: right;text-transform: uppercase;"><h5 style="color:#87764e;"><strong>Share</strong></h5></div>
+                        </div>
+                        <div class="">
+                          <p style="text-align: right;"><span><a href="" class="bt btn_size"><i  style="font-size:17px;color:#87764e;" class="fa fa-facebook"></i></a></span>
+                            <span><a href="" class="bt btn_size"><i class="fa fa-twitter" style="font-size:17px;color:#87764e;"></i></a></span>
+                            <span><a href="" class="bt btn_size"><i class="fa fa-pinterest-p" style="font-size:17px;color:red"></i></a></span>
+                          </p>
+                        </div>
+                        <div class="row" style="padding-left: 10px;" *ngIf="singleProduct.type_id == 'configurable'">
+                          <p style="margin-bottom: 2px;font-size: 13px;">SIZE</p>
+                          <p>
+                            <span *ngFor="let size of singleProduct.sizeOptions">
+                                <div class="btn btn_size">
+                                  <input name="size" id="{{size.valueCode}}" [checked]="size.valueCode == editSize.valueCode"  type="radio" style="display:none;" value="{{size.valueCode}}" (click)="setSelectedSize(size.valueCode)">
+                                  <label for="{{size.valueCode}}" style="padding:5px 10px 3px;border:1px solid #333;">{{size.sizeCode}} </label>
+                                </div>
+                              </span>
+                          </p>
+                        </div>
+                        <div  class="row" style="padding-left: 10px;" *ngIf="singleProduct.type_id == 'configurable'">
+                           <p style="margin-bottom: 2px;font-size: 13px;">COLOR</p>
+                          <p>                            
+                            <span *ngFor="let color of singleProduct.colorOptions">
+                                <div class="btn btn_color">
+                                  <input id="{{color.valueCode}}" name="color" type="radio" [checked]="color.valueCode == editColor.valueCode" style="display:none;" value="{{color.valueCode}}" (click)="setSelectedColor(color.valueCode)">
+                                  <label for="{{color.valueCode}}" style="font-weight: bold;padding: 16px 18px;" [style.background]="color.colorCode"></label>
+                                </div>
+                              </span>
+                          </p>
+                        </div>
+
+						<div class="row" style="padding-left: 10px;">
+							<p style="margin-bottom: 2px; font-size: 13px;">QUANTITY</p>
+							<input type="number" [(ngModel)]="editItem.quantity" class="qty">
+							 <a *ngIf="singleProduct.type_id == 'configurable'" class="add_to_cart btn" style="background:#87764e;border-radius:0;" (click)="updateCartItem(singleProduct);">Update</a>
+							 <a  *ngIf="singleProduct.type_id != 'configurable'" class="add_to_cart btn" style="background:#87764e;border-radius:0;" (click)="updateQuantity(editItem);">Update</a>
+						</div>
+                        
+                      </div>
+                    </div>
+                    </div>  
+                  </div>
+                </div>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div> 

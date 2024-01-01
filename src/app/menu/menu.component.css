@@ -1,0 +1,79 @@
+.minicart{
+
+    position: absolute;
+    z-index: 10;
+    right: 0;
+    left: auto;
+    top: 36px;
+    display: none;
+    padding: 0;
+
+}
+
+.active{
+	font-weight: bold;
+}
+/* 
+.col-md-3.myaccount{
+    display: flex;
+    justify-content: flex-end;
+    padding: 8.5px 25px;
+} */
+
+.magzine{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 23px; 
+}
+
+.serach2 {
+    padding-left: 23px; 
+}
+
+/* 
+.myaccount {
+    display: flex;
+    justify-content: flex-end;
+}
+*/
+/* .myaccount .row{
+    margin: 0;
+}  */
+
+.padding-top, .cart-div-nav .cart{
+    padding: 9px 0;
+    border-radius: 0;
+}
+
+.cart-div-nav .cart:hover i, .sort-cust-desktop a:hover i{
+    color: #fff;
+}
+
+.bord-right-nav {
+    border-right: 2px solid #48370f;
+}
+
+.cart-div-nav {
+    display: flex;justify-content: center;
+    align-items: center;
+}
+ 
+.cart-div-nav a{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 0 !important;
+ }
+
+
+ .cart-div-nav a i{
+    font-size: 16px;
+ }
+
+
+/* .store .row {
+    display: flex;
+    align-items: center;
+} */

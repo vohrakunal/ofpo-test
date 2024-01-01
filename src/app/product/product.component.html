@@ -1,0 +1,961 @@
+<div class="container" (click)="fadeOut()">
+  <!-- <ngx-image-zoom
+                    [thumbImage]="'https://ofpoison.com/magento2/pub/media/catalog/product/l/o/louis-vuitton-pochette-cle-monogram-other-canvas-small-leather-goods--m44487_pm1_back_view.jpg'"
+                    [fullImage]="'https://ofpoison.com/magento2/pub/media/catalog/product/l/o/louis-vuitton-pochette-cle-monogram-other-canvas-small-leather-goods--m44487_pm1_back_view.jpg'"
+                 ></ngx-image-zoom> -->
+
+  <div class="image-wrapper">
+    <div class="row">
+      <div class="col-md-6 adDiv ad-div-left">
+        <div #articleAd></div>
+      </div>
+      <div class="col-md-6 adDiv ad-div-right">
+        <div #productAd></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!---main row start-->
+      <div class="outterProDiv col-md-6 col-xs-12 outter article">
+        <div class="inner article-side-inner articleinner1">
+          <!---first half start-->
+          <div class="insidearticle">
+
+
+            <!-- <div class="col-md-12 leaderboard-product-article">
+            <img src="./assets/images/seiko-add.png" alt="">
+          </div> -->
+
+            <!-- <div class="col-md-12 leaderboard-product-article">
+            <img src="./assets/images/magzine-add.png" alt="">
+          </div> -->
+
+
+            <div class="row">
+
+              <div class="popup-div-main-as" *ngIf="showZoom" >
+                    <!-- model for zoom -->
+
+                    <div class="popup-product" >
+                        <div class="popup__content text-center">
+                          <app-image-zoom 
+                                                    *ngIf="showZoom" 
+                                                    [src]="zoomableImg" 
+                                                    [xPos]="xPos" 
+                                                    [yPos]="yPos">
+                          </app-image-zoom>
+                        </div>
+                      </div>
+              </div>
+
+              <div class="col-md-12 insidearticle product-inner-page-main">
+                <div class="A2" style="padding-bottom: 20px;">
+                  <!-- <p style="padding: 10px 0 10px 15px;margin-bottom: 0;color: #1a1a1a;">MAGZINE</p> -->
+                  <div *ngFor="let article of relatedArticles;let j = index">
+                    <div *ngIf="article.articleClassification == 'A2'" class="row cust-p2-inner" style="margin:0;">
+                      <div class="col-md-6 col-xs-6 a2" style="padding-right: 0;padding-left:0px;">
+                        <img src="{{article.imageValue}}" width="100%">
+                      </div>
+                      <div class="col-md-6 col-xs-6 a2" style="background: #fff;padding-bottom: 11px;">
+                        <div class="article1">
+                          <p class="article-subheading bold">{{article.name}}</p>
+                          <!--  <h3 class="article-title black" style="border-bottom: 1px solid #ccc;">{{article.brand}}</h3> -->
+                          <p class="article-date">{{article.magazine}}</p>
+                          <p style="font-size:12px;">{{article.articleDate | date:'MMM dd, yyyy'}}</p>
+                          <P class="read-btn-whishlist-article bookmark-click-read"><a class="btn btn_gray bold"
+                              [routerLink]="[getPath(article.article_detail_display),article.sku,categoryId]">CLICK TO
+                              READ</a><span style="float: right;"><img (click)="addItemToWishList(article.productId)"
+                                style="width:14px;" src="./assets/images/bookmark.png"></span></P>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div *ngIf="article.articleClassification == 'A3'" class="col-md-12 cust-article-type-a3" [ngStyle]="{'background-image': 'url('+ article.imageValue +')'}">
+                      <!-- <div class="a3-overlay"></div> -->
+                      <div class="col-md-5 col-xs-12 a3" [routerLink]="[getPath(article.article_detail_display),article.sku,categoryId]">
+                        <!-- <div class="produ-a3-desc">
+                        <p class="a3-descr"><a   [routerLink]="[getPath(article.article_detail_display),article.sku,categoryId]">{{article.name}}</a></p>
+                        <h3 class="a3-brand black">{{article.brand}}</h3> 
+                    <p class="article-date">{{article.magazine}} | {{article.articleDate | date:'MMM dd, yyyy'}}</p> 
+                      <p class="a3-brand-desc-small">From cult skate shop to fashion superpower</p>
+                    </div> -->
+                      </div>
+
+                      <div class="col-md-7 col-xs-12 article-type-a3" style="padding-bottom: 11px;">
+                        <div class="article1 a3-type-bookmark-main-div">
+                          <p class="a3-btn-click-read type-a3-bookmark-click-read">
+                            <a class="btn btn_gray" [routerLink]="[getPath(article.article_detail_display),article.sku,categoryId]">CLICK
+                              TO READ</a>
+                            <span style="float: right;"><img (click)="addItemToWishList(article.productId)" style="width:14px;"
+                                src="./assets/images/bookmark.png"></span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div *ngIf="article.articleClassification == 'A1'" class="col-md-6 A1 inner-article-a1" style="position: relative;">
+                      <img src="{{article.imageValue}}" width="100%" class="a2">
+                      <div class="article2">
+                        <p class="article-subheading bold">{{article.name}}{{article.article_detail_display}}</p>
+                        <p style="font-size: 12px;margin-bottom: 0;">{{article.magazine}} | {{article.articleDate |
+                          date:'MMM dd, yyyy'}}</p>
+                        <p class="bookmark-click-read"><a class="btn btn_gray bold" [routerLink]="[getPath(article.article_detail_display),article.sku,categoryId]">CLICK
+                            TO READ</a><span style="float: right;"><img (click)="addItemToWishList(article.productId)"
+                              style="width:14px;" src="./assets/images/bookmark.png"></span></p>
+                      </div>
+                    </div>
+
+                    <div *ngFor="let artadd of displayArticalAdds">
+                      <div class="col-md-12 adDiv" style="padding: 0px;" *ngIf="j == artadd ; else elseBlock">
+                        <div #articleInlineAd></div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <!-- <div class="row">
+            <div *ngFor="let article of relatedArticles" style="padding:0 15px;">
+              <div *ngIf="article.articleClassification == 'A1'" class="col-md-6 A1" style="padding-right:0;position: relative;padding-top: 15px;">
+                    <img src="{{article.imageValue}}" width="100%" class="a2">
+                    <div class="article2">
+                    
+                      <p class="article-subheading">{{article.name}}{{article.article_detail_display}}</p>
+                      <p class="article-date bold">{{article.magazine}} | {{article.articleDate | date:'MMM dd, yyyy'}}</p>
+                      <p style="margin-bottom: 0;"><a class="btn btn_gray bold" [routerLink]="[getPath(article.article_detail_display),article.sku,categoryId]">CLICK TO READ</a><span style="float: right;"><img style="width:25px;" src="./assets/images/bookmark.png"></span></p>
+                  
+                    </div>
+              </div>
+              </div>  
+          </div> -->
+            <!-- <div class="last-a1-row">
+          
+            </div>     -->
+            <!-- <div class="last-a1-row">
+          
+            </div>     -->
+          </div>
+        </div>
+        <!---first half end-->
+        <div class="col-xs-1 hidden-sm hidden-md hidden-lg store-pro-swipe">
+          <div class="mobileproduct">
+            <div><span class="gold">STORE</span> | TAP TO SEE RELATED PRODUCTS
+
+              <img class="arrow-right-mob" src="./assets/images/arrow-right.png" alt="arrow">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="outterProDiv col-md-6 col-xs-6 outter productoutter related-pro-swipe">
+        <div class="col-xs-1 hidden-sm hidden-md hidden-lg">
+          <div class="mobilearticle">
+            <div><span class="gold">MAGZAINE</span> | TAP TO SEE RELATED ARTICLES
+
+              <img class="arrow-left-mob" src="./assets/images/arrow-left.png" alt="arrow">
+
+            </div>
+          </div>
+        </div>
+
+        <div class="inner productpageinner">
+          <!--second half start-->
+          <div class="insideproduct">
+            <!-- <p style="padding: 10px 0 10px 15px;margin-bottom: 0;text-align: right;color: #fff">STORE</p> -->
+            <!-- <div class="row leader-board-product">         
+        <div class="col-md-12 product-add">
+          <img src="./assets/images/seiko-add.png" alt="">
+        </div>
+      </div> -->
+
+
+            <div class="product-row">
+              <div style="padding-top:15px;padding-left: 0px;padding-right: 10px;">
+
+                <div class="row">
+
+                  <div class="col-md-12 proct-thum-img">
+
+                    <div class="row">
+
+                      <!-- <div class="hidden-md hidden-sm hidden-lg">
+                  <h4 class="product-title"><a  class="product-title black">{{product.name}}</a></h4>
+                  <p class="product-cat1">{{product.brand}}</p>
+                  <p class="product-price">$ {{product.price}}</p>
+              </div> -->
+
+                      <div class="col-md-8 wrapCarouselFull">
+
+
+                        <div class="owl-carousel owl-theme product_carousel carousel-full" #owl>
+                          <div *ngFor="let entry of product.mediaEntries" class="carousel-full owl-carousel">
+                            <div class="item owl_item item-carousel-full">
+
+                              <!-- <a href="{{entry.imageValue}}" data-toggle="modal" data-target="#myModal-1"><img src="{{entry.imageValue}}" alt="" class="slider_img myimage"></a>  -->
+
+                              <!-- <a href="{{entry.imageValue}}">
+                            <img class="cloudzoom"
+
+                                src="{{entry.imageValue}}"
+                                alt=""
+                                data-cloudzoom="
+                                  zoomPosition:'inside',
+                                  zoomOffsetX:0,
+                                  zoomFlyOut:false,
+                                  variableMagnification:false,
+                                  disableZoom:'auto',
+                                  touchStartDelay:100,
+                                  propagateGalleryEvent:true
+
+                                "> -->
+                              <img (click)="openZoom($event, true, entry.imageValue)" (mouseleave)="openZoom($event, false, entry.imageValue)"
+                                (mousemove)="positionZoom($event)" [src]="entry.imageValue" />
+
+                              <!--  <img 
+                                  (click)="openZoom($event, true, entry.imageValue)" 
+                                  
+                                  (mousemove)="positionZoom($event)"
+                                  [src]="entry.imageValue" 
+                                  
+                                /> -->
+
+
+
+
+                              <!-- </a> -->
+
+                            </div>
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                      <div class="col-md-4 wrapCarouselThumbs">
+
+                        <div class="product_carousel_thumbnail owl-carousel carousel-thumbs">
+                          <div *ngFor="let entry of product.mediaEntries" class="item-carousel-thumbs">
+                            <img src="{{entry.imageValue}}" alt="" class="thumbnail_img" />
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-12 product-details" style="color: #fff;">
+
+                    <div class="row product-info-pp">
+
+                      <div class="col-md-6">
+
+                        <div class="product-div">
+                          <h4 class="product-title"><a class="product-title black">{{product.name}}</a></h4>
+                          <p class="product-cat">{{product.brand}}</p>
+                          <p class="product-price">$ {{product.price}}</p>
+
+                        </div>
+
+                        <div class="size-row" *ngIf="product.type_id == 'configurable'">
+                          <p class="size-txt">SIZE</p>
+                          <p class="size-boxes">
+                            <span *ngFor="let size of product.sizeOptions">
+                              <div class="btn btn_size">
+                                <input name="size" id="{{size.valueCode}}" type="radio" style="display: none;" value="{{size.valueCode}}"
+                                  (click)="setSelectedSize(size.valueCode)">
+                                <label for="{{size.valueCode}}" style="padding: 2px 8px 1px; border: 1px solid #333; background-color: #fefeff; color: #000;">{{size.sizeCode}}</label>
+                              </div>
+                            </span>
+                          </p>
+                        </div>
+                        <div class="color-row" *ngIf="product.type_id == 'configurable'">
+                          <p class="color-txt">COLOR</p>
+                          <p>
+                            <span *ngFor="let color of product.colorOptions">
+                              <div class="btn btn_color">
+                                <input id="{{color.valueCode}}" name="color" type="radio" style="display: none;" value="{{color.valueCode}}"
+                                  (click)="setSelectedColor(color.valueCode)">
+                                <label for="{{color.valueCode}}" style="font-weight: bold; padding: 12px 13px;"
+                                  [style.background]="color.colorCode"></label>
+                              </div>
+                            </span>
+                          </p>
+                        </div>
+
+                        <p class="quantity-txt">QUANTITY</p>
+                        <p><input type="number" [(ngModel)]="quantity" placeholder="1" class="qty"></p>
+                        <p><a *ngIf="product.is_in_stock == true" class="add_to_cart btn" (click)="getProductDetail(product.sku)"><i
+                              class="fa fa-shopping-cart" aria-hidden="true" style="color:#fff;padding-right:10px;"></i>ADD
+                            TO CART</a>
+                          <a *ngIf="product.is_in_stock == false" class="sold-out-txt black">SOLD OUT</a>
+
+                          <a *ngIf="product.type_id == 'configurable'" class="wishlist btn" (click)="addConfigrableProductToWishList(product.productId,product)"><span
+                              style="color:#fff;padding-right:10px;">+</span>WISHLIST</a>
+                          <a *ngIf="product.type_id != 'configurable'" class="wishlist btn" (click)="addItemToWishList(product.productId,product.type_id)"><span
+                              style="color:#fff;padding-right:10px;">+</span>WISHLIST</a>
+                        </p>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="panel-group product-details product-panel" id="accordion">
+                          <!--Accordian start-->
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">PRODUCT DETAIL<i
+                                    class="fa fa-caret-down" style="font-size:20px;float: right;"></i></a>
+                              </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse in">
+                              <div class="panel-body" #prdDesc></div>
+                            </div>
+                          </div>
+                          <div *ngIf="product.sizeGuide != undefined" class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">SIZE GUIDE<i class="fa fa-caret-down"
+                                    style="font-size:20px;float: right;"></i></a>
+                              </h4>
+                            </div>
+                            <div id="collapse2" class="panel-collapse collapse">
+                              <div class="panel-body light">
+                                <div #sizeGuide></div>
+                                <!-- <p>The following size charts are taken from an average across popular brands, but we
+                                  believe them to be a good representation of typical menswear sizes. </p> -->
+                                <!-- <table style="width: 123px;" class="size_table">
+                                  <tbody>
+                                    <tr style="    border-bottom: 1px solid #988049;">
+                                      <td style="width: 43px;">&nbsp;SIZE</td>
+                                      <td style="width: 64px;">&nbsp;INCHES</td>
+                                      <td style="width: 15px;">&nbsp;CENTIMETER</td>
+                                    </tr>
+                                    <tr>
+                                      <td style="width: 43px;">&nbsp;XS</td>
+                                      <td style="width: 64px;">&nbsp;34-36</td>
+                                      <td style="width: 15px;">&nbsp;86-91</td>
+                                    </tr>
+                                    <tr>
+                                      <td style="width: 43px;">&nbsp;S</td>
+                                      <td style="width: 64px;">&nbsp;36-38</td>
+                                      <td style="width: 15px;">&nbsp;91-96</td>
+                                    </tr>
+                                    <tr>
+                                      <td style="width: 43px;">&nbsp;M</td>
+                                      <td style="width: 64px;">&nbsp;38-40</td>
+                                      <td style="width: 15px;">&nbsp;96-101</td>
+                                    </tr>
+                                    <tr>
+                                      <td style="width: 43px;">&nbsp;L</td>
+                                      <td style="width: 64px;">&nbsp;40-42</td>
+                                      <td style="width: 15px;">&nbsp;101-106</td>
+                                    </tr>
+                                    <tr>
+                                      <td style="width: 43px;">&nbsp;XL</td>
+                                      <td style="width: 64px;">&nbsp;42-44</td>
+                                      <td style="width: 15px;">&nbsp;106-111</td>
+                                    </tr>
+                                    <tr>
+                                      <td style="width: 43px;">&nbsp;XXL</td>
+                                      <td style="width: 64px;">&nbsp;44-46</td>
+                                      <td style="width: 15px;">&nbsp;111-116</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <p style="margin: 18px 0 0 0;">HOW TO MEASURE</p>
+                                <p>To choose the correct size for you, measure your body as follows:</p>
+                                <p style="margin: 8px 0 10px 0;">1. CHEST</p>
+                                <p>Measure around the fullest part, place the tape close under the arms and make sure
+                                  the tape is flat across the back</p> -->
+                              </div>
+                            </div>
+                          </div>
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">DELIVERY & RETURNS<i
+                                    class="fa fa-caret-down" style="font-size:20px;float: right;"></i></a>
+                              </h4>
+                            </div>
+                            <div id="collapse3" class="panel-collapse collapse">
+                              <div class="panel-body"><div #deliveryReturns></div></div>
+                            </div>
+                          </div>
+                        </div>
+                        <!--Accordian End-->
+                      </div>
+                    </div>
+
+
+
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+            <!--row end-->
+
+            <div class="row" style="margin-right:0 !important;">
+              <!--RElated Product Start-->
+              <div class="col-md-12 related-product" style="padding-left:8px;padding-right:1px;">
+                <p style="padding: 10px 0 20px 15px;margin-bottom: 0;text-align:left;color: #fff" class="black">RELATED
+                  PRODUCTS</p>
+                <div *ngFor="let relatedProduct of relatedProducts;let i = index">
+                  <div *ngIf="relatedProduct.productClassification == 'P1'" class="col-md-6 p1 cust-product-p1" style="position: relative;">
+                    <a [routerLink]="['/product',relatedProduct.sku,categoryId]">
+                      <img src="{{relatedProduct.imageValue}}" width="100%">
+                    </a>
+                    <div class="product1">
+
+                      <p class="product-cat"><a class="link" [routerLink]="['/product',relatedProduct.sku,categoryId]">{{relatedProduct.brand}}</a></p>
+                      <p class="product-title bold">{{relatedProduct.name}}</p>
+                      <p class="product-price light">$ {{relatedProduct.price}} </p>
+                      <p style="margin-bottom: 0;"> <a class="btn btn_gray" data-toggle="modal" data-target="#myModal"
+                          (click)="getProductDetails(relatedProduct.sku)">QUICK VIEW</a><span style="float: right;margin-top: 8PX;">
+                          <span *ngIf="relatedProduct.type_id == 'configurable'" id="wishlistname{{relatedProduct.sku}}"
+                            (click)="addItemToWish(relatedProduct.sku,relatedProduct)" class="glyphicon glyphicon-heart-empty"></span>
+                          <span *ngIf="relatedProduct.type_id != 'configurable'" id="wishlistId{{relatedProduct.productId}}"
+                            (click)="addItemToWishList(relatedProduct.productId,relatedProduct.type_id)" class="glyphicon glyphicon-heart-empty"></span>
+                        </span></p>
+
+                    </div>
+                  </div>
+                  <div *ngIf="relatedProduct.productClassification == 'P2'" class="col-md-12 p2 cust-product-p2" style="padding-right: 0; position: relative; width: 100%;">
+                    <a [routerLink]="['/product',relatedProduct.sku,categoryId]">
+                      <img src="{{relatedProduct.imageValue}}" width="100%">
+                    </a>
+                    <div class="product2">
+                      <div class="product2-inner">
+                        <p class="black product-cat"><a class="link product-cat" [routerLink]="['/product',relatedProduct.sku,categoryId]">{{relatedProduct.brand}}</a></p>
+                        <p class="product-title bold">{{relatedProduct.name}}</p>
+                        <p class="product-price light">$ {{relatedProduct.price}}</p>
+                        <p style="margin-bottom: 0;"><a class="btn btn_gray bold" data-toggle="modal" data-target="#myModal"
+                            (click)="getProductDetails(relatedProduct.sku)">QUICK VIEW</a><span style="float: right;margin-top: 8PX;"><span
+                              id="wishlistId{{relatedProduct.productId}}" (click)="addItemToWishList(relatedProduct.productId,relatedProduct.type_id)"
+                              class="glyphicon glyphicon-heart-empty"></span></span></p>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div *ngIf="product.productClassification == 'P4'" class="col-md-12 p2 cust-product-p4">
+                    <a (click)="fadeOut()" [routerLink]="['/product',product.sku , categoryId]" class="link"><img src="{{product.imageValue}}"
+                        width="100%" class="col-md-6" style="padding:0;"></a>
+                    <div class="collection1">
+                      <div class="collection_inner">
+
+                        <p class="black product-cat"><a class="product-cat link" style="color:#000;" (click)="fadeOut()"
+                            [routerLink]="['/product',product.sku , categoryId]">{{product.brand}}</a></p>
+                        <!-- <P>COP THE COLLECTION</P> -->
+                        <p class="product-title bold">{{product.name}}</p>
+                        <p class="product-price light">$ {{product.price}}</p>
+
+                        <!-- <P style="padding-top: 0px;"><a class="btn btn_gray" (click)="fadeOut()"  [routerLink]="['/product',product.sku , categoryId]">SHOP NOW</a></P> -->
+
+                        <p class="quick-btns-heart" style="margin-bottom: 0;">
+
+                          <a class="btn btn_gray quick-view" data-toggle="modal" data-target="#myModal" (click)="getProductDetails(product.sku)">QUICK
+                            VIEW</a>
+                          <span>
+                            <a (click)="getProductDetails(product.sku,true)"></a>
+
+                            <span *ngIf="product.type_id == 'configurable'" class="glyphicon glyphicon-heart-empty" id="wishlistname{{product.sku}}"
+                              data-toggle="modal" data-target="#myModal" (click)="addItemToWish(product.sku,product)"
+                              style="padding-left: 10PX;">
+                            </span>
+                            <span *ngIf="product.type_id != 'configurable'" class="glyphicon glyphicon-heart-empty" id="wishlistId{{product.productId}}"
+                              (click)="addItemToWishList(product.productId,product.type_id)" style="padding-left: 10PX;"></span>
+                          </span></p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- p3 starts-->
+
+                  <div *ngIf="relatedProduct.productClassification == 'P3'" class="col-md-12 p2 product-p3-min-div cust-product-p3">
+                    <a (click)="fadeOut()" [routerLink]="['/product',relatedProduct.sku , categoryId]" class="link"><img
+                        src="{{relatedProduct.imageValue}}" width="100%"></a>
+                    <div class="style-2-p3-inner">
+                      <div class="collection_inner">
+                        <div class="p3-prod-des">
+                          <p class="black product-cat"><a class="product-cat link" style="color:#000;" [routerLink]="['/product',relatedProduct.sku , categoryId]">{{relatedProduct.brand}}</a></p>
+
+                          <p class="product-title bold">{{relatedProduct.name}}</p>
+                        </div>
+
+                        <div class="p3-prod-des">
+                          <P style="padding-top: 0px;"><a class="btn btn_gray" [routerLink]="['/product',relatedProduct.sku , categoryId]">SHOP
+                              NOW</a><span id="wishlistId{{relatedProduct.productId}}" (click)="addItemToWishList(relatedProduct.productId,relatedProduct.type_id)"
+                              class="glyphicon glyphicon-heart-empty" style="padding-left: 10PX; padding-top:5px;"></span></P>
+                        </div>
+                        <p style="margin-bottom: 0;">
+
+                          <!-- <a  class="btn btn_gray quick-view bold" data-target="#myModal" data-toggle="modal" (click)="getProductDetails(relatedProduct.sku)">QUICK VIEW</a> -->
+
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- p3 ends -->
+
+
+                  <!-- <div  *ngIf="getProductClassification(relatedProduct , i) == 'P3'" class="col-md-12 p3" style="padding-right: 0; margin-top:15px;">
+                  <div  class="col-md-6" style="padding-right: 0;padding-left: 0;">
+                      <a   [routerLink]="['/product',relatedProduct.sku,categoryId]">
+                        <img   width="100%" src="{{relatedProduct.imageValue}}" >
+                      </a>
+                  </div>
+                      <div  class="col-md-6" style="background: #fff;padding-bottom: 11px;">
+                      <div  class="article1">
+                        <p  class="article-subheading">{{relatedProduct.brand}}</p>
+                        <h3  class="article-title">{{relatedProduct.name}}</h3>
+                          <p  class="product-price light">$ {{relatedProduct.price}}</p>
+                            <p  style="margin-bottom: 0;"><a  class="btn btn_gray quick-view bold" data-target="#myModal" data-toggle="modal" (click)="getProductDetails(relatedProduct.sku)">QUICK VIEW</a><span  style="float: right;margin-top: 8PX;"><span  id="wishlistId{{relatedProduct.productId}}" (click)="addItemToWishList(relatedProduct.productId,relatedProduct.type_id)" class="glyphicon glyphicon-heart-empty" style="padding-left: 10PX;"></span></span>
+                            </p>
+                      </div>
+                    </div>
+                </div> -->
+                  <div *ngFor="let ads of displayProductAdds">
+                    <div class="col-md-12 adDiv" style="padding-right: 0px; padding-left: 7px;" *ngIf="i == ads ; else elseBlock">
+                      <div #productInlineAd></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--related product end-->
+            <div class="row hidden-sm hidden-md hidden-lg">
+              <div class="owl-carousel owl-theme product_carousel" #owl2>
+                <div *ngFor="let relatedProduct of relatedProducts;let i = index" class=" item owl_item">
+                  <div *ngIf="relatedProduct.productClassification == 'P1'" class="col-xs-6 p1" style="padding-right:0;position: relative;padding-top:15px;">
+                    <a (click)="refresh()" [routerLink]="['/product',relatedProduct.sku,categoryId]">
+                      <img src="{{relatedProduct.imageValue}}" width="100%">
+                    </a>
+                    <div class="product1">
+
+                      <p class="product-cat">{{relatedProduct.brand}}</p>
+                      <p class="product-title">{{relatedProduct.name}}</p>
+                      <p class="product-price">$ {{relatedProduct.price}} </p>
+                      <p class="quick-btns-heart" style="margin-bottom: 0;"> <a class="btn btn_gray" data-toggle="modal"
+                          data-target="#myModal" (click)="getProductDetails(relatedProduct.sku)">QUICK VIEW</a>
+                        <!-- <a class="btn btn_gray"  data-toggle="modal" data-target="#myModal">QUICK VIEW</a> -->><span
+                          (click)="addItemToWishList(relatedProduct.productId)" id="wishlistId{{relatedProduct.productId}}"
+                          class="glyphicon glyphicon-heart-empty"></span></p>
+
+                    </div>
+                  </div>
+
+                  <div *ngIf="relatedProduct.productClassification == 'P3'" class="col-xs-6  p3" style="padding-right: 0; margin-top:15px;">
+                    <div class="col-md-6" style="padding-right: 0;padding-left: 0;">
+                      <a (click)="refresh()" [routerLink]="['/product',relatedProduct.sku,categoryId]">
+                        <img width="100%" src="{{relatedProduct.imageValue}}">
+                      </a>
+                    </div>
+                    <div class="col-md-6" style="background: #fff;padding-bottom: 11px;">
+                      <div class="article1">
+                        <p class="product-cat">{{relatedProduct.brand}}</p>
+                        <h3 class="product-title ">{{relatedProduct.name}}</h3>
+                        <p class="product-price light">$ {{relatedProduct.price}}</p>
+                        <p style="margin-bottom: 0;"><a class="btn btn_gray quick-view bold" data-target="#myModal"
+                            data-toggle="modal" (click)="getProductDetails(relatedProduct.sku)">QUICK VIEW</a><span
+                            style="float: right;margin-top: 0PX;"><span (click)="addItemToWishList(relatedProduct.productId)"
+                              id="wishlistId{{relatedProduct.productId}}" class="glyphicon glyphicon-heart-empty" style="padding-left: 10PX;"></span></span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!---second half end-->
+
+      </div>
+    </div>
+    <!---main row end-->
+
+    <!-- <div class="row adDivFix">
+    <div class="col-md-6 adDiv">
+      <img src="./assets/images/seiko-add.png" alt="">
+    </div>
+  </div> -->
+
+
+
+  </div>
+  <!--container End-->
+
+
+  <!--modal start-->
+
+  <div class="modal fade" id="myModal" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" style="width:580px;">
+
+      <!-- Modal content-->
+      <div class="modal-content quick-view-modal-mdiv">
+
+        <div class="modal-body">
+          <button type="button" id="quickview_close" class="close" (click)="closeModal()" data-dismiss="modal">&times;</button>
+          <div class="demo">
+            <div class="container" style="width: 100%;">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="row">
+                    <!-- <h1 style="text-align: center; margin-top: 50px; color: #777;">Owl-Carousel</h1> -->
+
+                    <div class="bg-black-model-top">
+                      <div class="col-md-10">
+                        <div id="owl-demo" class="product_modal owl-carousel owl-theme" #owl1>
+                          <div *ngFor="let entry of singleProduct.mediaEntries; let ind = index">
+                            <div class="item">
+                              <img [src]="entry.imageValue" alt="" class="slider_img">
+                            </div>
+                          </div>
+
+                        </div>
+
+                      </div>
+                      <div class="col-md-2 product_modal_thumbnail hidden-xs hidden-sm" style="width: 14%;">
+                        <div *ngFor="let entry of singleProduct.mediaEntries" class="row">
+                          <img [src]="entry.imageValue" alt="" class="img-thumbnail" />
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="bg-white-model-bottom">
+                      <div class="col-md-6">
+                        <div class="">
+                          <h2 class="black product-name-modal">{{singleProduct.name}}</h2>
+
+                          <p style="margin-bottom: 0px;font-size: 12px;font-weight: 600;color: #000;    text-transform: uppercase;">{{singleProduct.brand}}</p>
+                          <p class="product-price-pp">$ {{singleProduct.price}}</p>
+                          <h5 style="text-transform:uppercase;color:#87764e;"><strong>Product Details</strong></h5>
+                          <p style="color: #7d7070;max-height:100px;overflow-y:scroll;" #prdDesc></p>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="">
+                          <div class="share" style="text-align: right;text-transform: uppercase;">
+                            <h5 style="color:#87764e;"><strong>Share</strong></h5>
+                          </div>
+                        </div>
+                        <div class="">
+                          <p style="text-align: right;" class="shareicon"><span><a href="" class="bt btn_size"><i style="font-size:17px;color:#87764e;"
+                                  class="fa fa-facebook"></i></a></span>
+                            <span><a href="" class="bt btn_size"><i class="fa fa-twitter" style="font-size:17px;color:#87764e;"></i></a></span>
+                            <span><a href="" class="bt btn_size"><i class="fa fa-pinterest-p" style="font-size:17px;color:red"></i></a></span>
+                          </p>
+                        </div>
+
+
+
+                        <div class="cart-add-model">
+
+                          <div class="size-colors-quick">
+                            <div class="row" style="padding-left: 10px;" *ngIf="singleProduct.type_id == 'configurable'">
+                              <p style="margin-bottom: 2px;font-size: 13px;">SIZE</p>
+                              <p>
+                                <span *ngFor="let size of singleProduct.sizeOptions">
+                                  <div class="btn btn_size">
+                                    <input name="size" id="{{size.valueCode}}" type="radio" style="display:none;" value="{{size.valueCode}}"
+                                      (click)="setSelectedSize(size.valueCode)">
+                                    <label for="{{size.valueCode}}" style="padding:5px 10px 3px;border:1px solid #333;">{{size.sizeCode}}</label>
+                                  </div>
+                                </span>
+
+                              </p>
+                            </div>
+                            <div class="row" style="padding-left: 10px;" *ngIf="singleProduct.type_id == 'configurable'">
+                              <p style="margin-bottom: 2px;font-size: 13px;">COLOR</p>
+                              <p>
+                                <span *ngFor="let color of singleProduct.colorOptions">
+                                  <div class="btn btn_color">
+                                    <input id="{{color.valueCode}}" name="color" type="radio" style="display:none;"
+                                      value="{{color.valueCode}}" (click)="setSelectedColor(color.valueCode)">
+                                    <label for="{{color.valueCode}}" style="font-weight: bold;padding: 16px 18px;"
+                                      [style.background]="color.colorCode"></label>
+                                  </div>
+                                </span>
+                              </p>
+                            </div>
+                          </div>
+
+                          <div class="cart-add-model-btns">
+                            <p>
+                              <a *ngIf="singleProduct.type_id == 'configurable'" (click)="addConfigItemToWishList(singleProduct.productId,singleProduct)"
+                                class="wishlist popup-add-wish-btn btn" style="background:#fff;border-color:#87764e;color:#87764e;padding-top: 10px;border-radius: 0;"><span
+                                  style="color:#bcb8b8;padding-right:10px;background:#fff;">+</span>WISHLIST</a>
+
+                              <a *ngIf="singleProduct.type_id != 'configurable'" (click)="addItemToWishList(singleProduct.productId,singleProduct.type_id)"
+                                class="wishlist popup-add-wish-btn btn " style="background:#fff;border-color:#87764e;color:#87764e;padding-top: 12px;border-radius: 0;"><span
+                                  style="color:#bcb8b8;padding-right:10px;background:#fff;">+</span>WISHLIST</a>
+
+                              <a *ngIf="singleProduct.is_in_stock == true" class="add_to_cart popup-add-cart-btn btn"
+                                style="background:#87764e;border-radius:0;" (click)="addItemToCart();"><i class="fa fa-shopping-cart"
+                                  aria-hidden="true" style="color:#fff;padding-right:5px;" (click)="addItemToCart()"></i>ADD
+                                TO CART</a>
+                              <a *ngIf="singleProduct.is_in_stock == false" class="sold-out-txt black">SOLD OUT</a>
+                            </p>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div id="sortmodal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="opacity:0.9">
+  
+
+      <div class="modal-content gold">
+        <div class="modal-header">
+          <button type="button" class="close gold" data-dismiss="modal" class="close" (click)="closeModal()" id="quickview_close1"><img
+              src="./assets/images/close.png"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="heading">
+              Filter By
+            </div>
+            <div class="options" style="padding-left: 20px;padding-top:10px;color:#ccc;">
+              <label class="pricepoint"><a data-toggle="collapse" href="#pricepoint" aria-expanded="false" style="color:#fff" aria-controls="categories"><span class="caret"></span> Price Point</a>
+              </label>
+                <div class="collapse" id="pricepoint">
+               <ul class="gold" style="list-style:none;padding-left:20px;">
+                  <li *ngFor="let stage3Tag of stage3Tags" ><a onclick="closesort()" [routerLink]="['/home','A',stage3Tag.value , stage3Tag.stage]">{{stage3Tag.label}}</a></li>
+              </ul>
+            </div>
+            </div>
+            <div class="options" style="padding-left: 20px;padding-bottom: 5px;color:#ccc;">
+              <div class="" style="padding-left:0;"><a data-toggle="collapse" href="#sortcat" aria-expanded="false" style="color:#fff" aria-controls="categories"><span class="caret"></span> Brand</a></div>
+              <div class="collapse" id="sortcat">
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#a" aria-expanded="false" class="gray" aria-controls="categories">A</a>
+                    <div class="collapse" id="a">
+                      <ul class="gold" style="list-style:none;padding-left:20px;">
+                        <li *ngFor="let tag of tagMap['A']" ><a onclick="closesort()" [routerLink]="['/home','A',tag.value , tag.stage]">{{tag.label}}</a></li>
+                      </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#b" aria-expanded="false" class="gray"  aria-controls="categories">B</a>
+                    <div class="collapse" id="b">
+                      <ul class="gold" style="list-style:none;padding-left:20px;">
+                        <li *ngFor="let tag of tagMap['B']" ><a onclick="closesort()" [routerLink]="['/home','B',tag.value , tag.stage]">{{tag.label}}</a></li>
+                      </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#c" aria-expanded="false" class="gray" aria-controls="categories">C</a>
+                    <div class="collapse" id="c">
+                      <li *ngFor="let tag of tagMap['C']" ><a onclick="closesort()" [routerLink]="['/home','C',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#d" aria-expanded="false" class="gray" aria-controls="categories">D</a>
+                    <div class="collapse" id="d">
+                      <li *ngFor="let tag of tagMap['D']" ><a onclick="closesort()" [routerLink]="['/home','D',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#e" aria-expanded="false" class="gray" aria-controls="categories">E</a>
+                    <div class="collapse" id="e">
+                      <li *ngFor="let tag of tagMap['E']" ><a onclick="closesort()" [routerLink]="['/home','E',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#f" aria-expanded="false" class="gray" aria-controls="categories">F</a>
+                    <div class="collapse" id="F">
+                      <li *ngFor="let tag of tagMap['F']" ><a onclick="closesort()" [routerLink]="['/home','F',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#g" aria-expanded="false" class="gray" aria-controls="categories">G</a>
+                    <div class="collapse" id="g">
+                      <li *ngFor="let tag of tagMap['G']" ><a onclick="closesort()" [routerLink]="['/home','G',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#h" aria-expanded="false" class="gray" aria-controls="categories">H</a>
+                    <div class="collapse" id="h">
+                      <li *ngFor="let tag of tagMap['H']" ><a onclick="closesort()" [routerLink]="['/home','H',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#i" aria-expanded="false" class="gray" aria-controls="categories">I</a>
+                    <div class="collapse" id="i">
+                      <li *ngFor="let tag of tagMap['I']" ><a onclick="closesort()" [routerLink]="['/home','I',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#j" aria-expanded="false" class="gray" aria-controls="categories">J</a>
+                    <div class="collapse" id="j">
+                      <li *ngFor="let tag of tagMap['J']" ><a onclick="closesort()" [routerLink]="['/home','J',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#k" aria-expanded="false" class="gray" aria-controls="categories">K</a>
+                    <div class="collapse" id="k">
+                      <li *ngFor="let tag of tagMap['K']" ><a onclick="closesort()" [routerLink]="['/home','K',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#l" aria-expanded="false" class="gray" aria-controls="categories">L</a>
+                    <div class="collapse" id="l">
+                      <li *ngFor="let tag of tagMap['L']" ><a onclick="closesort()" [routerLink]="['/home','L',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#m" aria-expanded="false" class="gray" aria-controls="categories">M</a>
+                    <div class="collapse" id="m">
+                      <li *ngFor="let tag of tagMap['M']" ><a onclick="closesort()" [routerLink]="['/home','M',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#n" aria-expanded="false" class="gray" aria-controls="categories">N</a>
+                    <div class="collapse" id="n">
+                      <li *ngFor="let tag of tagMap['N']" ><a onclick="closesort()" [routerLink]="['/home','N',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#o" aria-expanded="false" class="gray" aria-controls="categories">O</a>
+                    <div class="collapse" id="o">
+                      <li *ngFor="let tag of tagMap['O']" ><a onclick="closesort()" [routerLink]="['/home','O',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#p" aria-expanded="false" class="gray" aria-controls="categories">P</a>
+                    <div class="collapse" id="p">
+                      <li *ngFor="let tag of tagMap['P']" ><a onclick="closesort()" [routerLink]="['/home','P',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#q" aria-expanded="false" class="gray" aria-controls="categories">Q</a>
+                    <div class="collapse" id="q">
+                      <li *ngFor="let tag of tagMap['Q']" ><a onclick="closesort()" [routerLink]="['/home','Q',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#r" aria-expanded="false" class="gray" aria-controls="categories">R</a>
+                    <div class="collapse" id="r">
+                      <li *ngFor="let tag of tagMap['R']" ><a onclick="closesort()" [routerLink]="['/home','R',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#s" aria-expanded="false" class="gray" aria-controls="categories">S</a>
+                    <div class="collapse" id="s">
+                      <li *ngFor="let tag of tagMap['S']" ><a onclick="closesort()" [routerLink]="['/home','S',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#t" aria-expanded="false" class="gray" aria-controls="categories">T</a>
+                    <div class="collapse" id="t">
+                      <li *ngFor="let tag of tagMap['T']" ><a onclick="closesort()" [routerLink]="['/home','T',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#u" aria-expanded="false" class="gray" aria-controls="categories">U</a>
+                    <div class="collapse" id="u">
+                      <li *ngFor="let tag of tagMap['U']" ><a onclick="closesort()" [routerLink]="['/home','U',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#v" aria-expanded="false" class="gray" aria-controls="categories">V</a>
+                    <div class="collapse" id="v">
+                      <li *ngFor="let tag of tagMap['V']" ><a onclick="closesort()" [routerLink]="['/home','V',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#w" aria-expanded="false" class="gray" aria-controls="categories">W</a>
+                    <div class="collapse" id="w">
+                      <li *ngFor="let tag of tagMap['W']" ><a onclick="closesort()" [routerLink]="['/home','W',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#x" aria-expanded="false" class="gray" aria-controls="categories">X</a>
+                    <div class="collapse" id="x">
+                      <li *ngFor="let tag of tagMap['X']" ><a onclick="closesort()" [routerLink]="['/home','X',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#y" aria-expanded="false" class="gray" aria-controls="categories">Y</a>
+                    <div class="collapse" id="y">
+                      <li *ngFor="let tag of tagMap['Y']" ><a onclick="closesort()" [routerLink]="['/home','Y',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <a data-toggle="collapse" href="#z" aria-expanded="false" class="gray" aria-controls="categories">Z</a>
+                    <div class="collapse" id="z">
+                      <li *ngFor="let tag of tagMap['Z']" ><a onclick="closesort()" [routerLink]="['/home','Z',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="options" style="padding-left: 20px;color:#ccc;">
+              <label class="pricepoint"><a data-toggle="collapse" href="#categories" aria-expanded="false" style="color:#fff" aria-controls="categories"><span class="caret"></span> Category</a>
+              </label>
+               <div class="collapse" id="categories">
+              <ul class="gold" style="list-style:none;padding-left:20px;">
+                <li *ngFor="let stage4Tag of stage4Tags" ><a onclick="closesort()" [routerLink]="['/home','A',stage4Tag.value , stage4Tag.stage]">{{stage4Tag.label}}</a></li>
+               
+              </ul>
+            </div>
+            </div>
+            <div class="options" style="padding-left: 20px;color:#ccc;">
+              <label class="pricepoint"><a data-toggle="collapse" href="#subcategories" aria-expanded="false" style="color:#fff" aria-controls="categories"><span class="caret"></span> Sub Category</a>
+              </label>
+               <div class="collapse" id="subcategories">
+              <ul class="gold" style="list-style:none;padding-left:20px;">
+                <li *ngFor="let stage4aTag of stage4aTags" ><a onclick="closesort()" [routerLink]="['/home','A',stage4aTag.value , stage4aTag.stage]">{{stage4aTag.label}}</a></li>
+               
+              </ul>
+            </div>
+            </div>
+            <div class="options" style="padding-left: 20px;color:#ccc;">
+              <label class="pricepoint"><a data-toggle="collapse" href="#seasaon" aria-expanded="false" style="color:#fff" aria-controls="categories"><span class="caret"></span> Seasons / Collections</a>
+              </label>
+              <div class="collapse" id="seasaon">
+                <ul class="gold" style="list-style:none;padding-left:20px;">
+                  <li *ngFor="let stage5Tag of stage5Tags" ><a onclick="closesort()" [routerLink]="['/home','A',stage5Tag.value , stage5Tag.stage]">{{stage5Tag.label}}</a></li>
+                 
+                </ul>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+  
+      </div>
+  
+    </div>
+  </div>  -->
+
+
+  <!-- <div class="goldenbox articlebox1">
+      <h2>ARITCLE</h2>
+      <div class="boxbottom">
+      <div class="boxtext">
+        Click on a article to view it, along with corelating products in the store.
+      </div>
+      <div class="indicators">
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+        <span class="indicator current"></span>
+        <span class="indicator"></span>
+      </div>
+      <button class="next4" (click)="productPageDirection()">NEXT</button>
+    </div>
+    </div> -->

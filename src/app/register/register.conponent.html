@@ -1,0 +1,309 @@
+  
+<div class="container-fluid myaccount personal" id="regbackground">
+
+
+ <div class="row">
+      <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6 col-md-offset-2">
+                  <div class="section-bar">
+                    <p class="my-account">MY ACCOUNT</p>
+                    <h2 class="personal-info">PERSONAL <br>INFORMATION </h2>
+                    <p class="p-description"> FROM HERE, YOU CAN VIEW ALL YOUR PAST ORDERS AND
+                        THEIR STATUS. YOU CAN REQUEST A REORDER OR REQUEST
+                        A RETURN FOR A SPECIFIC ORDER MADE IN THE
+                        PAST.
+                    </p>
+                    <p style="font-size: 12px; margin-bottom: 0px;">FOR MORE INFORMATION ON RETURNS, PLEASE READ OUR</p>
+                    <a href="#" style="color: #9a8c3d; border-bottom: 1px solid #9a8c3d; font-size: 12px;"> RETURNS, EXCHANGES, REFUND, & CANCELLATION POLICY</a>
+                  </div>
+                </div>  
+              </div>
+            </div>
+
+            <div class="col-md-6 pdr-0"> 
+              <div class="registration-main-right">
+                <div class="row">
+                  <div class="col-md-9" *ngIf="personInfoStep">
+                    <div class="main-section">
+                      <h2 style="color: #9a8c3d; border-bottom: 1px solid grey;">PERSONAL <br><span class="form-info black" style="font-weight: bolder;">INFORMATION</span></h2>
+                      <!-- <p style="color: #9a8c3d; margin-bottom: 0px;">HI,<b>SAMANTHA</b></p>
+                      <p style="color: grey;margin-top: 0px;">Update your personal information here</p> -->
+                      <!-- <h4 style="font-weight: bolder; color: grey;font-size: 15px; border-bottom: 1px solid grey;">ACCOUNT INFORMATION</h4> -->
+                      <form [formGroup]="personalinfoForm" (submit)="personalDetail()" novalidate>
+                        <div class="form-group">
+                          <label for="fname" style="color: grey;">First Name*</label>
+                          <input style="border: 1px solid #9a8c3d;" type="text" class="form-control" [(ngModel)]="personalInfo.firstname" formControlName="firstname" id="firstname"  maxlength="30" pattern="[a-zA-Z ]*" placeholder="Enter first name" required>
+                          <div *ngIf="personalinfoForm.controls['firstname'].hasError('required') && submitted == true" class="alert alert-danger">First name is required</div>
+                  <div *ngIf="personalinfoForm.controls['firstname'].hasError('maxlength') && personalinfoForm.controls['firstname'].touched" class="alert alert-danger">Your enter more then 30 characters long.</div> 
+                  <div *ngIf="personalinfoForm.controls['firstname'].hasError('pattern') && personalinfoForm.controls['firstname'].touched" class="alert alert-danger">Only alphabets allowed.</div>
+                        </div>
+                        <div class="form-group">
+                          <label for="lname" style="color: grey;">Last Name*</label>
+                          <input style="border: 1px solid #9a8c3d;" type="text" class="form-control" [(ngModel)]="personalInfo.lastname" id="lastname" formControlName="lastname" name="lastname"  maxlength="30" pattern="[a-zA-Z ]*"  placeholder="Enter last name" required>
+                          <div *ngIf="personalinfoForm.controls['lastname'].hasError('required') && submitted == true" class="alert alert-danger">Last name is required</div>
+                  <div *ngIf="personalinfoForm.controls['lastname'].hasError('maxlength') && personalinfoForm.controls['lastname'].touched" class="alert alert-danger">Your enter more then 30 characters long.</div> 
+                  <div *ngIf="personalinfoForm.controls['lastname'].hasError('pattern') && personalinfoForm.controls['lastname'].touched" class="alert alert-danger">Only alphabets allowed.</div>
+                        </div>
+                      
+                        <div class="form-group">
+                          <label for="lname" style="color: grey;">Email*</label>
+                          <input style="border: 1px solid #9a8c3d;" type="text" class="form-control" [(ngModel)]="personalInfo.email" id="email" formControlName="email" name="email"  maxlength="50" pattern="[a-zA-Z]+[a-zA-Z0-9._]+@[a-z]+\.[a-z.]{2,5}"  placeholder="Enter email" required>
+                          <div *ngIf="personalinfoForm.controls['email'].hasError('required') && submitted == true" class="alert alert-danger">Email is required</div>
+                  <div *ngIf="personalinfoForm.controls['email'].hasError('maxlength') && personalinfoForm.controls['email'].touched" class="alert alert-danger">Your enter more then 50 characters long.</div> 
+                  <div *ngIf="personalinfoForm.controls['email'].hasError('pattern') && personalinfoForm.controls['email'].touched" class="alert alert-danger">Enter correct emailId.</div>
+                        </div>
+                      
+                        <div class="form-group">
+                          <p style="color: grey;">Date of Birth</p>
+                          <input type="number"  placeholder="DD"  [(ngModel)]="date"  formControlName="date"  id="date"  pattern="^([1-9]|[12]\d|3[01])$" maxlength="2" name="date" style="width: 20%; color: #9a8c3d; background-color: #504d4d;border: 1px solid #9a8c3d;">
+                          <input type="number" [(ngModel)]="month" formControlName="month"  id="month" name="month" pattern="^(0?[1-9]|1[012])$" maxlength="2" placeholder="MM" style="width: 20%; color: #9a8c3d;background-color: #504d4d;border: 1px solid #9a8c3d;">
+                          <input type="number" [(ngModel)]="year"  formControlName="year"  id="year" name="year" pattern="^(192[0-9]|19[5-9]\d|200\d|201[0-8])$"  maxlength="4" placeholder="YYYY"  style="width: 20%; color: #9a8c3d;background-color: #504d4d;border: 1px solid #9a8c3d;">
+                          <div *ngIf="personalinfoForm.controls['date'].hasError('pattern') && personalinfoForm.controls['date'].touched" class="alert alert-danger">Enter correct day.</div>
+                          <div *ngIf="personalinfoForm.controls['month'].hasError('pattern') && personalinfoForm.controls['month'].touched" class="alert alert-danger">Enter correct month.</div>
+                          <div *ngIf="personalinfoForm.controls['year'].hasError('pattern') && personalinfoForm.controls['year'].touched" class="alert alert-danger">Enter year grater then 1920 & less then 2019</div>
+                        </div>
+
+                        <div class="inline-btn" style="margin-bottom: 20px;">
+                          <div class="form-group">
+                          <p style="margin-bottom: 0px;margin-top: 10px; color: grey;">Gender</p>
+                            <select [(ngModel)]="personalInfo.gender" id="gender" formControlName="gender" name="gender"  style="width: 48%; padding: 3px; color: #9a8c3d;background-color: #504d4d;border: 1px solid #9a8c3d;"> 
+                                <option value="1">Male</option> 
+                                <option value="2">Female</option> 
+                            </select>
+                          </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pwd" style="color: grey;">New Password*</label>
+                            <input type="password" class="form-control" [(ngModel)]="personalInfo.password" formControlName="password" id="password"  pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!#$%&'(*+),-./:;<=>?@[\]^_`{|}~\s]).{8,}" maxlength="30"  required>
+                            <div *ngIf="personalinfoForm.controls['password'].hasError('required') && submitted == true" class="alert alert-danger">Password is required</div>
+                    <div *ngIf="personalinfoForm.controls['password'].hasError('maxlength') && personalinfoForm.controls['password'].touched" class="alert alert-danger">Your enter more then 30 characters long.</div> 
+                    <div *ngIf="personalinfoForm.controls['password'].hasError('pattern') && personalinfoForm.controls['password'].touched" class="alert alert-danger">Password must be at least 8 characters and must contain atleast an uppercase & lowercase letters, a number and a special character.</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pwd" style="color: grey;">Confirm Password*</label>
+                            <input type="password" class="form-control" [(ngModel)]="personalInfo.confirmpassword" formControlName="confirmpassword" id="confirmpassword" pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!#$%&'(*+),-./:;<=>?@[\]^_`{|}~\s]).{8,}" maxlength="30" required>
+                            <div *ngIf="personalinfoForm.controls['confirmpassword'].hasError('required') && submitted == true" class="alert alert-danger">Confirm password is required</div>
+                    <div *ngIf="personalinfoForm.controls['confirmpassword'].hasError('maxlength') && personalinfoForm.controls['confirmpassword'].touched" class="alert alert-danger">Your enter more then 30 characters long.</div> 
+                    <div *ngIf="personalinfoForm.controls['confirmpassword'].hasError('pattern') && personalinfoForm.controls['confirmpassword'].touched" class="alert alert-danger">Confirm password must be at least 8 characters and must contain atleast an uppercase & lowercase letters, a number and a special character.</div>
+                            <div *ngIf="passwordNotMatch.length" class="alert alert-danger">Confirm password not match with password.</div>
+                        </div>
+                        
+                        <h4 style="font-weight: bolder; color: grey;font-size: 15px; border-bottom: 1px solid grey;">NEWSLETTER</h4>
+                        <div class="checkbox">
+                          <label style="font-size: 12px; color: grey;"><input type="checkbox"  [(ngModel)]="personalInfo.newsLetter" id="newsLetter" formControlName="newsLetter" name="newsLetter" >I’d like to receive exlusive discounts and news from OFPOISON by email</label>
+                        </div>
+                      <!--  <div class="checkbox">
+                          <label style="font-size: 12p; color: grey;"><input type="checkbox">Unsubscribe from all</label>
+                        </div> -->
+                        <p class="personal-info-next-btn" style="text-align: right;"><button type="submit"  (click)="submitted=true"  style="background:#9a8c3d; color: white;">Save</button></p>
+                      </form>
+                    </div>
+                  </div>  
+                  
+                  
+                  <!--shipping information  -->
+                  <div class="col-md-12" *ngIf="shippingInfoStep">
+                    <div class="col-md-6">
+                      <h2 style="color: #9a8c3d; border-bottom: 1px solid grey;">SHIPPING <br><span class="form-info black" style="font-weight: bolder;">INFORMATION</span></h2>
+                      <h4 style="font-weight: bolder; color: grey;font-size: 15px; border-bottom: 1px solid grey;">ACCOUNT INFORMATION</h4>
+                      <form [formGroup]="shippingForm" (submit)="createUser()" novalidate>
+                        
+                        <div class="form-group">
+                          <label for="fname" style="color: grey;">First Name*</label>
+                          <input style="border: 1px solid #9a8c3d;" type="text" class="form-control" [(ngModel)]="shippingInfo.firstname" formControlName="firstname" id="firstname"  maxlength="30" pattern="[a-zA-Z ]*" placeholder="Enter first name" required>
+                          <div *ngIf="shippingForm.controls['firstname'].hasError('required') && shipsubmitted == true" class="alert alert-danger">First name is required</div>
+                  <div *ngIf="shippingForm.controls['firstname'].hasError('maxlength') && shippingForm.controls['firstname'].touched" class="alert alert-danger">Your enter more then 30 characters long.</div> 
+                  <div *ngIf="shippingForm.controls['firstname'].hasError('pattern') && shippingForm.controls['firstname'].touched" class="alert alert-danger">Only alphabets allowed.</div>
+                        </div>
+                        
+                        <div class="form-group">
+                          <label for="lname" style="color: grey;">Last Name*</label>
+                          <input style="border: 1px solid #9a8c3d;" type="text" class="form-control" [(ngModel)]="shippingInfo.lastname" id="lastname" formControlName="lastname" name="lastname"  maxlength="30" pattern="[a-zA-Z ]*"  placeholder="Enter last name" required>
+                          <div *ngIf="shippingForm.controls['lastname'].hasError('required') && shipsubmitted == true" class="alert alert-danger">Last name is required</div>
+                  <div *ngIf="shippingForm.controls['lastname'].hasError('maxlength') && personalinfoForm.controls['lastname'].touched" class="alert alert-danger">Your enter more then 30 characters long.</div> 
+                  <div *ngIf="shippingForm.controls['lastname'].hasError('pattern') && personalinfoForm.controls['lastname'].touched" class="alert alert-danger">Only alphabets allowed.</div>
+                        </div>
+                        
+
+                        <div class="inline-btn" style="margin-bottom: 20px; border-top: 1px solid #fff;">
+                          <div class="form-group">
+                            <label><p style="margin-bottom: 0px;margin-top: 10px; color: grey; font-weight: 700;">Country*</p></label>
+                            <select [(ngModel)]="shippingInfo.country_id" formControlName="country_id" name="country_id" (change)="fetchRegions($event.target.value)"  placeholder="Select country" style="padding: 3px; width: 100%;box-shadow: inset 0 1px 1px rgba(0,0,0,.075); padding: 6px 12px; font-size: 12px;background-color: #504d4d;color: #9a8c3d;" required> 
+                              <option *ngFor="let country of countries" value="{{country.id}}">{{country.full_name_english}}</option>
+                            </select>
+                            <div *ngIf="shippingForm.controls['country_id'].hasError('required') && shipsubmitted == true" class="alert alert-danger">Select country is required</div>
+                          </div>
+                          
+                          <div class="form-group" style="margin-top: 10px;">
+                            <label for="fname" style="color: grey; width: 100%;">House no and Street*<span style="float: right;color: #fff; font-size: 10px;">Street Address, P.O.. Box</span></label>
+                            <input style="border: 1px solid #9a8c3d;" type="text" class="form-control" [(ngModel)]="shippingInfo.street1" name="street1" id="street1" formControlName="street1" placeholder="Enter street" required>
+                            <div *ngIf="shippingForm.controls['street1'].hasError('required') && shipsubmitted == true" class="alert alert-danger">Delivery line is required</div>
+                <div *ngIf="shippingForm.controls['street1'].hasError('minlength') && shippingForm.controls['street1'].touched" class="alert alert-danger">Your delivery line 1 must be at least 4 characters long.</div>
+                          </div>
+                          
+                          <div class="form-group" style="margin-top: 10px;">
+                            <label for="fname" style="color: grey; width: 100%;">Address line2(optional)<span style="float: right;color: #fff; font-size: 10px;">Apartment,Suite,Unit,Floor</span></label>
+                            <input style="border: 1px solid #9a8c3d;" type="text" class="form-control" [(ngModel)]="shippingInfo.street2" name="street2" id="street2" formControlName="street2" placeholder="Enter street">
+                          </div>
+                          
+                          <div class="form-group" style="margin-top: 10px;">
+                            <label for="fname" style="color: grey; width: 100%;">City*<span style="float: right;color: #fff; font-size: 10px;">Apartment,Suite,Unit,Floor</span></label>
+                            <input style="border: 1px solid #9a8c3d;" type="text" class="form-control" [(ngModel)]="shippingInfo.city" formControlName="city" id="city" name="city"  pattern="[a-zA-Z ]*"  placeholder="Enter city name" required>
+                            <div *ngIf="shippingForm.controls['city'].hasError('required') && shipsubmitted == true" class="alert alert-danger">City is required</div>
+                <div *ngIf="shippingForm.controls['city'].hasError('pattern') && shippingForm.controls['city'].touched" class="alert alert-danger">Only alphabets allowed.</div>
+                          </div>
+                          
+                          <div class="form-group" *ngIf="!regionError">
+                          <label><p style="margin-bottom: 0px;margin-top: 10px; color: grey; font-weight: 700;">State *</p></label> 
+                            <select name="region" formControlName="region" [(ngModel)]="shippingInfo.region"   style="padding: 3px; width: 100%;box-shadow: inset 0 1px 1px rgba(0,0,0,.075); padding: 6px 12px; font-size: 12px;background-color: #504d4d;color: #9a8c3d;" required> 
+                              <option *ngFor="let region of avl_regions" value="{{region.name}}">{{region.name}}</option>
+                            </select>
+                            <div *ngIf="shippingForm.controls['region'].hasError('required') && shipsubmitted == true" class="alert alert-danger">Region is required</div>
+                <!-- <div *ngIf="regionError" class="alert alert-danger">Region not available</div> --> 
+              </div> 
+                          <div class="form-group" *ngIf="regionError">
+                          <label><p style="margin-bottom: 0px;margin-top: 10px; color: grey; font-weight: 700;">State *</p></label> 
+                              <input type="text" class="form-control form_field" [(ngModel)]="shippingInfo.region" name="region" id="region" formControlName="region" required>
+                              <div *ngIf="shippingForm.controls['region'].hasError('required') && shipsubmitted == true" class="alert alert-danger">Region is required</div>
+                      </div>
+                          
+                          <div class="form-group" style="margin-top: 10px;">
+                            <label for="fname" style="color: grey;">ZIP Code*</label>
+                            <input style="border: 1px solid #9a8c3d;" [(ngModel)]="shippingInfo.postcode" id="postcode" name="postcode" formControlName="postcode" class="form-control" placeholder="Enter post code"  maxlength="30" pattern="[a-zA-Z0-9]*"  required>
+                            <div *ngIf="shippingForm.controls['postcode'].hasError('required') && shipsubmitted == true" class="alert alert-danger">Zip code is required.</div>
+                    <div *ngIf="shippingForm.controls['postcode'].hasError('pattern')" class="alert alert-danger">Enter correct zip code.</div>
+                          </div>
+                          
+                          <div class="form-group" style="margin-top: 10px;">
+                            <div class="phone-no" style="width: 35%; display: inline-block;">
+                              <label for="fname" style="color: grey;">Phone Number*</label><br>
+                              <input style="border: 1px solid #9a8c3d;" type="text" class="form-control" [(ngModel)]="shippingInfo.telephone" id="telephone" name="telephone" placeholder="Enter telephone number" formControlName="telephone"    pattern="[+ 0-9]*" required>
+                              <div *ngIf="shippingForm.controls['telephone'].hasError('required') && shipsubmitted == true" class="alert alert-danger">Phone number is required.</div>
+                              <!-- <div *ngIf="shippingForm.controls['telephone'].hasError('maxlength') && shippingForm.controls['telephone'].touched" class="alert alert-danger">Your enter phone number more then 16 digit</div> -->
+                    <div *ngIf="shippingForm.controls['telephone'].hasError('pattern')" class="alert alert-danger">Enter correct phone number.</div>
+                            </div>
+                            <div class="phone-number" style="float: right;width: 64%; font-size: 10px; color: grey;">
+                              <p style="margin-top: 20px;">Please enter a mobile number so that like to recieve delivery updates via text message</p>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <p style="text-align: right;"><input type="button" name="btn" value="CANCEL" style="background:#2d2c2c; color: white;">
+                          <button type="submit" name="btn"  (click)="shipsubmitted=true" style="background:#9a8c3d; color: white;">SAVE</button>
+                        </p>
+                      </form>
+                    </div>
+                    <div class="col-md-6" style="padding-top: 40px;">
+                      <div class="checkbox">
+                        <label style="font-size: 12px; color: grey;"><input type="checkbox" name="default_billing" id="addressDeffrent" [(ngModel)]="addressDeffrent"  (click)="sameAsShipping()">Please check if your billing address is the same as shipping address</label>
+                      </div>
+                      <h4 style="font-weight: bolder; color: grey;font-size: 15px; border-bottom: 1px solid grey;" *ngIf="addressDeffrent">BILLING INFORMATION</h4>
+                      <form [formGroup]="billingForm" (submit)="billingAddress()" novalidate>
+                              <div *ngIf="addressDeffrent">
+                              <div class="form-group">
+                                <label for="fname" style="color: grey;">First Name*</label>
+                                <input style="border: 1px solid #9a8c3d;" type="text" class="form-control" [(ngModel)]="billingInfo.firstname" formControlName="firstname" id="firstname"  maxlength="30" pattern="[a-zA-Z ]*" placeholder="Enter first name" required>
+                                <div *ngIf="billingForm.controls['firstname'].hasError('required') && billsubmitted == true" class="alert alert-danger">First name is required</div>
+                        <div *ngIf="billingForm.controls['firstname'].hasError('maxlength') && billingForm.controls['firstname'].touched" class="alert alert-danger">Your enter more then 30 characters long.</div> 
+                        <div *ngIf="billingForm.controls['firstname'].hasError('pattern') && billingForm.controls['firstname'].touched" class="alert alert-danger">Only alphabets allowed.</div>
+                              </div>
+                              
+                              <div class="form-group">
+                                <label for="lname" style="color: grey;">Last Name*</label>
+                                <input style="border: 1px solid #9a8c3d;" type="text" class="form-control" [(ngModel)]="billingInfo.lastname" id="lastname" formControlName="lastname" name="lastname"  maxlength="30" pattern="[a-zA-Z ]*"  placeholder="Enter last name" required>
+                                <div *ngIf="billingForm.controls['lastname'].hasError('required') && billsubmitted == true" class="alert alert-danger">Last name is required</div>
+                        <div *ngIf="billingForm.controls['lastname'].hasError('maxlength') && billingForm.controls['lastname'].touched" class="alert alert-danger">Your enter more then 30 characters long.</div> 
+                        <div *ngIf="billingForm.controls['lastname'].hasError('pattern') && billingForm.controls['lastname'].touched" class="alert alert-danger">Only alphabets allowed.</div>
+                              </div>
+                              
+        
+                              <div class="inline-btn" style="margin-bottom: 20px; border-top: 1px solid #fff;">
+                                <div class="form-group">
+                                  <label><p style="margin-bottom: 0px;margin-top: 10px; color: grey; font-weight: 700;">Country*</p></label>
+                                  <select [(ngModel)]="billingInfo.country_id" formControlName="country_id" name="country_id" (change)="fetchRegionsForBilling($event.target.value)"  placeholder="Select country" style="padding: 3px; width: 100%;box-shadow: inset 0 1px 1px rgba(0,0,0,.075); padding: 6px 12px; font-size: 12px;background-color: #504d4d;color: #9a8c3d;" required> 
+                                    <option *ngFor="let country of countries" value="{{country.id}}">{{country.full_name_english}}</option>
+                                  </select>
+                                  <div *ngIf="billingForm.controls['country_id'].hasError('required') && billsubmitted == true" class="alert alert-danger">Select country is required</div>
+                                </div>
+                                
+                                <div class="form-group" style="margin-top: 10px;">
+                                  <label for="fname" style="color: grey; width: 100%;">House no and Street*<span style="float: right;color: #fff; font-size: 10px;">Street Address, P.O.. Box</span></label>
+                                  <input style="border: 1px solid #9a8c3d;" type="text" class="form-control" [(ngModel)]="billingInfo.street1" name="street1" id="street1" formControlName="street1" placeholder="Enter street" required>
+                                  <div *ngIf="billingForm.controls['street1'].hasError('required') && billsubmitted == true" class="alert alert-danger">Delivery line is required</div>
+                      <div *ngIf="billingForm.controls['street1'].hasError('minlength') && billingForm.controls['street1'].touched" class="alert alert-danger">Your delivery line 1 must be at least 4 characters long.</div>
+                                </div>
+                                
+                                <div class="form-group" style="margin-top: 10px;">
+                                  <label for="fname" style="color: grey; width: 100%;">Address line2(optional)<span style="float: right;color: #fff; font-size: 10px;">Apartment,Suite,Unit,Floor</span></label>
+                                  <input style="border: 1px solid #9a8c3d;" type="text" class="form-control" [(ngModel)]="billingInfo.street2" name="street2" id="street2" formControlName="street2" placeholder="Enter street">
+                                </div>
+                                
+                                
+                                
+                                <div class="form-group" style="margin-top: 10px;">
+                                  <label for="fname" style="color: grey; width: 100%;">City*<span style="float: right;color: #fff; font-size: 10px;">Apartment,Suite,Unit,Floor</span></label>
+                                  <input style="border: 1px solid #9a8c3d;" type="text" class="form-control" [(ngModel)]="billingInfo.city" formControlName="city" id="city" name="city"  pattern="[a-zA-Z ]*"  placeholder="Enter city name" required>
+                                  <div *ngIf="billingForm.controls['city'].hasError('required') && billsubmitted == true" class="alert alert-danger">City is required</div>
+                      <div *ngIf="billingForm.controls['city'].hasError('pattern') && billingForm.controls['city'].touched" class="alert alert-danger">Only alphabets allowed.</div>
+                                </div>
+                                
+                                <div class="form-group" *ngIf="!regionErrorForBilling">
+                                <label><p style="margin-bottom: 0px;margin-top: 10px; color: grey; font-weight: 700;">State *</p></label> 
+                                  <select name="region" formControlName="region" [(ngModel)]="billingInfo.region"  style="padding: 3px; width: 100%;box-shadow: inset 0 1px 1px rgba(0,0,0,.075); padding: 6px 12px; font-size: 12px;background-color: #504d4d;color: #9a8c3d;" required> 
+                                    <option *ngFor="let region of avl_regions1" value="{{region.name}}">{{region.name}}</option>
+                                  </select>
+                                  <div *ngIf="billingForm.controls['region'].hasError('required') && billsubmitted == true" class="alert alert-danger">Region is required</div>
+                      <!--  <div *ngIf="regionErrorForBilling" class="alert alert-danger">Region not available</div> -->
+                                </div> 
+                                
+                                <div class="form-group" *ngIf="regionErrorForBilling">
+                                <label><p style="margin-bottom: 0px;margin-top: 10px; color: grey; font-weight: 700;">State *</p></label> 
+                                    <input type="text" class="form-control form_field" [(ngModel)]="billingInfo.region" name="region" id="region" formControlName="region" required>
+                                    <div *ngIf="billingForm.controls['region'].hasError('required') && billsubmitted == true" class="alert alert-danger">Region is required</div>
+                            </div>
+                                
+                                <div class="form-group" style="margin-top: 10px;">
+                                  <label for="fname" style="color: grey;">ZIP Code*</label>
+                                  <input style="border: 1px solid #9a8c3d;" [(ngModel)]="billingInfo.postcode" id="postcode" name="postcode" formControlName="postcode" class="form-control" placeholder="Enter post code"  maxlength="30" pattern="[a-zA-Z0-9]*"  required>
+                                  <div *ngIf="billingForm.controls['postcode'].hasError('required') && billsubmitted == true" class="alert alert-danger">Zip code is required.</div>
+                          <div *ngIf="billingForm.controls['postcode'].hasError('pattern')" class="alert alert-danger">Enter correct zip code.</div>
+                                </div>
+                                
+                                <div class="form-group" style="margin-top: 10px;">
+                                  <div class="phone-no" style="width: 35%; display: inline-block;">
+                                    <label for="fname" style="color: grey;">Phone Number*</label><br>
+                                    <input style="border: 1px solid #9a8c3d;" type="text" class="form-control" [(ngModel)]="billingInfo.telephone" id="telephone" name="telephone" placeholder="Enter telephone number" formControlName="telephone" pattern="[+ 0-9]*" required>
+                                    <div *ngIf="billingForm.controls['telephone'].hasError('required') && billsubmitted == true" class="alert alert-danger">Phone number is required.</div>
+                                    <!-- <div *ngIf="billingForm.controls['telephone'].hasError('maxlength') && billingForm.controls['telephone'].touched" class="alert alert-danger">Your enter phone number more then 16 digit</div> -->
+                          <div *ngIf="billingForm.controls['telephone'].hasError('pattern')" class="alert alert-danger">Enter correct phone number.</div>
+                                  </div>
+                                  <div class="phone-number" style="float: right;width: 64%; font-size: 10px; color: grey;">
+                                    <p style="margin-top: 20px;">Please enter a mobile number so that like to recieve delivery updates via text message</p>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                              <!-- <p style="text-align: right;"><input type="button" name="btn" value="CANCEL" style="background:#2d2c2c; color: white;">
+                                <button type="submit" name="btn"  (click)="billsubmitted=true" style="background:#9a8c3d; color: white;">SAVE</button>
+                              </p> -->
+                            </div>
+                            </form>
+                        </div>
+                      </div>
+                  
+                  
+                  
+                  
+                </div>
+              </div>
+            </div>
+
+          </div>
+      </div>  
+  </div>   
+</div>

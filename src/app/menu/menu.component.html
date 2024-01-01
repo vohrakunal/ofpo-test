@@ -1,0 +1,266 @@
+
+<div class="container-fluid" style="position: fixed;z-index: 2;width: 100%;">
+
+  <div class="row menu" style="background: black;">
+
+      <div id="minicart" class="minicart">
+            <div class="col-md-12" style="background:#fff;padding:0;padding-bottom:20px;">
+              <div class="table-responsive">
+                <table style="width: 100%;" cellpadding="0">
+                  <thead>
+                    <tr class="table-row">
+                      <th class="table-hd" style="padding-left: 25px;"> ITEMS IN CART</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+              <div class="table-responsive prodtable">    
+                  <table style="width: 100%;">
+                            <thead style="width: 100%;">
+                              <tr class="table-rw">
+                              <th class="table-head" style="width: 3%;"></th> 
+                              <th style="width: 82%;padding-left:5px;">PRODUCT NAME</th>
+                              <th style="widows: 15%;">PRICE</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!--First row-->
+                              <tr *ngFor="let cartItem of cartItems;let ind = index" class="table-back">
+                                <td class="sr_no">{{ind+1}}</td>
+                                <td>
+                                  <div class="image_left">
+                                  <img src="{{cartItem.imageValue}}" alt="abc" />
+                                </div>
+                                  <div class="info_right" style="width:75%;">
+                                <h4 style="margin:0; margin-top: 5px;" class="header-cont">{{cartItem.brand}}</h4>
+                                <p class="cat">{{cartItem.name}}</p>
+                                <table class="details">
+                                    <tr>
+                                      <td>
+                                        <p *ngIf="cartItem.type_id == 'configurable'" style="margin: 0;"><span>COLOR: <label style="padding: 10px;vertical-align: middle;" [style.background]="cartItem.color"></label></span></p> 
+                                        <p *ngIf="cartItem.type_id == 'configurable'" style="margin: 0;"><span>SIZE: {{cartItem.size}}</span></p>
+                                        <p><span>QTY:{{cartItem.quantity}}</span></p>
+                                    </td>
+                                    </tr>
+                                  </table>  
+                                  </div>
+                                </td>
+                                <td class="price">$ {{cartItem.price}}</td>
+                              </tr>
+                          </tbody>    
+                          </table>
+                          
+              </div>
+                <div class="subtotal-cart-mobile-view">
+                    <div class="view-cart-total-price">
+                      <div class="pd-right-24">
+                        <p class="grand_total text-right" *ngIf="cartItems.length">SUBTOTAL</p>
+                      </div>  
+
+                      <div>
+                        <p class="grand_value black" *ngIf="cartItems.length"><strong>{{subTotal | currency}}</strong></p>
+                      </div>
+                    </div>
+
+                  <div class="view-cart-btns">
+                    <div class="pd-right-10" *ngIf="cartItems.length">
+                        <a [routerLink]="['/cart']" style="border-color:#87764e;color:#333;" class="btn btn_default viewcart">VIEW CART</a>
+                    </div>  
+
+                    <div *ngIf="cartItems.length">
+                      <a type="button"  [routerLink]="['/checkout']" class="btn btn_default checkout" style="background:#87764e">CHECKOUT</a>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+      </div>
+   
+    
+
+    <div class="col-md-12 black_back hidden-xs">
+      <div class="row">
+        <div class="col-md-3 serach2" style="padding-right: 0px;">
+          <form [formGroup]="searchForm" (submit)="serach()" novalidate>
+              <div class="searc-bar-div-menu">
+                <input type="text" [(ngModel)]="sercahName" id="sercahName" formControlName="sercahName" name="sercahName" class="search gold" placeholder="search"><span><i (click)="serach()" class="fa fa-search gold"></i></span>
+              </div>
+            </form>
+        </div>
+        <div class="col-md-6 logo serach2">
+          <div class="">
+          <p style="background: url('./assets/images/logo_bg.png');margin: 0;background-size:cover;padding: 9px;text-align: center;color: #fff;letter-spacing: 3px;font-weight:bold;">
+          <a   (click)="gotoHome()"  style="color: #fff;"><img src="./assets/images/ofpoison.png" style="width:160px;"></a>
+          <!-- <a  *ngIf="categoryId == '20'" [routerLink]="['/brands',categoryId]"  style="color: #fff;"><img src="./assets/images/ofpoison.png" style="width:160px;"></a> -->
+          </p>
+          </div>
+
+        </div>
+        <div class="col-md-3 myaccount">
+
+          <div class="row text-center">
+              <div class="dropdown col-md-5 padd-left-0  bord-right-nav">
+                  <button class="btn btn-primary padding-top dropdown-toggle dropdown_btn_style gold myaccountButton" type="button" data-toggle="dropdown"  (click)="myAccount()">MY ACCOUNT </button>  <!-- ({{storeCredit | currency}}) -->
+                </div>
+
+                <div class="dropdown col-md-3 bord-right-nav text-center">
+                  <button class="btn btn-primary padding-top dropdown-toggle dropdown_btn_style gold" type="button" data-toggle="dropdown"><img src="./assets/images/usaflag.png" style="width: 20px;vertical-align: baseline;"> USD </button>
+                  </div>
+
+                  <div class="col-md-4 text-center cart-div-nav">
+                      <a class="cart" (click)="getLocalCart()" ><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                  </div>
+
+          </div>
+        
+                                  
+        </div>
+    </div>
+    </div>
+  </div>
+ 
+</div>
+ 
+ <!--Main bar end-->
+  <div class="black_back hidden-sm hidden-md hidden-lg">
+   <div class="logo">
+     <div class="row">
+     <p style="background: url('./assets/images/logo_bg.png');margin: 0;background-size:cover;padding: 8px;text-align: center;color: #fff;letter-spacing: 3px;font-weight:bold;">
+     <a href="index.html" *ngIf="categoryId != '20'" [routerLink]="['/home',categoryId || 14]"  style="color: #fff;"><img src="./assets/images/ofpoison.png" style="width:160px;"></a>
+     <a href="index.html" *ngIf="categoryId == '20'" [routerLink]="['/brands',categoryId || 14]"  style="color: #fff;"><img src="./assets/images/ofpoison.png" style="width:160px;"></a>
+     </p>
+    </div>
+
+   </div>
+  </div>
+
+<div class="container-fluid" style="position: fixed;z-index: 5;width: 100%;top: 40px">
+
+  <div class="row navmenu hidden-xs" >
+    <div class="col-md-12" style="background: black;">
+      <nav class="navbar navbar-inverse">
+        <div class="second-nav-div">
+          
+          <div class="row">
+              <div class="navbar-header col-md-9 magzine">
+                  <button type="button" class="navbar-toggle hidden-md hidden-lg" data-toggle="collapse" data-target="#myNavbar">
+                    <span  class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <!--  <a class="navbar-brand"  data-toggle="collapse" data-parent="#accordion" href="#menu1" class="black" style="margin-left:0px;color: #fff;display: inline-block;padding-left: 10px;">MAGZINE</a> -->
+                  <div class="dropdown" style="display: inline-block;">
+                <button class="btn btn-primary dropdown-toggle dropdown_btn_style gold magzine-btn" type="button" data-toggle="dropdown"><i class="fa fa-bars" aria-hidden="true"></i> MAGAZINE</button>
+              <ul class="dropdown-menu">
+                <!-- <li class="" *ngFor="let menu of menuItems"><a [ngClass]="menu.id == categoryId ? 'active' : ''" (click)="fetchProductsForCat(menu.id,menu.name)" *ngIf="menu.name !='MEN' && menu.name !='WOMEN' && menu.name !='BRANDS'">{{menu.name}}</a></li> -->
+              </ul>
+            </div>
+              </div>
+              
+              <div class="dropdown col-md-3 col-xs-3 store">
+      
+                <div class="row">
+                  <div class="col-md-5 padding-top bord-right-nav">
+      &nbsp;&nbsp;&nbsp;&nbsp;
+                  </div>
+      
+                  <div class="col-md-3 bord-right-nav text-center">
+                      <div class="sort-cust padding-top sort-cust-desktop">
+                          <a style="cursor:pointer;" class="sort" data-toggle="modal" data-target="#sortmodal" ><i class="glyphicon glyphicon-sort" aria-hidden="true"></i></a>
+                        </div>
+                  </div>
+      
+                  <div class="col-md-4 text-center">
+                    
+                <div class="store-div-nav">
+                    <button class="btn btn-primary padding-top dropdown-toggle dropdown_btn_style gold" type="button" data-toggle="dropdown">STORE <i class="fa fa-bars" aria-hidden="true"></i></button>
+                    <ul class="dropdown-menu navbar-right">
+                        <li class="" *ngFor="let menu of menuItems"><a [ngClass]="menu.id == categoryId ? 'active' : ''" (click)="fetchProductsForCat(menu.id,menu.name)">{{menu.name}}</a></li>
+                    </ul>
+                  </div>
+                  </div>
+      
+                </div>
+              
+              </div>
+          </div>
+
+
+        </div>
+      </nav>
+    </div>
+  </div>
+     
+</div>
+ 
+ 
+<!--  <div class="row navmenu hidden-xs" >
+   <div class="col-md-12" style="background: black;">
+     <nav class="navbar navbar-inverse">
+       <div class="container-fluid" style="padding-left: 0;text-align:center">
+         <div class="navbar-header">
+            <button type="button" class="navbar-toggle hidden-md hidden-lg" data-toggle="collapse" data-target="#myNavbar">
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>                        
+             </button>
+           <a class="navbar-brand" href="#" class="black magzine-font" style="margin-left:0px;color: #fff;display: inline-block;padding-left: 10px;">MAGZINE</a>
+         </div>
+         <div style='display:inline-block;'>
+         <ul class="nav navbar-nav">
+           <li  class="" *ngFor="let menu of menuItems">
+              <a  [ngClass]="menu.id == categoryId ? 'active' : ''"  (click)="fetchProductsForCat(menu.id,menu.name)"  >{{menu.name}}</a>
+           </li>  
+         </ul>
+        </div>
+         <ul class="nav navbar-nav navbar-right">
+           <li><a href="#" class="black magzine-font" style="color:#fff !important;">STORE</a></li>
+         </ul>
+       </div>
+       </nav>
+   </div>
+ </div> -->
+
+
+<!--Navbar End-->  
+ <div class="row navmenu hidden-sm hidden-md hidden-lg" >
+   <div class="col-md-12" style="background: black;">
+     <nav class="navbar navbar-inverse main-nav-bar">
+       <div class="container-fluid cust-nav-bar" style="padding-left: 0;text-align:center">
+         <div class="sort-cust">
+           <a class="sort" data-toggle="modal" data-target="#sortmodal" ><i class="glyphicon glyphicon-sort" aria-hidden="true" style="font-size:30px;color:#fff;"></i></a>
+         </div>
+         <div class="myaccount-nav-toggle  navbar-header cust-toggle">
+            <button type="button" class="navbar-toggle hidden-md hidden-lg myaccountToggleBtn1" data-toggle="collapse">
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>                        
+            </button>
+         </div>
+         <div class="cart-cust padding-top">
+           <a class="cart" (click)="getLocalCart()" ><i class="fa fa-shopping-cart" aria-hidden="true" style="padding-right:0px;"></i></a>
+         </div>
+
+         <div id="myNavbar1">
+         <ul class="nav">
+           <li  class="" *ngFor="let menu of menuItems">
+              <a  [ngClass]="menu.id == categoryId ? 'active' : ''" *ngIf="menu.name =='MEN' || menu.name =='WOMEN' || menu.name =='BRANDS'" (click)="fetchProductsForCat(menu.id,menu.name)"  >{{menu.name}}</a>
+              <!-- (click)="fetchProductsForCat(menu.id)" [routerLink]="['home',menu.id]"-->
+           </li>
+           
+           <li>
+              <a  class="btn btn-primary dropdown-toggle dropdown_btn_style gold myaccountButton"  (click)="myAccount()" >MY ACCOUNT </a>  <!-- ({{storeCredit | currency}}) -->
+           </li>
+           
+     </ul>
+        </div>
+        
+       </div>
+       <form [formGroup]="searchForm" (submit)="serach()" novalidate>
+              <div class="searc-bar-div-menu">
+                <input type="text" [(ngModel)]="sercahName" style="width:94%;" id="sercahName" formControlName="sercahName" name="sercahName" class="search gold" placeholder="search"><span><i (click)="serach()" class="fa fa-search gold"></i></span>
+              </div>
+            </form>
+       </nav>
+   </div>
+ </div><!--Navbar End-->   

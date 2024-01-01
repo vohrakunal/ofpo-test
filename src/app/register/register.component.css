@@ -1,0 +1,265 @@
+.section-bar {
+        min-height: calc(100vh - 116px);
+        display: flex;
+        align-content: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+    p.my-account {
+        font-weight: bolder;
+        color: grey;
+        margin-bottom: 0px;
+    }
+    h2.personal-info {
+        color: #9a8c3d;
+        margin-top: 10px;
+    }
+    p.p-description{
+      font-size: 12px;
+    }
+    .main-section {
+        margin-top: 100px;
+        margin-left: 190px;
+    }
+    a:hover{text-decoration: none;}
+    .black_back{
+      background: black;
+    }
+    
+   .article1{
+    padding-top: 200px;
+    height: 389px;
+   }
+    .collection1{
+    position: absolute;
+    top: 0;
+    background: #fff;
+    right: 0;
+    color: #000;
+    height: 400px;
+    width: 50%;
+
+    border-top: 1px solid #ccc;
+    border-bottom: 0.5px solid #ccc;
+    border-right: 1px solid #ccc;
+  }
+  .article2 {
+    width: 96%;
+  }
+  .form-control{
+    background-color: #504d4d;
+    color: #9a8c3d;
+    border: 1px solid #9a8c3d;
+    height: 30px;
+    font-size: 12px;
+    border-radius: 0px;
+  }
+
+  
+ 
+  label{
+    font-size: 12px;
+  }
+
+
+/**************************/
+.gold,.gold::placeholder{color: #87764e;}
+  .gray1{color: #404040;}
+  .gray2{color: #808184;}
+  .navbar-nav li a{color: #87764e !important;}
+  .article-title{
+    border-bottom: 1px solid #ccc;margin-bottom: 9px;padding-bottom: 8px;color: #87764e;
+    font-weight: bolder;
+  }
+  
+   .btn_gray{
+    background: black;
+    color: #fff;
+    padding: 5px 5px 3px;
+    margin-top: 5px;
+    font-size: 10px;
+   }
+
+
+.collection_slider {
+    padding-top: 15px;
+}
+.collection_slider .article_title {
+    padding-bottom: 9px;
+    border-bottom: 2px solid #87764e ;
+}
+.article2_car .owl-nav {
+    position: absolute;
+    top: 82%;
+    width: 16%; 
+    color: black;
+    right: 10px;
+}
+.article2_car .product-title1 {
+  margin:0;
+}
+.article2_car .social_icon_on_slider {
+    position: absolute;
+    right: 10px;
+    bottom: 114px;
+}
+.outter{
+    background: #fff;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    width: 50%;
+    height: 100%;
+    position: fixed;
+    overflow: hidden;
+}
+.inner{
+    overflow: scroll;
+    height: 85%;
+    padding: 0;
+    position: fixed;
+    overflow-x: hidden;
+    left: 11px;
+   }
+
+/*footer css*/
+  .footer_link{
+    border:none;
+    background: transparent;
+  }
+  .footer_link a{
+    color:#fff;
+  }
+  .footer_progress{
+    height: 10px;
+  }
+  .progress-bar{
+    background-color: #272829;
+  }
+  /*footer css end*/
+  /*product css*/
+  a.btn.btn_size {
+    background: #ccc;
+    margin-right: 3px;
+    color: black;
+}
+a.add_to_cart.btn {
+    background: #5f5656;
+    padding: 15px 23px;
+    color: #fff;
+    font-size: 11px;
+}
+a.wishlist.btn {
+    background: #5f5656;
+    color: #fff;
+    padding: 15px 8px;
+    font-size: 11px;
+    margin-left: 10px;
+}
+.size_table tr{
+      border-bottom: 1px dotted;
+}
+.size_table tr:last-child{
+      border-bottom:none;
+}
+.size_table td{
+        border-right: 1px solid #fff;
+         padding-left: 3px;
+}
+.size_table td:last-child{
+         border-right: none;
+}
+.panel-default>.panel-heading {
+    color: #fff;
+    background-color: black;
+    border-color: #ddd;
+  
+     border-top:1px solid;
+}
+
+.panel-body {
+    background: black;
+    color: #ffff;
+
+}
+.panel{
+  border:none;
+}
+.panel-group .panel-heading+.panel-collapse>.list-group, .panel-group .panel-heading+.panel-collapse>.panel-body {
+    border-top: none;
+}
+
+  /*product css end*/
+
+/*modal css*/
+     
+/* new page personal-informaion start here */
+/* .section-bar {
+        margin-top: 185px;
+    margin-left: 80px;
+} */
+p.my-account {
+    font-weight: bolder;
+    color: grey;
+    margin-bottom: 0px;
+}
+h2.personal-info {
+    color: #9a8c3d;
+    margin-top: 10px;
+}
+p.p-description{
+  font-size: 12px;
+}
+.main-section {
+    margin-top: 100px;
+    margin-left: 190px;
+}
+
+.personal {
+	background-image: url('/assets/images/skull1.png');
+}
+
+.shipping {
+	background-image: url('/assets/images/skull2.png');
+}
+
+.next1, .next2, .next3{
+    background: #9a8c3d;
+    color: white;
+    box-shadow: none;
+    border: navajowhite;
+    padding: 4px 15px;
+}
+
+p.personal-info-next-btn button{
+    border: none;
+    padding: 5px 15px;
+}
+
+.personal {
+  min-height: calc(100vh - 78px);
+}
+
+.registration-main-right {
+  min-height: calc(100vh - 78px);
+  padding-bottom:50px;
+  background: rgba(0,0,0,.9);
+}
+
+.pdr-0{
+  padding-right: 0;
+}
+
+@media (max-width: 768px){
+    .section-bar{
+        margin: 0;
+        min-height: 370px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .main-section{
+        margin: 0;
+    }
+    
+}
+

@@ -1,0 +1,437 @@
+<div class="container" (click)="fadeOut()">
+  <div class="row">
+    <div class="col-md-6 adDiv" style="padding-left: 0px;">
+        <div #articleAd></div>
+    </div>
+    <div class="col-md-6 adDiv" style="padding-right: 0px;">
+        <div #productAd></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-xs-6 outter articleoutter">
+      <div class="col-md-12 inner homecust-inner articlepageinner" style="padding:0;">
+        <!---first half start-->
+        <div class="row" style="background: #fff;">
+          <div class="col-md-12 aticle-head-padd">
+            <span class="black date-article">{{article.articleDate | date:'d'}}{{(article.articleDate | date:'d') |
+              dateSuffix}} {{article.articleDate | date:'MMMM, yyyy'}}</span>
+            <h3 style="margin-top: 10px;"><a href="article2.html" class="article-title" style="border: none;">{{article.name}}</a></h3>
+            <p class="article-subheading" style="width: 100%;">{{article.article_subtitle}}</p>
+            <p class="social-media-article">
+              <span class="fa_social_icons"><i class="fa fa-envelope envelope_fa_style"></i></span>
+              <span class="fa_social_icons"><i class="fa fa-twitter twitter_fa_style"></i></span>
+              <span class="fa_social_icons"><i class="fa fa-facebook facebook_fa_style"></i></span>
+              <span class="fa_social_icons"><i class="fa fa-pinterest pinterest_fa_style"></i></span>
+              <span style="float: right;"><a (click)="addItemToWishList(article.productId , article.type_id)" class="btn btn-dafult save_article_btn">+
+                  SAVE ARTICLE</a></span>
+            </p>
+          </div>
+        </div>
+
+
+
+
+        <div class="row">
+          <div class="artilce-slider-2-div">
+
+            <div class="col-md-12 a2-carusel-div">
+              <div #articleSideAd class="fixme"></div>
+              <div class="owl-carousel owl-theme article2_car" #owl>
+                <div *ngFor="let entry of article.mediaEntries; let i = index " class="item owl_item" style="padding-right: 0;">
+                  <div class="slider-article-img">
+                    <img src="{{entry.imageValue}}" class="slider_article_img">
+                  </div>
+                  <div class="social_icon_on_slider">
+                    <span><a href=""><i class="fa fa-pinterest"></i></a></span><br>
+                    <span><a href=""><i class="fa fa-facebook"></i></a></span><br>
+                    <span><a href=""><i class="fa fa-search"></i></a></span><br>
+                    <span><a href=""><i class="fa fa-window-close" aria-hidden="true"></i></a></span><br>
+                  </div>
+                  <div class="collection_slider">
+                    <p class="article_title"> <span class="slider-count">{{i+1}} </span>
+                      |{{article.mediaEntries.length}}</p>
+                    <!-- <p class="product-title1"><a class="product-title1" style="color:#000;" href="product.html"> {{article.name}}</a></p>
+                                  <p class="product-cat1">{{article.article_subtitle}}</p> -->
+                  </div>
+                </div>
+              </div>
+              <div class="articlebody" #articleBodyCopy></div>
+            </div>
+
+          </div>
+        </div>
+
+
+
+
+        <div class="row">
+          <div class="col-md-12 relatedarticle" style="background: #ccc;">
+            <div class="col-md-12" style="background: #ccc;padding-bottom: 20px;border-top: 1px solid; padding-left: 0;padding-right: 0px;">
+              <p class="gold black related-article" style="text-transform:uppercase;padding-left:15px;">Related
+                Articles</p>
+
+
+              <div *ngFor="let relatedArtical of relatedArticles;let j = index">
+                <div *ngIf="relatedArtical.articleClassification == 'A1'" class="col-md-6 a1  inner-article-a1" style="position: relative;">
+                  <div>
+                    <img src="{{relatedArtical.imageValue}}" class="article_display_2_img">
+                    <div class="" style="height: 100%;position: relative;top: 0;width: 100%;">
+                      <div class="article2">
+                        <p class="article-subheading" style="border-bottom: 1px solid #ada7a7;margin-bottom: 4px;">
+                          {{relatedArtical.name}}
+                        </p>
+                        <p style="font-size: 12px;margin-bottom: 0;">{{relatedArtical.articleDate | date:'MMM dd,
+                          yyyy'}}</p>
+                        <p class="bookmark-click-read"><a class="btn btn_gray bold" [routerLink]="[getPath(relatedArtical.article_detail_display),relatedArtical.sku,categoryId]">CLICK
+                            TO READ</a>
+                          <span style="float: right;">
+                            <img (click)="addItemToWishList(relatedArtical.productId)" style="width:14px;" src="./assets/images/bookmark.png">
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngIf="relatedArtical.articleClassification == 'A3'" class="col-md-12 cust-article-type-a3"
+                  [ngStyle]="{'background-image': 'url('+ relatedArtical.imageValue +')'}" style="margin:0 15px 15px;">
+                  <div class=""></div>
+                  <div class="col-md-5 a3" [routerLink]="[getPath(relatedArtical.article_detail_display),relatedArtical.sku,categoryId]">
+                    <!-- <div class="produ-a3-desc">
+	                    <p class="a3-descr"><a   [routerLink]="[getPath(relatedArtical.article_detail_display),relatedArtical.sku,categoryId]">{{article.name}}</a></p>
+	                    <h3 class="a3-brand black">{{relatedArtical.brand}}</h3> 
+	                 <!--  <p class="article-date">{{article.magazine}} | {{article.articleDate | date:'MMM dd, yyyy'}}</p> 
+	                  <p class="a3-brand-desc-small">From cult skate shop to fashion superpower</p>
+	                </div> -->
+                  </div>
+
+                  <div class="col-md-7 article-type-a3" style="padding-bottom: 11px;">
+                    <div class="article1 a3-type-bookmark-main-div">
+                      <p class="type-a3-bookmark-click-read">
+                        <a class="btn btn_gray" [routerLink]="[getPath(relatedArtical.article_detail_display),relatedArtical.sku,categoryId]">CLICK
+                          TO READ</a>
+                        <span style="float: right;">
+                          <img (click)="addItemToWishList(relatedArtical.productId)" style="width:14px;" src="./assets/images/bookmark.png">
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="custom-a2-inner" *ngIf="relatedArtical.articleClassification == 'A2'" style="margin-left:-15px;">
+                  <div class="col-md-6 col-xs-6 a2" style="padding-right: 0;">
+
+                    <a class="bold" [routerLink]="[getPath(relatedArtical.article_detail_display),relatedArtical.sku,categoryId]"><img
+                        src="{{relatedArtical.imageValue}}" width="100%"></a>
+                  </div>
+                  <div class="col-md-6 col-xs-6 a2 cust-article-type-a2" style="background: #fff;padding:0;padding-bottom: 11px;">
+                    <div class="article1">
+                      <p class="article-subheading bold">{{relatedArtical.name}}</p>
+                      <!-- <H3 class="article-title black" style="border-bottom: 1px solid #ccc;">{{relatedArtical.brand}}</H3> -->
+                      <p class="article-date">{{relatedArtical.magazine}}</p>
+                      <p style="font-size:12px">{{relatedArtical.articleDate | date:'MMM dd, yyyy'}}</p>
+                      <P class="bookmark-click-read">
+                        <a class="btn btn_gray bold" [routerLink]="[getPath(relatedArtical.article_detail_display),relatedArtical.sku,categoryId]">CLICK
+                          TO READ</a>
+                        <span style="float: right;"><img (click)="addItemToWishList(relatedArtical.productId)" style="width:14px;"
+                            src="./assets/images/bookmark.png">
+                        </span>
+                      </P>
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngFor="let artadd of displayArticalAdds">
+                  <div class="col-md-12 adDiv" style="padding-right: 0px;" *ngIf="j == artadd ; else elseBlock">
+                    <div #articleInlineAd></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+      <!---first half end-->
+      <div class="col-xs-1 hidden-sm hidden-md hidden-lg store-pro-swipe">
+        <div class="mobileproduct">
+          <div><span class="gold">STORE</span> | TAP TO SEE RELATED PRODUCTS
+            <img class="arrow-right-mob" src="./assets/images/arrow-right.png" alt="arrow">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-6 outter productoutter article-inner-product-side">
+      <div class="col-xs-1 hidden-sm hidden-md hidden-lg related-pro-swipe">
+
+        <div class="mobilearticle">
+          <div><strong class="gold">MAGAZINE</strong> | TAP TO SEE RELATED ARTICLES
+            <img class="arrow-left-mob" src="./assets/images/arrow-left.png" alt="arrow">
+          </div>
+        </div>
+      </div>
+      <div class="row homecust-inner article-inner-main-div inner" style="padding:0;">
+        <div class="insideproduct col-md-12">
+
+          <div *ngFor="let relatedproduct of relatedProducts;let i = index">
+
+
+            <div *ngIf="relatedproduct.productClassification == 'P2'" class="col-md-12 p2 cust-product-p2">
+              <a class="link">
+                <div class="img-wrapper">
+                  <img src="{{relatedproduct.imageValue}}" width="100%">
+                </div>
+              </a>
+              <div class="collection1">
+                <div class="collection_inner">
+                  <a [routerLink]="['/product',relatedproduct.sku , categoryId]" class="product-title link" style="color:#000;">
+                    <p style="margin-bottom: 4px;" class="product-cat">{{relatedproduct.brand}}</p>
+                    <p class="product-title black">{{relatedproduct.name}}</p>
+                    <p class="product-price light">$ {{relatedproduct.price}}</p>
+                  </a>
+                  <!--  <P style="padding-top: 0px;"><a class="btn btn_gray">SHOP NOW</a></P> -->
+
+                  <p class="quick-btns-heart" style="margin-bottom: 0;">
+
+                    <a class="btn btn_gray quick-view" data-toggle="modal" data-target="#myModal" (click)="getProductDetails(relatedproduct.sku)">QUICK
+                      VIEW</a>
+
+                    <span style="float: right;margin-top: 8PX;"><a (click)="getProductDetails(relatedproduct.sku)"></a>
+
+                      <span *ngIf="relatedproduct.type_id == 'configurable'" class="glyphicon glyphicon-heart-empty" id="wishlistname{{relatedproduct.sku}}"
+                        (click)="addItemToWish(relatedproduct.sku,relatedproduct)" data-toggle="modal" data-target="#myModal"
+                        style="padding-left: 10PX;">
+                      </span>
+                      <span *ngIf="relatedproduct.type_id != 'configurable'" class="glyphicon glyphicon-heart-empty" id="wishlistId{{relatedproduct.productId}}"
+                        (click)="addItemToWishList(relatedproduct.productId,relatedproduct.type_id)" style="padding-left: 10PX;"></span>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="relatedproduct.productClassification == 'P4'" class="col-md-12 p2 cust-product-p4">
+              <a (click)="fadeOut()" [routerLink]="['/product',relatedproduct.sku , categoryId]" class="link"><img src="{{relatedproduct.imageValue}}"
+                  width="100%" class="col-md-6" style="padding:0;"></a>
+              <div class="collection1">
+                <div class="collection_inner">
+
+                  <p class="black product-cat"><a class="product-cat link" style="color:#000;" (click)="fadeOut()" [routerLink]="['/product',relatedproduct.sku , categoryId]">{{relatedproduct.brand}}</a></p>
+
+                  <p class="product-title black">{{relatedproduct.name}}</p>
+                  <p class="product-price light">$ {{relatedproduct.price}}</p>
+
+
+                  <p class="quick-btns-heart" style="margin-bottom: 0;">
+
+                    <a class="btn btn_gray quick-view" data-toggle="modal" data-target="#myModal" (click)="getProductDetails(relatedproduct.sku)">QUICK
+                      VIEW</a>
+                    <span>
+                      <a (click)="getProductDetails(relatedproduct.sku,true)"></a>
+
+                      <span *ngIf="relatedproduct.type_id == 'configurable'" class="glyphicon glyphicon-heart-empty" id="wishlistname{{relatedproduct.sku}}"
+                        data-toggle="modal" data-target="#myModal" (click)="addItemToWish(relatedproduct.sku,relatedproduct)"
+                        style="padding-left: 10PX;">
+                      </span>
+                      <span *ngIf="relatedproduct.type_id != 'configurable'" class="glyphicon glyphicon-heart-empty" id="wishlistId{{relatedproduct.productId}}"
+                        (click)="addItemToWishList(relatedproduct.productId,relatedproduct.type_id)" style="padding-left: 10PX;"></span>
+                    </span></p>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="relatedproduct.productClassification == 'P1'" class="col-md-6 p3 cust-product-p1" style="position: relative;">
+              <a [routerLink]="['/product',relatedproduct.sku , categoryId]">
+
+                <div class="img-wrapper">
+                  <img src="{{relatedproduct.imageValue}}" class="article_display_2_img">
+                </div>
+              </a>
+              <div class="product1">
+                <a class="link" [routerLink]="['/product',relatedproduct.sku , categoryId]">
+                  <p class="product-cat" style="margin-bottom: 4px;"> {{relatedproduct.brand}}</p>
+                  <p class="product-title bold">{{relatedproduct.name}}</p>
+                  <p class="product-price light" style="margin-bottom: 0;">{{relatedproduct.price | currency}}</p>
+                </a>
+                <p style="margin-bottom: 0;"><a class="btn btn_gray" data-toggle="modal" data-target="#myModal" (click)="getProductDetails(relatedproduct.sku)">QUICK
+                    VIEW</a><span style="float: right;margin-top: 8PX;"><a (click)="getProductDetails(relatedproduct.sku,true)"></a><span
+                      id="wishlistId{{relatedproduct.productId}}" (click)="addItemToWishList(relatedproduct.productId,relatedproduct.type_id)"
+                      class="glyphicon glyphicon-heart-empty" style="padding-left: 10PX;"></span></span></p>
+              </div>
+            </div>
+
+            <!-- p3 starts-->
+            <div *ngIf="relatedproduct.productClassification == 'P3'" class="col-md-12 p2 cust-product-p3">
+              <a [routerLink]="['/product',relatedproduct.sku , categoryId]" class="link"><img src="{{relatedproduct.imageValue}}"
+                  width="100%"></a>
+              <div class="style-2-p3-inner">
+                <div class="collection_inner">
+                  <div class="p3-prod-des">
+                    <p class="black product-cat"><a class="product-cat link" style="color:#000;" [routerLink]="['/product',relatedproduct.sku , categoryId]">{{relatedproduct.brand}}</a></p>
+                    <p class="product-title black">{{relatedproduct.name}}</p>
+                  </div>
+                  <div class="p3-prod-des">
+                    <P style="padding-top: 0px;"><a class="btn btn_gray shop-btn-p3" [routerLink]="['/product',relatedproduct.sku , categoryId]">SHOP
+                        NOW</a><span><a></a><span id="wishlistId{{relatedproduct.productId}}" (click)="addItemToWishList(relatedproduct.productId,relatedproduct.type_id)"
+                          class="glyphicon glyphicon-heart-empty" id="" style="padding-left: 10PX;"></span></span></P>
+                  </div>
+                  <p class="quick-btns-heart" style="margin-bottom: 0;"><a class="btn btn_gray quick-view" data-toggle="modal"
+                      data-target="#myModal" (click)="getProductDetails(relatedproduct.sku)">QUICK VIEW</a></p>
+                </div>
+              </div>
+            </div>
+            <!-- p3 ends -->
+
+            <div *ngFor="let ads of displayProductAdds">
+              <div class="col-md-12 adDiv" style="padding-right: 7px; padding-left: 7px;" *ngIf="i == ads ; else elseBlock">
+                <div #productInlineAd></div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- </div> -->
+        </div>
+      </div>
+      <!---second half end-->
+    </div>
+    <!---main row end-->
+  </div>
+</div>
+
+
+
+
+
+
+<div class="modal fade" id="myModal" role="dialog" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog" style="width:650px;">
+
+
+    <div class="modal-content quick-view-modal-mdiv">
+      <button type="button" id="quickview_close" class="close" (click)="closeModal()" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title"></h4>
+      <div class="modal-body">
+        <div class="demo">
+          <div class="container" style="width: 100%;">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+
+                  <div class="bg-black-model-top">
+                    <div class="col-md-10">
+
+                      <div class="row">
+                        <div id="owl-demo" class="product_modal owl-carousel owl-theme" #owl1>
+                          <div *ngFor="let entry of singleProduct.mediaEntries; let ind = index">
+                            <div class="item">
+                              <img [src]="entry.imageValue" alt="" class="slider_img">
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-2 product_modal_thumbnail" style="width: 14%;">
+                      <div *ngFor="let entry of singleProduct.mediaEntries" class="row">
+                        <img [src]="entry.imageValue" alt="" class="img-thumbnail" />
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="bg-white-model-bottom">
+                    <div class="col-md-6">
+                      <div class="">
+                        <h2 class="product-name-modal black">{{singleProduct.name}}</h2>
+                        <p style="margin-bottom: 0px;font-size: 12px;font-weight: 600;color: #87764e;    text-transform: uppercase;">{{singleProduct.brand}}</p>
+                        <p class="produ-price-model">$ {{singleProduct.price}}</p>
+                        <h5 style="text-transform:uppercase;color:#87764e;"><strong>Product Details</strong></h5>
+                        <p class="text-justify" style="color: #7d7070;max-height:100px;overflow-y:scroll;" #prdDesc> </p>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="">
+                        <div class="u-text-left" style="text-align: right;text-transform: uppercase;">
+                          <h5 style="color:#87764e;"><strong>Share</strong></h5>
+                        </div>
+                      </div>
+                      <div class="u-text-left">
+                        <p style="text-align: right;" class="shareicon"><span><a href="" class="bt btn_size"><i style="font-size:17px;color:#87764e;"
+                                class="fa fa-facebook"></i></a></span>
+                          <span><a href="" class="bt btn_size"><i class="fa fa-twitter" style="font-size:17px;color:#87764e;"></i></a></span>
+                          <span><a href="" class="bt btn_size"><i class="fa fa-pinterest-p" style="font-size:17px;color:red"></i></a></span>
+                        </p>
+                      </div>
+                     
+                      
+                      <div class="cart-add-model">
+
+                          <div class="size-colors-quick">
+
+                              <div>
+                                  <p style="margin-bottom: 2px;font-size: 13px;">SIZE</p>
+                                  <p>
+                                    <span *ngFor="let size of singleProduct.sizeOptions">
+                                      <div class="btn btn_size">
+                                        <input name="size" id="{{size.valueCode}}" type="radio" style="display:none;" value="{{size.valueCode}}"
+                                          (click)="setSelectedSize(size.valueCode)">
+                                        <label for="{{size.valueCode}}" style="padding:5px 10px 3px;border:1px solid #333;">{{size.sizeCode}}</label>
+                                      </div>
+                                    </span>
+          
+                                  </p>
+                              </div>
+
+                              <div >
+                                  <p style="margin-bottom: 2px;font-size: 13px;">COLOR</p>
+                                  <p>
+                                    <span *ngFor="let color of singleProduct.colorOptions">
+                                      <div class="btn btn_color">
+                                        <input id="{{color.valueCode}}" name="color" type="radio" style="display:none;" value="{{color.valueCode}}"
+                                          (click)="setSelectedColor(color.valueCode)">
+                                        <label for="{{color.valueCode}}" style="font-weight: bold;padding: 16px 18px;"
+                                          [style.background]="color.colorCode"></label>
+                                      </div>
+                                    </span>
+                                  </p>
+                              </div>
+                          </div>
+
+                          <div class="cart-add-model-btns">
+                              <p>
+                                <a *ngIf="singleProduct.type_id != 'configurable'" (click)="addItemToWishList(singleProduct.productId,singleProduct.type_id)"
+                                  class="wishlist btn" style="background:#fff;border-color:#87764e;color:#87764e;padding-top: 12px;border-radius: 0;"><span
+                                    style="color:#bcb8b8;padding-right:10px;background:#fff;">+</span>WISHLIST</a>
+                                <a *ngIf="singleProduct.type_id == 'configurable'" (click)="addConfigItemToWishList(singleProduct.productId,singleProduct)"
+                                  class="wishlist btn" style="background:#fff;border-color:#87764e;color:#87764e;padding-top: 10px;border-radius: 0;"><span
+                                    style="color:#bcb8b8;padding-right:10px;background:#fff;">+</span>WISHLIST</a>
+                                <a *ngIf="singleProduct.is_in_stock == true" [routerLink]="" class="add_to_cart btn" style="background:#87764e;border-radius:0;"
+                                  (click)="addItemToCart();"><i class="fa fa-shopping-cart" aria-hidden="true" style="color:#fff;padding-right:10px;"
+                                    (click)="addItemToCart()"></i>ADD TO CART</a>
+                                <a *ngIf="singleProduct.is_in_stock == false" class="sold-out-txt black">SOLD OUT</a>
+                              </p>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+</script>

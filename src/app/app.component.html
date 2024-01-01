@@ -1,0 +1,119 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<app-menu></app-menu>
+
+<toaster-container [toasterconfig]="config"></toaster-container>  
+<router-outlet><ng4-loading-spinner  [timeout]="110000" > </ng4-loading-spinner></router-outlet>
+
+
+<div class=" footerdisplay" style="background: #231f20;z-index:10;position:fixed;bottom:0;width:100%;font-size:16px;opacity: 0.99;">
+    <p style="text-align: center;margin-bottom: 0;color: #87764e;border-bottom: 1px solid #676767;"><i class="fa fa-angle-down footer_toggle"  style="font-size:36px"></i></p>
+    <div class="footer_hide_show footer-home" id="footer-home" style="background: #231f20;color: #fff; display:none;"><!--footer start--> 
+    
+    <div class="col-md-12 footer-links-nav" style="border-left: 1px solid #949494;padding-top:5px;">
+
+      <div class="row">
+
+          <div class="padd-0 footer-cols-align" style="max-width:1300px;margin:0 auto;">
+              <span class="gold" style="padding-left: 15px;font-weight: 600;">MAGAZINE</span>
+              <ul class="list-group">
+                <li class="list-group-item footer_link"><a [routerLink]="['/myfooter',3,8]">Media Kit</a></li>
+                <li class="list-group-item footer_link"><a [routerLink]="['/myfooter',3,14]">Careers</a></li>
+                <li class="list-group-item footer_link"><a [routerLink]="['/myfooter',3,12]">Press Clippings</a></li>
+                <!-- <li class="list-group-item footer_link"><a [routerLink]="['/myfooter',2,1]">Press Clippings</a></li> -->
+                <!-- <li class="list-group-item footer_link"><a [routerLink]="['/myfooter',2,1]">Subscriptions</a></li> -->
+                
+                
+                <!-- li class="list-group-item footer_link"><a [routerLink]="['/myfooter',2,1]">Reprint Permission</a></li-->
+                
+                <!-- <li class="list-group-item footer_link"><a [routerLink]="['/myfooter',2,1]">Site Map</a></li> -->
+              </ul>
+
+            <span class="gold" style="padding-left: 15px;font-weight: 600;">CUSTOMER CARE</span>
+            <ul class="list-group">
+              <li class="list-group-item footer_link"><a [routerLink]="['/myfooter',1,1]">FAQs</a></li>
+              <li class="list-group-item footer_link"><a [routerLink]="['/myfooter',1,2]">Shipping Information</a></li>
+
+              <li class="list-group-item footer_link"><a [routerLink]="['/myfooter',1,3]">Size Guide</a></li>
+              <li class="list-group-item footer_link"><a [routerLink]="['/myfooter',1,4]">Terms of Use</a></li>
+              <li class="list-group-item footer_link"><a [routerLink]="['/myfooter',1,5]">Privacy Ploicy</a></li>
+              <li class="list-group-item footer_link"><a [routerLink]="['/myfooter',1,6]">About Cookies</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-cols-align"  style="margin: 0 auto;max-width: 650px;">
+            <span class="gold" style="font-weight: 600;">OFPOISON</span>
+            <ul class="list-group">
+              <li class="list-group-item footer_link"><a [routerLink]="['/myfooter',2,7]">Brand DNA</a></li>
+              <li class="list-group-item footer_link"><a [routerLink]="['/myfooter',2,13]">Sell With us</a></li>
+              <li class="list-group-item footer_link"><a [routerLink]="['/myfooter',2,10]">Contact Us</a></li>
+              <li class="list-group-item footer_link"><a [routerLink]="['/myfooter',2,9]">Size Navigation</a></li>
+              <li class="list-group-item footer_link"><a [routerLink]="['/myfooter',2,11]">Site Map</a></li>
+            </ul>
+        </div>
+  
+
+      </div>
+    
+    </div>
+
+    <div class="col-md-12 col-xs-12"  style="border-top: 1px solid #949494;border-bottom: 1px solid #949494;padding: 10px 0 5px;">
+
+      <div class="row newsletter-social-div" style="    max-width: 1000px;
+    margin: 0 auto;">
+
+          <div class="col-md-8 col-xs-12 footer-form"  style="text-align:center;">
+
+            <div class="hitlist-div">
+                <p class="gold" style="margin-bottom: 0;font-size: 11px;" *ngIf="!showNewsLetter">JOIN THE HITLIST</p>
+      
+                <p class="gold" style="margin-bottom: 0;font-size: 11px;" *ngIf="showNewsLetter">YOU'RE ON OUR HITLIST!</p>
+        
+                <p style="margin-bottom: 6px;font-size: 10px;font-weight: 600;color: #676767;text-align: center;" *ngIf="!showNewsLetter">Subscribe to our newsletter</p>
+        
+                <p style="margin-bottom: 6px;font-size: 10px;font-weight: 600;color: #676767;text-align: center;" *ngIf="showNewsLetter">You have already subscribed for the newsletter!</p>
+        
+            </div>
+
+            <div class="form-subs">
+                <form class="form-horizontal" [formGroup]="subscribeForm" (submit)="jointoSubscribe()" novalidate  >
+                    <input type="text" placeholder="Enter email" [(ngModel)]="subscribeEmail"  formControlName="subscribeEmail"  id="subscribeEmail" name="subscribeEmail" maxlength="50" pattern="[a-zA-Z]+[a-zA-Z0-9._]+@[a-z]+\.[a-z.]{2,5}" required style="background: #231f20;">
+                    <div *ngIf="subscribeForm.controls['subscribeEmail'].hasError('required') && submitted == true" class="alert alert-danger">Email is required</div>  
+                    <div *ngIf="subscribeForm.controls['subscribeEmail'].hasError('pattern') && submitted == true" class="alert alert-danger">Enter correct emailId.</div>
+                     <a style="background: #89774B;color:#fff" *ngIf="!showNewsLetter"><button class="subscribe" type="submit" (click)="submitted=true">Subscribe</button></a>
+                     <a style="background: #89774B;color:#fff" *ngIf="showNewsLetter"><button class="subscribe" type="submit" (click)="submitted=true">UNSUBSCRIBE</button></a>
+                </form>
+            </div>
+      
+          </div>
+
+              <!-- social Links start -->
+          <div class="col-md-6 col-xs-12">
+            <p style="text-align: center;font-size: 19px;margin-bottom: 0;">
+              <span><a href="https://www.facebook.com/ofpoison"><i class="fa fa-facebook-f" style="color: #89774B;"></i></a></span>
+              <span style="padding-left: 10px;"><a href="https://twitter.com/ofpoison_com"><i class="fa fa-twitter" style="color: #89774B;"></i></a></span>
+              <span style="padding-left: 10px;"><a href="https://www.instagram.com/ofpoison"><i class="fa fa-instagram" style="color: #89774B;"></i></a></span>
+            </p>
+          </div>
+
+      </div>
+
+      
+        <!-- <div class="col-md-6"  style="    padding-top: 8.5%;">
+             <p class="gold" style="font-size: 20px;margin-bottom: 18px;text-align:center;">TRACK YOUR ORDER</p>
+             <input type="text" name="" style="width: 76%;background: black;"><a href="btn" style="
+    background: #89774B;padding: 6px 4px;color:#fff">Track</a>
+        </div> -->
+    </div>
+
+
+
+
+    
+    <!--social Links End-->
+    <div class="col-md-12 footer-social" style="padding: 10px 0 5px;"><!--copyright start-->
+      <p class="gold" style="text-align: center;margin-bottom: 0;padding:5px 0; font-size: 15px;">COPYRIGHT © 2017 OFPOISON LLC. ALL RIGHTS RESERVED. SEE OUR TERMS OF USE AND PRIVACY POLICY.</p>
+      
+    </div><!--copyright End-->
+  </div>
+  <!--footer End--> 
+</div>

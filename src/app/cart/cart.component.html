@@ -1,0 +1,427 @@
+<div class="" style="padding:0 15px;">
+
+		<div class="row row-eq-height" id="cartrow">
+			<div class="col-md-8 col-xs-12 mobile_padding" style="padding-right: 0; background: #e6e7e8;">
+					<div class="cal-padding cart_wrapper">
+							<div class="table-responsive">
+								<div class="check_price" style="background:#000;">
+									<h3 style="font-weight:bold;color:#87764e" class="black">MY CART</h3>
+								</div>
+							</div>
+						<div class="table-responsive">		
+							<table style="width: 100%;">
+			                	<thead style="width: 100%;">
+			                  <tr style="background:#fff;" class="table-rw">
+			                  <th class="table-head table-width1"></th>
+			                  <th class="table-width2 black" >Product Name</th>
+			                  <th class="table-head table-width3 black" style="padding-left:35px;">Quantity</th>
+			                  <th class="table-head table-width4 black" style="text-align:center;">Unit Prize</th>
+			                  <th class="table-head table-width5 black" style="text-align:center;">Total</th>
+			                  </tr>
+			                	</thead>
+				            <tbody>
+				                <tr *ngFor="let cartItem of cartItemsData;let ind = index" class="table-back">
+				                  <td class="sr_no">{{ind+1}}.</td>
+				                  <td>
+				                    <div class="image_left">
+				                    <img src="{{cartItem.imageValue}}"  alt="abc" /></div>
+				                    <div class="info_right">
+					                  <h4 class="header-cont black">{{cartItem.brand}}</h4>
+					                  <p>{{cartItem.name}}</p>
+					                  <table class="details">
+				                      <tr>
+				                        <td>
+				                          <p *ngIf="cartItem.type_id == 'configurable'" class="edit" style="border-bottom: 1px dotted; "><a data-toggle="modal" data-target="#editDetail"  (click)="getProductDetails(cartItem.sku,cartItem.itemId,false,cartItem)" ><span>Details</span><span style="margin-left: 38px;">Edit</span><i  class="fa fa-pencil" aria-hidden="true"></i></a></p>
+										  <p *ngIf="cartItem.type_id == 'configurable'" ><span>Color: <label style="padding: 10px;vertical-align: middle;" [style.background]="cartItem.color"></label></span></p> 
+				                          <p *ngIf="cartItem.type_id == 'configurable'"  style="border-bottom: 1px dotted;"><span>Size: {{cartItem.size}}</span></p>
+				                          <p *ngIf="cartItem.type_id == 'configurable'" class="add_another_size"> <a data-toggle="modal" data-target="#addSizeModal"  (click)="getProductDetails(cartItem.sku,cartItem.itemId,true,cartItem)"><span>+ Add Another Size</span></a></p>
+				                       </td>
+				                      </tr>
+				                    </table>  
+				                    </div>
+				                  </td>
+				                  <td class="table-quantity">
+				                    <div class="div-width">
+				                    	
+				                    </div>
+				                    <div class="text-centerr">
+				                      
+																
+														</div>  
+														
+														<div class="in-stock-div-cart-page text-center">
+																<div class="cartqty">
+																		<img src="assets/images/left.png" class="leftarrow">
+																			<input type="text" class="input-number" name="quantity"   [(ngModel)]="cartItem.quantity"  value="{{cartItem.quantity}}"  (change)="updateQuantity(cartItem)" min="1"> 
+																		<img src="assets/images/right.png" class="rightarrow">
+																</div>
+																<div style="margin-top: 5px;"><span class="stock-margin">In Stock</span>
+																</div>
+														</div>
+
+														<div class="remove-item-div-cart-page text-center">
+															
+															<a (click)="deleteCartItem(cartItem.itemId)">
+																	<div class="remove" style="margin-bottom: 5px;">
+																		<img src="/assets/images/octclose.png" alt="">
+																	</div>
+																	<span class="remove-item">Remove Item</span>
+															</a> 
+															
+
+														</div>
+														
+				                  </td>
+
+				                  <td class="cart-items-align">$ {{cartItem.price}}</td>
+				                  <td class="cart-items-align">$ {{cartItem.price  * cartItem.quantity}}</td>
+				                </tr>
+							 </tbody>
+							</table>
+						</div>
+					</div>
+					<a type="button"  *ngIf="categoryId != '20'" (click)="fadeOut()" [routerLink]="['/home',categoryId]" class="btn btn-default btn_continue_shopping mobile_shopping"><span _ngcontent-c4="" aria-hidden="true" class="fa fa-long-arrow-left arrow-left-proceed-co"></span>CONTINUE SHOPPING</a>
+					<a type="button"  *ngIf="categoryId == '20'" (click)="fadeOut()"  [routerLink]="['/brands',categoryId]" class="btn btn-default btn_continue_shopping mobile_shopping"><span _ngcontent-c4="" aria-hidden="true" class="fa fa-long-arrow-left arrow-left-proceed-co"></span>CONTINUE SHOPPING</a>		
+			</div>
+			<div class="col-md-4 col-xs-12 footer-cart-main-div" style="background:#1a1a1a;">
+				<div class="row">
+					<div class="check_price">
+						<h3 style="display:inline-block;font-weight:bold;color:#87764e"class="black" >CHECKOUT PRICE</h3> 
+						<img src="assets/images/stripe.png" class="img img-responsive stripe" >
+					</div>
+					<div class="col-md-12 col-xs-12 footer-padd-cart cart-page-checkout-div" style="padding:20px; color: #404040;">
+						<div class="aplly-cpn">
+							<h5>WHAT WOULD YOU LIKE TO DO NEXT ?</h5>
+							<div class="input-group cart_wrapper" style="border: 1px solid #3b3b3b;">
+	    						<input type="text" class="form-control btn_search_text" style="background:#1a1a1a;color:#fff;border:0;" placeholder="Enter Promotional Code">
+	      						<span class="input-group-btn">
+	       						 <button type="button" class="btn btn-default btn_search black" style="color: #fff;background: #86754d;border: 1px solid #86754d; margin-right: -1px;">APPLY COUPON</button>
+	      						</span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 col-xs-12">
+								<div class="col-md-6 col-xs-6 border_line" style="padding: 20px;">
+									<span class="sub_to black">1. SUBTOTAL</span>
+								</div>
+								<div class="col-md-6 col-xs-6 border_line" style="padding: 20px;">
+									<span class="sub_total black"> {{ subTotal |  currency}}</span>
+								</div>
+							</div>
+							<!-- <div class="col-md-12 col-xs-12" *ngIf="cartItemsData.length">
+
+								 <div class="col-md-12 col-xs-12" style="padding: 20px;border-bottom: 1px solid grey;">
+								    <span class="shipping_details">2. SHIPPING</span>
+								    <form [formGroup]="shippingForm">
+								    <p><small>Please select which brands you would like standard or expedited</small></p>
+									<div class="col-md-12 col-xs-12"  style="padding-right:0px;">
+										<div class="row">
+											<div class="col-md-12 col-xs-12">
+													<div class="checkbox">
+													      <label><input type="checkbox"  (click)="checkStandardShippingSelected(standardShipping)" [(ngModel)]="standardShipping" id="standardShipping" name="standardShipping" formControlName="standardShipping">DHL INTERNATIONAL STANDARD</label>
+													</div>
+													<div class="col-md-9 col-xs-9">
+													<div class="row"> 
+														<div class="radio">
+															    <label><input type="radio" name="optradio">EXPEDITED SHIPPING <br><small id="emailHelp" class="form-text ">Please select the brands in your cart that you'd like to expedite.</small>
+																</label>
+														</div>
+													</div>	
+													</div>
+												  <div class="col-md-12 col-xs-12">
+												 	<div class="row">
+									    			   <span class="shipping_total pull-right"> {{standardTotal | currency}}</span>
+									    			</div>
+									   			 </div> 
+										    </div>
+										 </div>
+									   
+									    <div class="col-md-12 col-xs-12" style="padding-right:0px;padding-left: 50px;">
+									    	<div class="brand row" *ngFor="let item of shippingTemp">
+											    <div class="col-md-10 col-xs-9" style="padding-left: 0;">
+												  <div class="row">
+													<div class="checkbox" >
+													  <label><input type="checkbox" (click)="addStandardShippingTotal(item.shippingRate,item.standardChecked,item.brandName)" [(ngModel)]="item.standardChecked" id="standardChecked" name="standardChecked" formControlName="standardChecked"/>{{item.brandName}}</label>
+													</div>
+												    </div>
+												</div>
+												<div class="col-md-2 col-xs-3">
+													<span class="shipping_total"> {{item.shippingRate | currency}}</span>
+												</div>
+											</div>
+											<div class="brand row">
+												<div class="col-md-10 col-xs-9" style="padding-left: 0;">
+													<div class="row">
+													<div class="checkbox">
+													  <label><input type="checkbox" value="">SYMPATHY BY SW</label>
+													</div>
+												    </div>
+												</div>
+												<div class="col-md-2 col-xs-3">
+													<span class="shipping_total">$26.50</span>
+												</div>
+											</div>
+											<div class="brand row">
+												<div class="col-md-10 col-xs-9" style="padding-left: 0;">
+													<div class="row">
+													<div class="checkbox">
+													  <label><input type="checkbox" value="">HOUSE OF POISON</label>
+													</div>
+												    </div>
+												</div>
+												<div class="col-md-2 col-xs-3">
+													<span class="shipping_total">$18.50</span>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12 col-xs-12">
+													<div class="checkbox">
+													      <label><input type="checkbox"  (click)="checkExpeditedShippingSelected(expeditedShipping)" [(ngModel)]="expeditedShipping" id="expeditedShipping" name="expeditedShipping" formControlName="expeditedShipping">DHL INTERNATIONAL EXPEDITED (4-12 Business Days)</label>
+													</div>
+													<div class="col-md-9 col-xs-9">
+													<div class="row"> 
+														<div class="radio">
+															    <label><input type="radio" name="optradio">EXPEDITED SHIPPING <br><small id="emailHelp" class="form-text ">Please select the brands in your cart that you'd like to expedite.</small>
+																</label>
+														</div>
+													</div>	
+													</div>
+												 <div class="col-md-3 col-xs-3">
+												 	<div class="row">
+									    			   <span class="shipping_total pull-right">{{expeditedTotal | currency}}</span>
+									    			</div>
+									   			 </div> 
+										    </div>
+										 </div>
+										 <div class="col-md-12 col-xs-12" style="padding-right:0px;padding-left: 50px;">
+									    	<div class="brand row" *ngFor="let item of shippingTempNew">
+											    <div class="col-md-10 col-xs-9" style="padding-left: 0;">
+												  <div class="row">
+													<div class="checkbox" >
+													  <label><input type="checkbox"   (click)="addExpeditedShippingTotal(item.shippingRate,item.expeditedChecked,item.brandName)" [(ngModel)]="item.expeditedChecked" id="expeditedChecked" name="expeditedChecked" formControlName="expeditedChecked"/>{{item.brandName}}</label>
+													</div>
+												    </div>
+												</div>
+												<div class="col-md-2 col-xs-3">
+													<span class="shipping_total"> {{item.shippingRate |currency}}</span>
+												</div>
+											</div>
+										</div>
+										
+										
+									</div>
+									</form>
+								</div> 
+						    </div> -->
+						   <!--  <div class="col-md-12 col-xs-12">
+								<div class="col-md-6 col-xs-6" style="padding: 20px;">
+									<span class="sub_to">3. SALES TAX</span>
+								</div>
+								<div class="col-md-6 col-xs-6" style="padding: 20px;">
+									<span class="sub_total">$ 4.20</span>
+								</div>
+							</div> -->
+							<div class="col-md-12 col-xs-12 grand-total-cart" style="color: #fff;font-weight: bold;">
+								<div class="col-md-6 col-xs-6">
+									<span class="grand_total black">GRAND TOTAL</span>
+								</div>
+								<div class="col-md-6 col-xs-6">
+									<span class="grand_price black">{{subTotal | currency}}</span>
+								</div>
+							</div>
+							<div class="col-md-12" style="padding-top: 20px;">
+								<a  *ngIf="cartItemsData.length" [routerLink]="['/checkout']" type="button"  (click)="fadeOut()" class="btn btn-default proceed_checkout black" >PROCEED TO CHECKOUT <span class="fa fa-long-arrow-right arrow-right-proceed-co" aria-hidden="true"></span></a>
+							</div>
+						</div>	
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>
+	  
+	  
+	  <!--Model popoup for edit Details  -->
+	  <div class="modal fade" id="editDetail" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog" style="width:700px;" >
+        
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" id="quickview_close1" class="close"    (click)="closeModal()" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="demo">
+                  <div class="container" style="width: 100%;">
+                    <div class="row">
+                     <div class="col-md-12">
+                        <div class="row">
+                       
+                        <div class="col-md-10">
+                            <div id="owl-demo" class="product_modal owl-carousel owl-theme" #owl1>
+                              <div *ngFor="let entry of singleProduct.mediaEntries; let ind = index">
+                              <div class="item">
+                                  <img [src]="entry.imageValue" alt="" class="slider_img">
+                              </div> 
+                            </div>
+                              
+                            </div>
+                        
+                          </div>
+                          <div class="col-md-2 product_modal_thumbnail" style="width: 14%;">
+                            <div *ngFor="let entry of singleProduct.mediaEntries" class="row">
+                              <img [src]="entry.imageValue" alt=""  class="img-thumbnail"/>             
+                            </div>
+                       
+                        </div>
+                  
+                      <div class="col-md-7">
+                        <div class="row">
+                          <h2 style="color: #87764e;font-weight:700;margin-top: 5px;margin-bottom: 0;">{{singleProduct.name}}</h2>
+                          <p style="margin-bottom: 0px;font-size: 12px;font-weight: 600;color: #87764e;    text-transform: uppercase;">{{singleProduct.brand}}</p>
+                          <p style="font-size:20px;margin-bottom: 15px; color: grey">${{singleProduct.price}}</p>
+                          <h5 style="text-transform:uppercase;color:#87764e;"><strong>Product Details</strong></h5>
+                          <p style="color: #7d7070" #prdDesc></p>
+                        </div>
+                      </div>
+                      <div class="col-md-5">
+                        <div class="">
+                          <div class="" style="text-align: right;text-transform: uppercase;"><h5 style="color:#87764e;"><strong>Share</strong></h5></div>
+                        </div>
+                        <div class="">
+                          <p style="text-align: right;"><span><a href="" class="bt btn_size"><i  style="font-size:17px;color:#87764e;" class="fa fa-facebook"></i></a></span>
+                            <span><a href="" class="bt btn_size"><i class="fa fa-twitter" style="font-size:17px;color:#87764e;"></i></a></span>
+                            <span><a href="" class="bt btn_size"><i class="fa fa-pinterest-p" style="font-size:17px;color:red"></i></a></span>
+                          </p>
+                        </div>
+                        <div class="row" style="padding-left: 10px;" *ngIf="singleProduct.type_id == 'configurable'">
+                          <p style="margin-bottom: 2px;font-size: 13px;">SIZE</p>
+                          <p>
+                            <span *ngFor="let size of singleProduct.sizeOptions">
+                                <div class="btn btn_size">
+                                  <input name="size" id="{{size.valueCode}}" [checked]="size.valueCode == editSize.valueCode"  type="radio" style="display:none;" value="{{size.valueCode}}" (click)="setSelectedSize(size.valueCode)">
+                                  <label for="{{size.valueCode}}" style="padding:5px 10px 3px;border:1px solid #333;">{{size.sizeCode}} </label>
+                                </div>
+                              </span>
+                          </p>
+                        </div>
+                        <div  class="row" style="padding-left: 10px;" *ngIf="singleProduct.type_id == 'configurable'">
+                           <p style="margin-bottom: 2px;font-size: 13px;">COLOR</p>
+                          <p>                            
+                            <span *ngFor="let color of singleProduct.colorOptions">
+                                <div class="btn btn_color">
+                                  <input id="{{color.valueCode}}" name="color" type="radio" [checked]="color.valueCode == editColor.valueCode" style="display:none;" value="{{color.valueCode}}" (click)="setSelectedColor(color.valueCode)">
+                                  <label for="{{color.valueCode}}" style="font-weight: bold;padding: 16px 18px;" [style.background]="color.colorCode"></label>
+                                </div>
+                              </span>
+                          </p>
+                        </div>
+                        <div class="row">
+                          <!-- <p><a href="" class="wishlist btn" style="background:#fff;border-color:#87764e;color:#87764e;padding-top: 20px;border-radius: 0;"><span style="color:#bcb8b8;padding-right:10px;background:#fff;">+</span>WISHLIST</a>
+                            <a  class="add_to_cart btn" style="background:#87764e;border-radius:0;" (click)="addItemToCart();"><i class="fa fa-shopping-cart" aria-hidden="true" style="color:#fff;padding-right:10px;" (click)="addItemToCart()"></i>ADD TO CART</a>
+                            
+                          </p> -->
+                          <a  class="add_to_cart btn" style="background:#87764e;border-radius:0;" (click)="updateCartItem(singleProduct);">Update</a>
+                        </div>
+                      </div>
+                    </div>
+                    </div> 
+                  </div>
+                </div>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div> 
+    
+    <!-- addd another size  -->
+    <div class="modal fade" id="addSizeModal" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog" style="width:700px;" >
+        
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" id="quickview_close"  class="close" (click)="closeModal()" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">{{singleProduct.name}}</h4> 
+            </div>
+            <div class="modal-body">
+                <div class="demo">
+                  <div class="container" style="width: 100%;">
+                    <div class="row">
+                     <div class="col-md-12">
+                        <div class="row">
+                       
+                        <!-- <div class="col-md-10">
+                            <div id="owl-demo" class="product_modal owl-carousel owl-theme" #owl1>
+                              <div *ngFor="let entry of singleProduct.mediaEntries; let ind = index">
+                              <div class="item">
+                                  <img [src]="entry.imageValue" alt="" class="slider_img">
+                              </div> 
+                            </div>
+                              
+                            </div>
+                        
+                          </div>
+                          <div class="col-md-2 product_modal_thumbnail" style="width: 14%;">
+                            <div *ngFor="let entry of singleProduct.mediaEntries" class="row">
+                              <img [src]="entry.imageValue" alt=""  class="img-thumbnail"/>             
+                            </div>
+                       
+                        </div> -->
+                  
+                      <!-- <div class="col-md-7">
+                        <div class="row">
+                          <h2 style="color: #87764e;font-weight:700;margin-top: 5px;margin-bottom: 0;">{{singleProduct.name}}</h2>
+                          <p style="margin-bottom: 0px;font-size: 12px;font-weight: 600;color: #87764e;    text-transform: uppercase;">{{singleProduct.brand}}</p>
+                          <p style="font-size:20px;margin-bottom: 15px; color: grey">${{singleProduct.price}}</p>
+                          <h5 style="text-transform:uppercase;color:#87764e;"><strong>Product Details</strong></h5>
+                          <p style="color: #7d7070" #prdDesc></p>
+                        </div>
+                      </div> -->
+                      <div class="col-md-5">
+                        <!-- <div class="">
+                          <div class="" style="text-align: right;text-transform: uppercase;"><h5 style="color:#87764e;"><strong>Share</strong></h5></div>
+                        </div>
+                        <div class="">
+                          <p style="text-align: right;"><span><a href="" class="bt btn_size"><i  style="font-size:17px;color:#87764e;" class="fa fa-facebook"></i></a></span>
+                            <span><a href="" class="bt btn_size"><i class="fa fa-twitter" style="font-size:17px;color:#87764e;"></i></a></span>
+                            <span><a href="" class="bt btn_size"><i class="fa fa-pinterest-p" style="font-size:17px;color:red"></i></a></span>
+                          </p>
+                        </div> -->
+                        <div class="row" style="padding-left: 10px;" *ngIf="singleProduct.type_id == 'configurable'">
+                          <p style="margin-bottom: 2px;font-size: 13px;">SIZE</p>
+                          <p>
+                            <span *ngFor="let size of singleProduct.sizeOptions">
+                                <div class="btn btn_size">
+                                  <input name="size" id="{{size.valueCode}}" type="radio" style="display:none;" value="{{size.valueCode}}"  (click)="setSelectedSize(size.valueCode)">
+                                  <label for="{{size.valueCode}}" style="padding:5px 10px 3px;border:1px solid #333;">{{size.sizeCode}}</label>
+                                </div>
+                              </span>
+                           
+                          </p>
+                        </div>
+                        <!-- <div  class="row" style="padding-left: 10px;" *ngIf="singleProduct.type_id == 'configurable'">
+                           <p style="margin-bottom: 2px;font-size: 13px;">COLOR</p>
+                          <p>                            
+                            <span *ngFor="let color of singleProduct.colorOptions">
+                                <div class="btn btn_color">
+                                  <input id="{{color.valueCode}}" name="color" type="radio" style="display:none;" value="{{color.valueCode}}" (click)="setSelectedColor(color.valueCode)">
+                                  <label for="{{color.valueCode}}" style="font-weight: bold;padding: 16px 18px;" [style.background]="color.colorCode"></label>
+                                </div>
+                              </span>
+                          </p>
+                        </div> -->
+                        <div class="row">
+                          <!-- <p><a href="" class="wishlist btn" style="background:#fff;border-color:#87764e;color:#87764e;padding-top: 20px;border-radius: 0;"><span style="color:#bcb8b8;padding-right:10px;background:#fff;">+</span>WISHLIST</a>
+                            <a  class="add_to_cart btn" style="background:#87764e;border-radius:0;" (click)="addItemToCart();"><i class="fa fa-shopping-cart" aria-hidden="true" style="color:#fff;padding-right:10px;" (click)="addItemToCart()"></i>ADD TO CART</a>
+                            
+                          </p> -->
+                        </div>
+                      </div>
+                    </div>
+                    </div> 
+                  </div>
+                </div>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div> 

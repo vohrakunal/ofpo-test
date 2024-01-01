@@ -1,0 +1,611 @@
+<div class="container" (click)="fadeOut()">
+  <div class="row">
+    <div class="col-md-6 col-xs-6 adDiv ad-div-left">
+        <div #articleAd></div>
+    </div>
+    <div class="col-md-6 col-xs-6 adDiv ad-div-right">
+        <div #productAd></div>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-6 col-xs-6 outter mob-pf-art">
+
+      <div class="row homecust-inner inner articleinner" detect-scroll (onScroll)="handleScrollArtical($event)"
+        [bottomOffset]="300">
+        <div class="col-md-12 insidearticle">
+
+          <div *ngFor="let article of articles;let j = index" class="mobile-pd-0" style="    margin-top: 0.5rem;">
+            
+            <div *ngIf="article.articleClassification == 'A2'" class="col-md-6 a2 cust-article-type-a2" style="padding: 0;clear:both;">
+
+              <a (click)="fadeOut()" [routerLink]="[getPath(article.article_detail_display),article.sku,categoryId]"><img
+                  src="{{article.imageValue}}" width="100%"></a>
+            </div>
+            <div *ngIf="article.articleClassification == 'A2'" class="col-md-6 article-type-a2 cust-article-type-a2"
+              style="background: #fff;padding-bottom: 11px;">
+              <div class="article1">
+                <p class="article-subheading bold"><a (click)="fadeOut()" [routerLink]="[getPath(article.article_detail_display),article.sku,categoryId]">{{article.name}}</a></p>
+                <p class="article-date">{{article.magazine}}</p>
+                <p style="font-size:12px;">{{article.articleDate | date:'MMM dd, yyyy'}}</p>
+                <p class="bookmark-click-read"><a class="btn btn_gray" (click)="fadeOut()" [routerLink]="[getPath(article.article_detail_display),article.sku,categoryId]">CLICK
+                    TO READ</a>
+                  <span style="float: right;"><img style="width:14px;" (click)="addItemToWishList(article.productId)"
+                      class="bookmark" src="./assets/images/bookmark.png"></span>
+              </div>
+            </div>
+
+          
+
+            <a (click)="fadeOut()" [routerLink]="[getPath(article.article_detail_display),article.sku,categoryId]">
+
+              <div *ngIf="article.articleClassification == 'A3'" class="col-md-12 cust-article-type-a3" [ngStyle]="{'background-image': 'url('+ article.imageValue +')'}">
+                <div class="col-md-5 col-xs-12 a3" (click)="fadeOut()" [routerLink]="[getPath(article.article_detail_display),article.sku,categoryId]">
+
+                </div>
+
+                <div class="col-md-7 col-xs-12 article-type-a3" style="padding-bottom: 11px;">
+                  <div class="article1 a3-type-bookmark-main-div">
+                    <p class="type-a3-bookmark-click-read">
+                      <a class="btn btn_gray" (click)="fadeOut()" [routerLink]="[getPath(article.article_detail_display),article.sku,categoryId]">CLICK
+                        TO READ</a>
+                      <span style="float: right;"><img style="width:14px;" (click)="addItemToWishList(article.productId)"
+                          class="bookmark" src="./assets/images/bookmark.png"></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+            </a>
+
+
+            <div *ngIf="article.articleClassification == 'A1'" class="col-md-6 a1 cust-article-type-a1">
+              <img src="{{article.imageValue}}" width="100%">
+              <div class="">
+                <div class="article2">
+                  <p class="article-subheading bold"><a (click)="fadeOut()" [routerLink]="[getPath(article.article_detail_display),article.sku,categoryId]">{{article.name}}</a></p>
+                  <p style="font-size: 12px;margin-bottom: 0;">{{article.articleDate | date:'MMM dd, yyyy'}}</p>
+                  <p class="bookmark-click-read"><a class="btn btn_gray" (click)="fadeOut()" [routerLink]="[getPath(article.article_detail_display),article.sku,categoryId]">CLICK
+                      TO READ</a>
+                    <span style="float: right;"><img style="width:14px;" (click)="addItemToWishList(article.productId)"
+                        class="bookmark" src="./assets/images/bookmark.png">
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div *ngFor="let artadd of displayArticalAdds">
+              <div class="col-md-12 article-adds-p0 adDiv" style="padding-right: 0px;" *ngIf="j == artadd">
+                <div #articleInlineAd></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-md-6 col-xs-6 outter mob-pf-pro">
+
+      <div class="row inner homecust-inner productinner" detect-scroll (onScroll)="handleScroll($event)" [bottomOffset]="300">
+        <div class="insideproduct col-md-12">
+
+          <div *ngFor="let product of products;let i = index">
+            <div *ngIf="product.productClassification == 'P2'" class="col-md-12 p2 cust-product-p2">
+              <a (click)="fadeOut()" [routerLink]="['/product',product.sku , categoryId]" class="link"><img src="{{product.imageValue}}"
+                  width="100%"></a>
+              <div class="collection1">
+                <div class="collection_inner">
+
+                  <p class="black product-cat"><a class="product-cat link" (click)="fadeOut()" [routerLink]="['/product',product.sku , categoryId]">{{product.brand}}</a></p>
+                  <p class="product-title black">{{product.name}}</p>
+                  <p class="product-price light">$ {{product.price}}</p>
+
+                  <P style="padding-top: 0px;"><a class="btn btn_gray" (click)="fadeOut()"  [routerLink]="['/product',product.sku , categoryId]">SHOP NOW</a></P>
+
+                  <p class="quick-btns-heart" style="margin-bottom: 0;">
+
+                    <a class="btn btn_gray quick-view" data-toggle="modal" data-target="#myModal" (click)="getProductDetails(product.sku)">QUICK
+                      VIEW</a>
+
+                    <span *ngIf="product.type_id == 'configurable'" class="glyphicon glyphicon-heart-empty" id="wishlistname{{product.sku}}"
+                      data-toggle="modal" data-target="#myModal" (click)="addItemToWish(product.sku,product)" style="padding-left: 10PX;">
+                    </span>
+                    <span *ngIf="product.type_id != 'configurable'" class="glyphicon glyphicon-heart-empty" id="wishlistId{{product.productId}}"
+                      (click)="addItemToWishList(product.productId,product.type_id)" style="padding-left: 10PX;"></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="product.productClassification == 'P4'" class="col-md-12 p2 cust-product-p4">
+              <a (click)="fadeOut()" [routerLink]="['/product',product.sku , categoryId]" class="link"><img src="{{product.imageValue}}"
+                  width="100%" class="col-md-6" style="padding:0;"></a>
+              <div class="collection1">
+                <div class="collection_inner">
+
+                  <p class="black product-cat"><a class="product-cat link" style="color:#000;" (click)="fadeOut()" [routerLink]="['/product',product.sku , categoryId]">{{product.brand}}</a></p>
+                  <p class="product-title black">{{product.name}}</p>
+                  <p class="product-price light">$ {{product.price}}</p>
+
+                  <p class="quick-btns-heart" style="margin-bottom: 0;">
+
+                    <a class="btn btn_gray quick-view" data-toggle="modal" data-target="#myModal" (click)="getProductDetails(product.sku)">QUICK
+                      VIEW</a>
+                    <span>
+                      <a (click)="getProductDetails(product.sku,true)"></a>
+
+                      <span *ngIf="product.type_id == 'configurable'" class="glyphicon glyphicon-heart-empty" id="wishlistname{{product.sku}}"
+                        data-toggle="modal" data-target="#myModal" (click)="addItemToWish(product.sku,product)" style="padding-left: 10PX;">
+                      </span>
+                      <span *ngIf="product.type_id != 'configurable'" class="glyphicon glyphicon-heart-empty" id="wishlistId{{product.productId}}"
+                        (click)="addItemToWishList(product.productId,product.type_id)" style="padding-left: 10PX;"></span>
+                    </span></p>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="product.productClassification == 'P1'" class="col-md-6 p3 cust-product-p1" style="position: relative;">
+              <a (click)="fadeOut()" [routerLink]="['/product',product.sku , categoryId]">
+                <img src="{{product.imageValue}}" width="100%">
+              </a>
+              <div class="product1">
+                <a class="link" (click)="fadeOut()" [routerLink]="['/product',product.sku , categoryId]">
+                  <p class="product-cat black"> {{product.brand}}</p>
+                  <p class="product-title black">{{product.name}}</p>
+                  <p class="product-price light">$ {{product.price}}</p>
+                </a>
+                <p class="quick-btns-heart" style="margin-bottom: 0;"><a class="btn btn_gray quick-view" data-toggle="modal"
+                    data-target="#myModal" (click)="getProductDetails(product.sku)">QUICK VIEW</a><span>
+                    <a (click)="getProductDetails(product.sku,true)"></a>
+                    <span class="glyphicon glyphicon-heart-empty" id="wishlistId{{product.productId}}" (click)="addItemToWishList(product.productId,product.type_id)"
+                      style="padding-left: 10PX;"></span>
+                  </span>
+                </p>
+              </div>
+            </div>
+
+            <div *ngIf="product.productClassification == 'P3'" class="col-md-12 p2 cust-product-p3">
+              <a (click)="fadeOut()" [routerLink]="['/product',product.sku , categoryId]" class="link"><img src="{{product.imageValue}}"
+                  width="100%"></a>
+              <div class="style-2-p3-inner">
+                <div class="collection_inner">
+
+                  <div class="p3-prod-des">
+                    <p class="black product-cat"><a class="product-cat link" style="color:#000;" (click)="fadeOut()" [routerLink]="['/product',product.sku , categoryId]">{{product.brand}}</a></p>
+
+                    <p class="product-title black">{{product.name}}</p>
+                  </div>
+
+                  <div class="p3-prod-des">
+                    <P style="padding-top: 0px;"><a class="btn btn_gray" (click)="fadeOut()" [routerLink]="['/product',product.sku , categoryId]">SHOP
+                        NOW</a><span class="glyphicon glyphicon-heart-empty" id="wishlistId{{product.productId}}"
+                        (click)="addItemToWishList(product.productId,product.type_id)" style="padding-left: 10px;padding-top:5px;"></span></P>
+                  </div>
+                  <p class="quick-btns-heart" style="margin-bottom: 0;"><a class="btn btn_gray quick-view" data-toggle="modal"
+                      data-target="#myModal" (click)="getProductDetails(product.sku)">QUICK VIEW</a>
+
+                    <a (click)="getProductDetails(product.sku,true)"></a>
+                  </p>
+
+                </div>
+              </div>
+            </div>
+
+            <div *ngFor="let ads of displayProductAdds">
+              <div class="col-md-12 adDiv" style="padding-right: 0px;" *ngIf="i == ads">
+                <div #productInlineAd></div>
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div id="sortmodal" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="opacity:0.9">
+
+    <div class="modal-content gold">
+      <div class="modal-header">
+        <button type="button" class="close gold" data-dismiss="modal" class="close" (click)="closeModal()" id="quickview_close1"><img
+            src="./assets/images/close.png"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="heading">
+            Filter By
+          </div>
+          <div class="options" style="padding-left: 20px;padding-top:10px;color:#ccc;">
+            <label class="pricepoint"><a data-toggle="collapse" href="#pricepoint" aria-expanded="false" style="color:#fff" aria-controls="categories"><span class="caret"></span> Price Point</a>
+            </label>
+              <div class="collapse" id="pricepoint">
+             <ul class="gold" style="list-style:none;padding-left:20px;">
+                <li *ngFor="let stage3Tag of stage3Tags" ><a onclick="closesort()" [routerLink]="['/home','A',stage3Tag.value , stage3Tag.stage]">{{stage3Tag.label}}</a></li>
+            </ul>
+          </div>
+          </div>
+          <div class="options" style="padding-left: 20px;padding-bottom: 5px;color:#ccc;">
+            <div class="" style="padding-left:0;"><a data-toggle="collapse" href="#sortcat" aria-expanded="false" style="color:#fff" aria-controls="categories"><span class="caret"></span> Brand</a></div>
+            <div class="collapse" id="sortcat">
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#a" aria-expanded="false" class="gray" aria-controls="categories">A</a>
+                  <div class="collapse" id="a">
+                    <ul class="gold" style="list-style:none;padding-left:20px;">
+                      <li *ngFor="let tag of tagMap['A']" ><a onclick="closesort()" [routerLink]="['/home','A',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </ul>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#b" aria-expanded="false" class="gray"  aria-controls="categories">B</a>
+                  <div class="collapse" id="b">
+                    <ul class="gold" style="list-style:none;padding-left:20px;">
+                      <li *ngFor="let tag of tagMap['B']" ><a onclick="closesort()" [routerLink]="['/home','B',tag.value , tag.stage]">{{tag.label}}</a></li>
+                    </ul>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#c" aria-expanded="false" class="gray" aria-controls="categories">C</a>
+                  <div class="collapse" id="c">
+                    <li *ngFor="let tag of tagMap['C']" ><a onclick="closesort()" [routerLink]="['/home','C',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#d" aria-expanded="false" class="gray" aria-controls="categories">D</a>
+                  <div class="collapse" id="d">
+                    <li *ngFor="let tag of tagMap['D']" ><a onclick="closesort()" [routerLink]="['/home','D',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#e" aria-expanded="false" class="gray" aria-controls="categories">E</a>
+                  <div class="collapse" id="e">
+                    <li *ngFor="let tag of tagMap['E']" ><a onclick="closesort()" [routerLink]="['/home','E',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#f" aria-expanded="false" class="gray" aria-controls="categories">F</a>
+                  <div class="collapse" id="F">
+                    <li *ngFor="let tag of tagMap['F']" ><a onclick="closesort()" [routerLink]="['/home','F',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#g" aria-expanded="false" class="gray" aria-controls="categories">G</a>
+                  <div class="collapse" id="g">
+                    <li *ngFor="let tag of tagMap['G']" ><a onclick="closesort()" [routerLink]="['/home','G',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#h" aria-expanded="false" class="gray" aria-controls="categories">H</a>
+                  <div class="collapse" id="h">
+                    <li *ngFor="let tag of tagMap['H']" ><a onclick="closesort()" [routerLink]="['/home','H',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#i" aria-expanded="false" class="gray" aria-controls="categories">I</a>
+                  <div class="collapse" id="i">
+                    <li *ngFor="let tag of tagMap['I']" ><a onclick="closesort()" [routerLink]="['/home','I',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#j" aria-expanded="false" class="gray" aria-controls="categories">J</a>
+                  <div class="collapse" id="j">
+                    <li *ngFor="let tag of tagMap['J']" ><a onclick="closesort()" [routerLink]="['/home','J',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#k" aria-expanded="false" class="gray" aria-controls="categories">K</a>
+                  <div class="collapse" id="k">
+                    <li *ngFor="let tag of tagMap['K']" ><a onclick="closesort()" [routerLink]="['/home','K',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#l" aria-expanded="false" class="gray" aria-controls="categories">L</a>
+                  <div class="collapse" id="l">
+                    <li *ngFor="let tag of tagMap['L']" ><a onclick="closesort()" [routerLink]="['/home','L',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#m" aria-expanded="false" class="gray" aria-controls="categories">M</a>
+                  <div class="collapse" id="m">
+                    <li *ngFor="let tag of tagMap['M']" ><a onclick="closesort()" [routerLink]="['/home','M',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#n" aria-expanded="false" class="gray" aria-controls="categories">N</a>
+                  <div class="collapse" id="n">
+                    <li *ngFor="let tag of tagMap['N']" ><a onclick="closesort()" [routerLink]="['/home','N',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#o" aria-expanded="false" class="gray" aria-controls="categories">O</a>
+                  <div class="collapse" id="o">
+                    <li *ngFor="let tag of tagMap['O']" ><a onclick="closesort()" [routerLink]="['/home','O',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#p" aria-expanded="false" class="gray" aria-controls="categories">P</a>
+                  <div class="collapse" id="p">
+                    <li *ngFor="let tag of tagMap['P']" ><a onclick="closesort()" [routerLink]="['/home','P',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#q" aria-expanded="false" class="gray" aria-controls="categories">Q</a>
+                  <div class="collapse" id="q">
+                    <li *ngFor="let tag of tagMap['Q']" ><a onclick="closesort()" [routerLink]="['/home','Q',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#r" aria-expanded="false" class="gray" aria-controls="categories">R</a>
+                  <div class="collapse" id="r">
+                    <li *ngFor="let tag of tagMap['R']" ><a onclick="closesort()" [routerLink]="['/home','R',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#s" aria-expanded="false" class="gray" aria-controls="categories">S</a>
+                  <div class="collapse" id="s">
+                    <li *ngFor="let tag of tagMap['S']" ><a onclick="closesort()" [routerLink]="['/home','S',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#t" aria-expanded="false" class="gray" aria-controls="categories">T</a>
+                  <div class="collapse" id="t">
+                    <li *ngFor="let tag of tagMap['T']" ><a onclick="closesort()" [routerLink]="['/home','T',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#u" aria-expanded="false" class="gray" aria-controls="categories">U</a>
+                  <div class="collapse" id="u">
+                    <li *ngFor="let tag of tagMap['U']" ><a onclick="closesort()" [routerLink]="['/home','U',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#v" aria-expanded="false" class="gray" aria-controls="categories">V</a>
+                  <div class="collapse" id="v">
+                    <li *ngFor="let tag of tagMap['V']" ><a onclick="closesort()" [routerLink]="['/home','V',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#w" aria-expanded="false" class="gray" aria-controls="categories">W</a>
+                  <div class="collapse" id="w">
+                    <li *ngFor="let tag of tagMap['W']" ><a onclick="closesort()" [routerLink]="['/home','W',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#x" aria-expanded="false" class="gray" aria-controls="categories">X</a>
+                  <div class="collapse" id="x">
+                    <li *ngFor="let tag of tagMap['X']" ><a onclick="closesort()" [routerLink]="['/home','X',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#y" aria-expanded="false" class="gray" aria-controls="categories">Y</a>
+                  <div class="collapse" id="y">
+                    <li *ngFor="let tag of tagMap['Y']" ><a onclick="closesort()" [routerLink]="['/home','Y',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <a data-toggle="collapse" href="#z" aria-expanded="false" class="gray" aria-controls="categories">Z</a>
+                  <div class="collapse" id="z">
+                    <li *ngFor="let tag of tagMap['Z']" ><a onclick="closesort()" [routerLink]="['/home','Z',tag.value , tag.stage]">{{tag.label}}</a></li>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="options" style="padding-left: 20px;color:#ccc;">
+            <label class="pricepoint"><a data-toggle="collapse" href="#categories" aria-expanded="false" style="color:#fff" aria-controls="categories"><span class="caret"></span> Category</a>
+            </label>
+             <div class="collapse" id="categories">
+            <ul class="gold" style="list-style:none;padding-left:20px;">
+              <li *ngFor="let stage4Tag of stage4Tags" ><a onclick="closesort()" [routerLink]="['/home','A',stage4Tag.value , stage4Tag.stage]">{{stage4Tag.label}}</a></li>
+             
+            </ul>
+          </div>
+          </div>
+          <div class="options" style="padding-left: 20px;color:#ccc;">
+            <label class="pricepoint"><a data-toggle="collapse" href="#subcategories" aria-expanded="false" style="color:#fff" aria-controls="categories"><span class="caret"></span> Sub Category</a>
+            </label>
+             <div class="collapse" id="subcategories">
+            <ul class="gold" style="list-style:none;padding-left:20px;">
+              <li *ngFor="let stage4aTag of stage4aTags" ><a onclick="closesort()" [routerLink]="['/home','A',stage4aTag.value , stage4aTag.stage]">{{stage4aTag.label}}</a></li>
+             
+            </ul>
+          </div>
+          </div>
+          <div class="options" style="padding-left: 20px;color:#ccc;">
+            <label class="pricepoint"><a data-toggle="collapse" href="#seasaon" aria-expanded="false" style="color:#fff" aria-controls="categories"><span class="caret"></span> Seasons / Collections</a>
+            </label>
+            <div class="collapse" id="seasaon">
+              <ul class="gold" style="list-style:none;padding-left:20px;">
+                <li *ngFor="let stage5Tag of stage5Tags" ><a onclick="closesort()" [routerLink]="['/home','A',stage5Tag.value , stage5Tag.stage]">{{stage5Tag.label}}</a></li>
+               
+              </ul>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog" style="width:580px;">
+
+    <!-- Modal content-->
+    <div class="modal-content quick-view-modal-mdiv">
+
+      <div class="modal-body">
+        <button type="button" id="quickview_close" class="close" (click)="closeModal()" data-dismiss="modal">&times;</button>
+        <div class="demo">
+          <div class="container" style="width: 100%;">
+            <div class="row">
+              <div class="col-md-12 nopadd-model">
+                <div class="row">
+                  <!-- <h1 style="text-align: center; margin-top: 50px; color: #777;">Owl-Carousel</h1> -->
+
+                  <div class="bg-black-model-top">
+                    <div class="col-md-10">
+                      <div id="owl-demo" class="product_modal owl-carousel owl-theme" #owl1>
+                        <div *ngFor="let entry of singleProduct.mediaEntries; let ind = index">
+                          <div class="item">
+                            <img [src]="entry.imageValue" alt="" class="slider_img">
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                    <div class="col-md-2 product_modal_thumbnail hidden-xs hidden-sm" style="width: 14%;">
+                      <div *ngFor="let entry of singleProduct.mediaEntries" class="row">
+                        <img [src]="entry.imageValue" alt="" class="img-thumbnail" />
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="bg-white-model-bottom">
+                    <div class="col-md-6">
+                      <div class="">
+                        <h2 class="product-name-modal black">{{singleProduct.name}}</h2>
+
+                        <p style="margin-bottom: 0px;font-size: 12px;font-weight: 600;color: #87764e; text-transform: uppercase;">{{singleProduct.brand}}</p>
+                        <p class="produ-price-model">$ {{singleProduct.price}}</p>
+                        <h5 style="text-transform:uppercase;color:#87764e;"><strong>Product Details</strong></h5>
+                        <p class="text-justify" style="color: #7d7070;max-height:100px;overflow-y:scroll;" #prdDesc></p>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="">
+                        <div class="share" style="text-align: right;text-transform: uppercase;">
+                          <h5 style="color:#87764e;"><strong>Share</strong></h5>
+                        </div>
+                      </div>
+                      <div class="">
+                        <p style="text-align: right;" class="shareicon"><span><a href="" class="bt btn_size"><i style="font-size:17px;color:#87764e;"
+                                class="fa fa-facebook"></i></a></span>
+                          <span><a href="" class="bt btn_size" style=""><i class="fa fa-twitter" style="font-size:17px;color:#87764e;"></i></a></span>
+                          <span><a href="" class="bt btn_size"><i class="fa fa-pinterest-p" style="font-size:17px;color:red"></i></a></span>
+                        </p>
+                      </div>
+
+
+
+                      <div class="cart-add-model">
+
+                        <div class="size-colors-quick">
+                          <div class="row" style="padding-left: 10px;" *ngIf="singleProduct.type_id == 'configurable'">
+                            <p style="margin-bottom: 2px;font-size: 13px;">SIZE</p>
+                            <p>
+                              <span *ngFor="let size of singleProduct.sizeOptions">
+                                <div class="btn btn_size">
+                                  <input name="size" id="{{size.valueCode}}" type="radio" style="display:none;" value="{{size.valueCode}}"
+                                    (click)="setSelectedSize(size.valueCode)">
+                                  <label for="{{size.valueCode}}" style="padding:5px 10px 3px;border:1px solid #333;">{{size.sizeCode}}</label>
+                                </div>
+                              </span>
+
+                            </p>
+                          </div>
+                          <div class="row" style="padding-left: 10px;" *ngIf="singleProduct.type_id == 'configurable'">
+                            <p style="margin-bottom: 2px;font-size: 13px;">COLOR</p>
+                            <p>
+                              <span *ngFor="let color of singleProduct.colorOptions">
+                                <div class="btn btn_color">
+                                  <input id="{{color.valueCode}}" name="color" type="radio" style="display:none;" value="{{color.valueCode}}"
+                                    (click)="setSelectedColor(color.valueCode)">
+                                  <label for="{{color.valueCode}}" style="font-weight: bold;padding: 16px 18px;"
+                                    [style.background]="color.colorCode"></label>
+                                </div>
+                              </span>
+                            </p>
+                          </div>
+                        </div>
+
+                        <div class="cart-add-model-btns">
+                          <p>
+                            <a *ngIf="singleProduct.type_id == 'configurable'" (click)="addConfigItemToWishList(singleProduct.productId,singleProduct)"
+                              class="wishlist btn" style="background:#fff;border-color:#87764e;color:#87764e;padding-top: 10px;border-radius: 0;"><span
+                                style="color:#bcb8b8;padding-right:10px;background:#fff;">+</span>WISHLIST</a>
+                            <a *ngIf="singleProduct.type_id != 'configurable'" (click)="addItemToWishList(singleProduct.productId,singleProduct.type_id)"
+                              class="wishlist btn" style="background:#fff;border-color:#87764e;color:#87764e;padding-top: 10px;border-radius: 0;"><span
+                                style="color:#bcb8b8;padding-right:10px;background:#fff;">+</span>WISHLIST</a>
+                            <a *ngIf="singleProduct.is_in_stock == true" class="add_to_cart btn" style="background:#87764e;border-radius:0;"
+                              (click)="addItemToCart();"><i class="fa fa-shopping-cart" aria-hidden="true" style="color:#fff;padding-right:5px;"
+                                (click)="addItemToCart()"></i>ADD TO CART</a>
+                            <a *ngIf="singleProduct.is_in_stock == false" class="sold-out-txt black">SOLD OUT</a>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="goldenbox articlebox">
+      <h2>MAGZINE</h2>
+      <div class="boxbottom">
+      <div class="boxtext">
+        Scroll down for the latest articles and news from the magzine.
+      </div>
+      <div class="indicators">
+        <span class="indicator current"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+      </div>
+      <button class="next1" (click)="homePageDirection()">NEXT</button>
+    </div>
+    </div>
+    <div class="goldenbox productbox">
+      <h2>STORE</h2>
+      <div class="boxbottom">
+      <div class="boxtext">
+        Scroll down and explore the latest products and collections from the store.
+      </div>
+      <div class="indicators">
+        <span class="indicator"></span>
+        <span class="indicator current"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+      </div>
+      <button class="next2" (click)="homePageDirection()" >NEXT</button>
+    </div>
+    </div>
+     <div class="goldenbox productbox1">
+      <h2>PRODUCT</h2>
+      <div class="boxbottom">
+      <div class="boxtext">
+        Click on a product to view it, along with corelating articles on the magzine.
+      </div>
+      <div class="indicators">
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+        <span class="indicator current"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+      </div>
+      <button class="next3" (click)="homePageDirection()">NEXT</button>
+    </div>
+    </div> -->
+<script type="text/javascript">
+
+</script>

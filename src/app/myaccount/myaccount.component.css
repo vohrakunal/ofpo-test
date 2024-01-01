@@ -1,0 +1,699 @@
+
+    p.my-account {
+      font-weight: bolder;
+      color: grey;
+      margin-bottom: 0px;
+  }
+  h2.personal-info {
+    color: #9a8c3d;
+    margin-top: 10px;
+    font-family: Lethal Dose Font Regular !important;
+  }
+  p.p-description{
+    font-size: 12px;
+  }
+  .main-section {
+      margin-top: 100px;
+      margin-left: 15px;
+  }
+  .orderdetail table tr{
+    background-color: transparent !important;
+  }
+  .black_back{
+    background: black;
+  }
+a:hover{text-decoration: none;}
+button {
+  padding: 4px 7px 0px;
+  text-transform: uppercase;
+}
+ .orderdetail td,.orderdetail th{vertical-align: top;}
+  .collection1{
+  position: absolute;
+  top: 0;
+  background: #fff;
+  right: 0;
+  color: #000;
+  height: 400px;
+  width: 50%;
+
+  border-top: 1px solid #ccc;
+  border-bottom: 0.5px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+.article2 {
+  width: 96%;
+}
+.form-control{
+  background-color: #504d4d;
+  color: #9a8c3d;
+  border: 0;
+  height: 25px;
+  font-size: 12px;
+  border-radius: 0px;
+}
+input[type="submit"]{
+border: 0;
+}
+
+
+label{
+  font-size: 10px;
+  color: grey;
+  margin-bottom: 0px;
+}
+
+.main-section h4 {
+  margin-bottom: 5px;
+}
+
+/**************************/
+.gold,.gold::placeholder, .navbar-brand {color: #87764e;}
+.gray1{color: #404040;}
+.gray2{color: #808184;}
+.navbar-nav li a{color: grey !important ;    font-size: 11px; padding: 7px 14px 4px;cursor: pointer;}
+.navbar-nav li.active a{
+  color:#fff !important;
+  text-decoration: underline;
+}
+#myNavbar .nav li a{
+  color: #808080 !important;
+  padding-bottom: 12px;
+  font-size: 12px !important;
+  padding: 12px 0px 0px;    
+}
+#myNavbar .nav li{
+  display: inline-block;
+}
+#myNavbar .nav li a:hover{
+  background: transparent;
+}
+.icon-bar+.icon-bar {
+    margin-top: 4px;
+}
+.myaccountToggleBtn .icon-bar
+   {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+    background: #fff;
+}
+.myaccountToggleBtn{background: none;}
+/* new page personal-informaion start here */
+.navbar-inverse .navbar-toggle,.navmenu{display: none;}
+.navbar-brand{padding-left: 10px !important;}
+.personalpage{
+  background-image: url('../../assets/images/skull1.png'); 
+}
+.shippingpage{
+  background-image: url('../../assets/images/skull2.png'); 
+}
+.myaccount.wishlistpage{
+  background-image: url('../../assets/images/skull3.png') !important; 
+}
+.myaccount.articlepage{
+  background-image: url('../../assets/images/clock1.png') !important; 
+}
+.myaccount.orderspage{
+  background-image: url('../../assets/images/clock2.png') !important; 
+}
+.myaccount.trackorderpage{
+  background-image: url('../../assets/images/clock3.png') !important; 
+}
+  input[type="button"]{
+        background: #2d2c2c;
+  color: white;
+  border: 0;
+  padding: 5px 10px 2px;
+  }
+  .middle-data{
+      font-weight: 800;
+      border-bottom: 1px solid #b4a37b;
+      padding-bottom: 8px;
+      margin-bottom: 21px;
+  }
+
+  .black_back{
+    background: black;
+  }
+  .table-head{color: #fff;}
+ 
+.both-size{
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(90deg, #fff 50%, black 50%);
+}
+tr.table-rw th {
+      font-size: 14px;
+    }
+    .table-head{
+      padding: 10px 7px;
+      text-align: left;
+      color: #fff;
+    }
+    .table-back{
+      border-bottom: 1px solid #fff;
+      
+    }
+    .cart_wrapper .image_left{
+      float: none;
+      width: 100%;
+      text-align:center;
+    }
+    .info_right{
+      float: none;
+      width: 100%;
+    }
+
+  .myaccount.personal, .shipping{
+    background-image: url(../../assets/images/skull1.png) !important;
+    background-size: 28% !important;
+    background-repeat: no-repeat !important;
+    background-position: center 162px !important;    
+  }
+
+  .orderhistory-return{
+    background-image: url(../../assets/images/lip2.png) !important;
+    background-size: 28% !important;
+    background-repeat: no-repeat !important;
+    background-position: center 162px !important;    
+  }
+
+  .my-credit{
+    background-image: url(../../assets/images/snake1.png) !important;
+    background-size: 28% !important;
+    background-repeat: no-repeat !important;
+    background-position: center 162px !important;    
+  }
+
+  .myaccount-pages .main-section{
+    margin: 0 auto !important;
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    width: 31vw;
+    justify-content: center;
+    min-height: 88vh;
+  }
+
+
+  
+  .myaccount-pages .main-section2, .saved-article-mindiv .main-section2{
+    margin: 0 auto !important;
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    width: 42vw;
+    justify-content: center;
+    min-height: 88vh;
+  }
+
+  .saved-article-mindiv .main-section2 a{ 
+    color: #fff;
+  }
+
+  
+  .saved-article-mindiv .main-section2 td {
+    padding: 15px 0 1px;
+  }
+
+  .phone-num-ship-div {
+    display: flex;
+    justify-content: space-between;  
+  }
+
+  .my-credit-main-div .main-section{
+    margin: 0;
+  }
+
+  .my-credit-main-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 88vh;
+  }
+
+  .myaccount-pages .changes-password{
+    width: 100%;
+  }
+
+  .main-section .form-group{
+    margin-bottom: 5px;
+  }
+
+  .main-section .form-group p{
+    margin-bottom: 0px;
+  }
+
+  .main-section .form-control{
+    height: 25px;
+  }
+
+  .form-group {
+    margin-bottom: 8px;
+}
+
+  input.form-control{
+    background-color: #333333;
+  
+  }
+
+  .form-control:focus, .form-control:visited, select:focus{
+    border: 1px solid #87764e;
+    box-shadow: none;
+    outline: 0;
+  }
+
+  .main-section h2{
+    font-size: 32px;
+    letter-spacing: 2px;
+  }
+
+  .main-section h2 span{
+    font-weight: 600;
+    font-size: 33px;
+  }
+
+  .my-account-nav ul.navbar-nav li:first-child a{
+    color: #87764e !important;
+    font-weight: 700;
+  }
+  
+ 
+select{
+  border:0;
+  height: 25px;
+  padding: 0 !important;
+}
+span.default-shipping {
+  border: 1px solid grey;
+  padding: 0px 2px 0px 10px;
+  background: #9a8c3d;
+  margin-right: 5px;
+}
+.border-table {
+  border: 1px solid grey;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.option-button{
+  display: inline-block;
+  margin: 10px;
+  float: right;
+}
+.text-color{
+  color: #fff;
+}
+.option-button .btn{
+  background: transparent;
+  color: #87764e;
+  border: 1px solid grey;
+  font-size: 10px;
+  padding: 2px 3px 0px;
+  border-radius: 0;
+}
+.option-button .glyphicon{
+   color: #fff;
+  top: 1px;
+  margin-left: 3px;
+  font-size: 9px;
+}
+.myaccount .wishlist{background: none;}
+.wishlist .main-section{margin-right: 15px;}
+.wishlist .table-rw{height: 25px;}
+.wishlist .table-head{padding:5px 10px 0;color: grey;}
+.wishlist .image_left{border: 0px;margin:0px 15px 5px}
+.wishlist .srno{float: left;padding-left: 5px;}
+.wishlist .btn{
+      border: 1px solid #87764e;
+  padding: 2px 2px 0px;
+  border-radius: 0px;
+  font-size: 11px;
+  background: none;
+  color: grey;
+}
+.stock{
+  color: #87764e;font-size: 12px; vertical-align: top;text-align: center;padding-top:12px;
+}
+.stock.outofstock{color: red;}
+.wishlist .table-head{text-align: right;}
+.wishlist tbody tr{border-bottom:1px dashed grey; }
+/* 
+
+.bg-img-my-order{
+  background-image: url(/assets/images/clock3.png) !important;
+  background-size: 37% !important;
+  background-repeat: no-repeat !important;
+  background-position: center 70px !important;
+} */
+
+.my-order-table .table tr th, .my-order-table .table tr td {
+  border: 0px solid #ddd;
+}
+
+.my-order-table tr:nth-child(even){
+background-color: rgba(0, 0, 0, 0.66);
+}
+
+.return-order-oh{
+cursor: pointer;
+}
+
+.order-history-return-form .control-label{ 
+text-align: left;
+}
+
+.order-history-return-form .form-control{
+border: 1px solid #9a8c3d;
+}
+
+.return-txt-bold{
+font-weight: 400;
+font-size: 11px;
+color: #272727;
+margin: 15px 0;
+}
+
+.order-history-return-form .checkbox label{
+font-weight: 800;
+}
+
+.text-area-photo-attached{
+height: 110px !important;
+}
+
+.orderhistory .myaccount-pages .main-section{
+width: 50%;
+}
+
+.order-eturn-submit{
+background-color: #504d4d;
+color: #fff;
+margin-top: 24px;
+padding: 6px 22px !important;
+}
+
+.my-credit-main-div p.current-balance{
+  color: #fff;
+  font-size: 18px;
+}
+
+.my-credit-main-div p.current-balance span{
+  color: #87764e;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.saved-article-mindiv thead tr{
+  background-color: #000;
+}
+
+.saved-article-mindiv thead th {
+  text-align: left;
+  padding: 5px 5px 5px 0px;
+  color: grey !important;
+}
+
+.saved-article-mindiv tr td span{
+  color: grey !important;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.order-history-return-form label input {
+  top: 8px;
+  margin-right: 7px;
+}
+
+#myNavbar .nav li:first-child {
+  position: absolute;
+  left: 25px;
+}
+
+#myNavbar .nav li:first-child a{
+  color: #87764e !important;
+}
+
+.my-account-nav .navbar-inverse #myNavbar .nav li.active a {
+  color: #f2f2f2 !important;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.section-bar {
+  width: 78%;
+  margin: 0 auto;
+}
+
+.shipping-info-main {
+  border: none;
+}
+
+.shiping-info-head {
+  margin: 10px 0 7px;
+  font-size: 17px;
+}
+
+.shipping-info-main p {
+  margin-bottom: 5px;
+}
+
+.enter-new-add-btn {
+  margin-top: 2rem;
+}
+
+.enter-new-add-btn button{
+  background-color: #87764e;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #fff;
+  padding: 5px 8px 3px;
+  font-size: 12px;
+}
+
+.hit-list-myaccount-page {
+  display: flex;
+  align-items: center;
+  min-height: 80vh;
+}
+
+@media (min-width: 768px){
+
+  .my-order-return-div{
+   margin-top: 9% ; 
+  }
+
+  .my-account-nav ul{
+      display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+
+.personal-info-left{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 82vh;
+  width: 75%;
+}
+
+ .orderhistory-return .personal-info-left{
+  height: auto;
+} 
+
+/* .orderspage .personal-info-left{
+  height: auto;
+  width: 80%;
+} */
+
+.bg-img-my-order  .my-order-main-div{
+display: flex;
+align-items: center;
+height:89vh ;
+}
+}
+
+@media (max-width:1028px) and (min-width:768px){
+.navbar-nav li a{
+  padding: 7px 0px 4px;
+}
+/* .myaccount{
+  display: flex;
+  justify-content: center;
+  padding: 9px;
+} */
+}
+
+
+@media (max-width: 767px){
+
+  #myNavbar ul.nav li a{
+    padding: 7px 0;
+    text-align: center;
+  }
+
+  #myNavbar ul.nav li a{
+    text-align: center;
+  }
+
+
+  .add-to-cart-wish{
+    margin-top: 10px;  
+  }
+ #myNavbar .nav{
+  display: none;
+ }
+ #myNavbar .nav li{
+  display: block;
+}
+
+
+  .mobile-remove-abso-wishlist .fa-shopping-cart {
+    font-size: 10px;
+    padding: 0px;
+    color: #fff;
+}
+
+  .wishlist.myaccount-pages .main-section{
+    width: 100% !important;
+  }
+
+  .table-wishlist-row td{
+    padding: 0 5px;
+    text-align: center !important;
+    font-size: 12px;
+  }
+
+  .wishlist .table-head{
+    text-align: center !important;
+}
+
+  .wishlist.myaccount-pages td .mobile-remove-abso-wishlist{
+    position: relative !important;
+    bottom: 0 !important;
+    right: 0 !important;
+  }
+
+  .table-wishlist-row .image_left{
+    float: none !important;
+    margin: 10px 15px;
+    min-width: 154px;
+    height: auto;
+    border: 1px solid #8d7c54 !important;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .table-wishlist-row .image_left img{
+    margin: 0 !important;
+    border: none !important;
+  }
+
+
+  .phone-num-ship-div{
+    display: flex;
+    justify-content: space-between;
+  }
+ 
+  p.p-description[_ngcontent-c4] {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.orderhistory-return .personal-info-left{
+  margin-right: 15px;
+  margin-left: 15px;
+  margin-bottom: 2rem;
+}
+
+.myaccount.personal, .shippingpage, .myaccount.orderspage, .my-credit, .orderhistory-return, .myaccount.articlepage{
+  background-size: 75% !important;
+  background-position: center 27% !important;
+}
+
+.dob-form-inlne input{
+  display: inline !important;
+}
+
+.myaccount-pages .main-section{
+  width: 100%;
+}
+
+.myaccount .navbar-nav > li {
+  text-align: center;
+  text-decoration: none;
+}
+
+.myaccount .navbar-nav > li a{
+  text-decoration: none;
+}
+
+.myaccount-nav-toggle .myaccountToggleBtn{
+  margin: 2px !important;
+}
+
+
+.myaccount-nav-toggle {
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+  padding: 9px;
+}
+
+.save-cancel-btn{
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+  width: 100%;
+}
+
+.save-cancel-btn input{
+  margin-left: 18px;
+}
+
+.save-cancel-btn button{
+  width: 90px;
+}
+
+.save-cancel-btn input{
+  width: 90px;
+}
+
+.main-section {
+  margin-top: 0px;
+  margin-left: 0px;
+}
+
+}
+
+@media (max-width: 768px) {
+
+  .myaccount-pages .main-section2, .saved-article-mindiv .main-section2{
+    width: 80vw;
+  }
+
+
+  .myaccount-pages {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  #myNavbar .nav li:first-child {
+    position: relative;
+    right: 0;
+    left: 0;
+    color: #87764e !important;
+  }
+
+  .section-bar {
+    width: 100%;
+    margin-left: 0 !important;
+  }
+
+.personal-info-left {
+  display: none;
+}
+
+}

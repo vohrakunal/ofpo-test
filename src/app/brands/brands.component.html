@@ -1,0 +1,127 @@
+<div class="container-fluid brands-main-div">
+  <div class="row brands-row-div">
+    <div class="col-md-12" style="padding:0 45px;">
+      <h2 class="text-center page_title">BRANDS</h2>
+    </div>
+    <div class="col-md-12" style="padding:0 45px;">
+      <div  class="text-center">
+       <!--  <span class="brand_category"><a href="" class="active">ALL</a></span> -->
+      <!--   <span class="brand_category"><a (click)="getProducts('13')" >MEN</a></span>
+        <span class="brand_category"><a (click)="getProducts('14')">WOMEN</a></span> -->
+       <!--  <span class="brand_category"><a href="">SHOES</a></span> -->
+      </div>
+      <div  class="text-center brand_serach_alpha">
+        <span class="brand_category_letter"><a (click)="getBrandProducts('A')">A</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('B')">B</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('C')">C</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('D')">D</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('E')">E</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('F')">F</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('G')">G</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('H')">H</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('I')">I</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('J')">J</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('K')">K</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('L')">L</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('M')">M</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('N')">N</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('O')">O</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('P')">P</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('Q')">Q</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('R')">R</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('S')">S</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('T')">T</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('U')">U</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('V')">V</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('W')">W</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('X')">X</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('Y')">Y</a></span>
+        <span class="brand_category_letter"><a (click)="getBrandProducts('Z')">Z</a></span>
+      </div>
+     <!--  <div  class="text-center brand_view_type_wrapper">
+        <span class="brand_view_type"><a href="brand.html" class="active">FULL VIEW</a></span>
+        <span class="brand_view_type">|</span>
+        <span class="brand_view_type"><a href="brand2.html">LIST VIEW</a></span>
+      </div> -->
+    </div>
+  </div>
+
+    <div class="row brand_wrapper">
+      <div class="col-md-12 image-padding" >
+        <!-- <div class="col-md-12 brand_wrapper" detect-scroll (onScroll)="handleScroll($event)" [bottomOffset]="300">  -->
+         <div class="col-md-12 brand_wrapper"> 
+            <!-- <div class="col-md-6" *ngFor="let bran of products;let i = index">
+                  <img src="{{bran.imageValue}}" width="100%" height="400px;">
+                    <div class="collection_brand">
+                        <p style="margin-bottom: 4px;margin-top: 162px">  {{bran.brand}}</p>
+                        <p style="margin-bottom: 0px;font-size: 9px;font-weight: 600;color: #7d7070;padding-bottom: 5px;">  COP THE COLLECTION</p>
+                        <p class="btn_padding"><a class="btn btn_gray" (click)="goToHome()">SHOP NOW</a></p>
+                    </div>
+
+            </div> -->
+        
+         
+         <div class="col-md-6" *ngFor="let bran of products;let i = index">
+            <!-- <div class=""> -->
+                    <img class="brands-main-img" src="{{bran.imageURL}}" width="100%">
+                    <div class="collection_brand">
+                        <p style="margin-bottom: 4px;margin-top: 162px"> <a class="brand" href="" [routerLink]="['/home',categoryIdLast , bran.brand]"> {{bran.brand}} </a></p>
+                        <p class="view">VIEW BRAND</p>
+                        <p class="btn_padding"><a class="btn btn_gray" [routerLink]="['/home',categoryIdLast , bran.brand]" href="">SHOP NOW</a></p>
+                    </div>
+            <!-- </div> -->
+          </div> 
+          </div>
+        </div>
+    </div>
+    <!-- <div class="row brand_wrapper">
+      <div class="col-md-12 image-padding">
+        <div class="col-md-6 brand_wrapper">
+            <div class="">
+                <img src="assets/images/img1.jpg" width="100%" height="400px;">
+                    <div class="collection_brand">
+                        <p style="margin-bottom: 4px;margin-top: 162px">  LOUIS VUITTON x SUPREME</p>
+                        <p style="margin-bottom: 0px;font-size: 9px;font-weight: 600;color: #7d7070;padding-bottom: 5px;">COP THE COLLECTION</p>
+                        <p class="btn_padding"><a class="btn btn_gray" href="">SHOP NOW</a></p>
+                    </div>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+          <div class="">
+                  <img src="assets/images/img4.jpg" width="100%" height="400px;">
+                    <div class="collection_brand">
+                        <p style="margin-bottom: 4px;margin-top: 162px">  LOUIS VUITTON x SUPREME</p>
+                        <p style="margin-bottom: 0px;font-size: 9px;font-weight: 600;color: #7d7070;padding-bottom: 5px;">COP THE COLLECTION</p>
+                        <p class="btn_padding"><a class="btn btn_gray" href="">SHOP NOW</a></p>
+                    </div>
+            </div>
+          </div>
+        </div>
+    </div> -->
+    <!--  <div class="row brand_wrapper">
+      <div class="col-md-12 image-padding">
+        <div class="col-md-6 brand_wrapper">
+            <div class="">
+                <img src="assets/images/img12.jpg" width="100%" height="400px;">
+                    <div class="collection_brand">
+                        <p style="margin-bottom: 4px;margin-top: 162px">  LOUIS VUITTON x SUPREME</p>
+                        <p style="margin-bottom: 0px;font-size: 9px;font-weight: 600;color: #7d7070;padding-bottom: 5px;">COP THE COLLECTION</p>
+                        <p class="btn_padding"><a class="btn btn_gray" href="">SHOP NOW</a></p>
+                    </div>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+          <div class="">
+                  <img src="assets/images/img13.jpg" width="100%" height="400px;">
+                    <div class="collection_brand">
+                        <p style="margin-bottom: 4px;margin-top: 162px">  LOUIS VUITTON x SUPREME</p>
+                        <p style="margin-bottom: 0px;font-size: 9px;font-weight: 600;color: #7d7070;padding-bottom: 5px;">COP THE COLLECTION</p>
+                        <p class="btn_padding"><a class="btn btn_gray" href="">SHOP NOW</a></p>
+                    </div>
+            </div>
+          </div>
+        </div>
+    </div> -->
+</div><!--container-fluid end-->
